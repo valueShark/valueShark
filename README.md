@@ -8,6 +8,12 @@ Team members:
 * Vik Akam
 * Ran Vaknin
 
+## User Stories
+See [here](stories.md) or on [Trello](https://trello.com/b/4lOS6f2n/mvp)
+
+## Domain Model
+![](assets/valueSharkDomainModel)
+
 ## Software Requirements
 ### Vision
 We want our users - most likely value investors - to quickly identify potential investment opportunities and keep track of a portfolio of companies. This application aims to avoid the traditionally long-winded path of finding optimal investments, and to instead allow our value investor to see the information they want in one place, on a very navigable website. Users should care about our product for this reason - it decreases the time spent on searching for an investment, and increases your actual investments made on a given day while displaying the information you need to make that investment. 
@@ -53,7 +59,7 @@ Every HTML page will contain either buttons of navigation to other pages using G
 3. Testability (testing routes, databases)
 - We will be creating integration tests for the routes in our Spring app. 
 
-## Wireframe photos
+## Wireframe Images
 
 # WireFrames
 Splash page:
