@@ -54,12 +54,21 @@ Every HTML page will contain either buttons of navigation to other pages using G
 - We will be creating integration tests for the routes in our Spring app. 
 
 ## Wireframe photos
-logged in logged out views:
-![](https://github.com/valueShark/valueShark/blob/dev/Assets/Screen%20Shot%202020-01-31%20at%2013.19.38.png?raw=true)
 
-log in log out pages:
-![](https://github.com/valueShark/valueShark/blob/dev/Assets/Screen%20Shot%202020-01-31%20at%2013.19.55.png?raw=true)
+# WireFrames
+Splash page:
+![](assets/splash-page.png)
 
-individual stock page:
-![](https://github.com/valueShark/valueShark/blob/dev/Assets/Screen%20Shot%202020-01-31%20at%2013.20.06.png?raw=true)
+Signup page:
+![](assets/signup-page.png)
+
+Login page:
+![](assets/login-page.png)
+
+Portfolio page:
+![](assets/portfolio-page.png)
+
+Details page:
+![](assets/details-page.png)
+
 
