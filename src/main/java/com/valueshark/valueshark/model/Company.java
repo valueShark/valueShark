@@ -2,7 +2,6 @@ package com.valueshark.valueshark.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import com.google.gson.Gson;
 
 @Entity
 public class Company {
@@ -214,5 +213,176 @@ public class Company {
 
   public String getNewsSummary() {
     return newsSummary;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public void setSymbol(String symbol) {
+    this.symbol = symbol;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public void setExchange(String exchange) {
+    this.exchange = exchange;
+  }
+
+  public void setIndustry(String industry) {
+    this.industry = industry;
+  }
+
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setCEO(String CEO) {
+    this.CEO = CEO;
+  }
+
+  public void setSector(String sector) {
+    this.sector = sector;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
+  }
+
+  public void setMarketcap(int marketcap) {
+    this.marketcap = marketcap;
+  }
+
+  public void setWeek52high(double week52high) {
+    this.week52high = week52high;
+  }
+
+  public void setWeek52low(double week52low) {
+    this.week52low = week52low;
+  }
+
+  public void setWeek52change(double week52change) {
+    this.week52change = week52change;
+  }
+
+  public void setSharesOutstanding(int sharesOutstanding) {
+    this.sharesOutstanding = sharesOutstanding;
+  }
+
+  public void setDay200MovingAvg(double day200MovingAvg) {
+    this.day200MovingAvg = day200MovingAvg;
+  }
+
+  public void setDay50MovingAvg(double day50MovingAvg) {
+    this.day50MovingAvg = day50MovingAvg;
+  }
+
+  public void setTtmEPS(double ttmEPS) {
+    this.ttmEPS = ttmEPS;
+  }
+
+  public void setNextEarningsDate(String nextEarningsDate) {
+    this.nextEarningsDate = nextEarningsDate;
+  }
+
+  public void setPeRatio(double peRatio) {
+    this.peRatio = peRatio;
+  }
+
+  public void setBeta(double beta) {
+    this.beta = beta;
+  }
+
+  public void setProfitMargin(double profitMargin) {
+    this.profitMargin = profitMargin;
+  }
+
+  public void setEnterpriseValue(int enterpriseValue) {
+    this.enterpriseValue = enterpriseValue;
+  }
+
+  public void setPriceToBook(double priceToBook) {
+    this.priceToBook = priceToBook;
+  }
+
+  public void setPegRatio(double pegRatio) {
+    this.pegRatio = pegRatio;
+  }
+
+  public void setLogoUrl(String logoUrl) {
+    this.logoUrl = logoUrl;
+  }
+
+  public void setNewsDate(Date newsDate) {
+    this.newsDate = newsDate;
+  }
+
+  public void setNewsHeadline(String newsHeadline) {
+    this.newsHeadline = newsHeadline;
+  }
+
+  public void setNewsSource(String newsSource) {
+    this.newsSource = newsSource;
+  }
+
+  public void setNewsUrl(String newsUrl) {
+    this.newsUrl = newsUrl;
+  }
+
+  public void setNewsSummary(String newsSummary) {
+    this.newsSummary = newsSummary;
+  }
+
+  @Override
+  public String toString() {
+    return "Company{" +
+        "id=" + id +
+        ", symbol='" + symbol + '\'' +
+        ", companyName='" + companyName + '\'' +
+        ", exchange='" + exchange + '\'' +
+        ", industry='" + industry + '\'' +
+        ", website='" + website + '\'' +
+        ", description='" + description + '\'' +
+        ", CEO='" + CEO + '\'' +
+        ", sector='" + sector + '\'' +
+        ", state='" + state + '\'' +
+        ", city='" + city + '\'' +
+        ", country='" + country + '\'' +
+        ", marketcap=" + marketcap +
+        ", week52high=" + week52high +
+        ", week52low=" + week52low +
+        ", week52change=" + week52change +
+        ", sharesOutstanding=" + sharesOutstanding +
+        ", day200MovingAvg=" + day200MovingAvg +
+        ", day50MovingAvg=" + day50MovingAvg +
+        ", ttmEPS=" + ttmEPS +
+        ", nextEarningsDate='" + nextEarningsDate + '\'' +
+        ", peRatio=" + peRatio +
+        ", beta=" + beta +
+        ", profitMargin=" + profitMargin +
+        ", enterpriseValue=" + enterpriseValue +
+        ", priceToBook=" + priceToBook +
+        ", pegRatio=" + pegRatio +
+        ", logoUrl='" + logoUrl + '\'' +
+        ", newsDate=" + newsDate +
+        ", newsHeadline='" + newsHeadline + '\'' +
+        ", newsSource='" + newsSource + '\'' +
+        ", newsUrl='" + newsUrl + '\'' +
+        ", newsSummary='" + newsSummary + '\'' +
+        '}';
   }
 }
