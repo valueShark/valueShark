@@ -25,7 +25,11 @@ public class ValueSharkController {
     ApplicationUserRepository applicationUserRepository;
 
     @GetMapping("/")
-    public String renderHomePage(){
+    public String renderHomePage(Principal p, Model m){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
         return "index";
     }
 
@@ -43,15 +47,18 @@ public class ValueSharkController {
 
     @PostMapping("/signup")
     public RedirectView submitSignUp(String username, String password, String firstName, String lastName, String email){
-        // instantiate app object and save to database
-        ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
-        applicationUserRepository.save(applicationUser);
+        if (applicationUserRepository.findByUsername(username) != null) {
+            return new RedirectView("/signup?taken=true");
+        } else {
+            // instantiate app user and save to database
+            ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
+            applicationUserRepository.save(applicationUser);
 
-        // auto-login
-        Authentication authentication = new UsernamePasswordAuthenticationToken(applicationUser, null, new ArrayList<>());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return new RedirectView("/");
+           // auto-login
+            Authentication authentication = new UsernamePasswordAuthenticationToken(applicationUser, null, new ArrayList<>());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            return new RedirectView("/");
+        }
     }
 
     @GetMapping("/login")
