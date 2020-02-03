@@ -19,23 +19,8 @@ class CompanyTest {
   @Test
   public void companyConstructorTest() {
 
-    try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/market/batch?symbols=aapl&types=price,company,advanced-stats,logo,news&last=1&token=Tpk_6eaa26587325492481257c267b6cc67f");
-      Gson gson = new Gson();
-      HttpURLConnection con;
-      BufferedReader in;
-      try {
-        con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        in = new BufferedReader(
-            new InputStreamReader(con.getInputStream()));
-        apple = gson.fromJson(in, Company.class);
-        System.out.println(apple.toString());
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-    }
+    apple = new Company("aapl");
+    System.out.println(apple);
+
   }
 }
