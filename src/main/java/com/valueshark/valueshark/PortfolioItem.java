@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class PortfolioItem {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     public long id;
 
     @ManyToOne
