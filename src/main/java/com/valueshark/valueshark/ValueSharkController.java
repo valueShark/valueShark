@@ -29,15 +29,22 @@ public class ValueSharkController {
         return "index";
     }
 
+    // render specific stocks based on search bar
+//    @GetMapping("/")
+//    public RedirectView getSpecificStock(){
+//        Long id = StocksRepo.findByCompanyName().getId();
+//        return new RedirectView("/stocks/" + id);
+//    }
+
     @GetMapping("/signup")
     public String renderSignUpPage(){
         return "signup";
     }
 
     @PostMapping("/signup")
-    public RedirectView submitSignUp(String username, String password, String firstName, String lastName){
-        // instantiate signup object and save to database
-        ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName);
+    public RedirectView submitSignUp(String username, String password, String firstName, String lastName, String email){
+        // instantiate app object and save to database
+        ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
         applicationUserRepository.save(applicationUser);
 
         // auto-login

@@ -19,7 +19,7 @@ public class ApplicationUser implements UserDetails {
     String email;
 
     public ApplicationUser() {};
-    public ApplicationUser(String username, String password, String firstName, String lastName, String email,) {
+    public ApplicationUser(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
