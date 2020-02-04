@@ -49,14 +49,16 @@ public class AdminController {
 
             //using the symbol, create a new Company and save it in the repo
             System.out.println("Adding " + allSymbols.length + " Companies to the Company table.");
+            int count = 0;
             for (Symbol symbol : allSymbols) {
                 if (symbol.getType().equals("cs")) {
+                    count++;
                     companyRepo.save(new Company(symbol.getSymbol()));
                     System.out.println(symbol.getSymbol() + " added to Company table.");
                     Thread.sleep(250);
                 }
             }
-            System.out.println("Company table updated!");
+            System.out.println("Company table updated, " + count + " value stocks added.");
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

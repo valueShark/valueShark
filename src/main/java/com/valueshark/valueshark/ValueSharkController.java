@@ -3,6 +3,8 @@ package com.valueshark.valueshark;
 
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
+import com.valueshark.valueshark.model.company.Company;
+import com.valueshark.valueshark.model.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
@@ -24,6 +27,9 @@ public class ValueSharkController {
 
     @Autowired
     ApplicationUserRepository applicationUserRepository;
+
+    @Autowired
+    CompanyRepository companyRepository;
 
     @GetMapping("/")
     public String renderHomePage(Principal p, Model m){
@@ -111,13 +117,19 @@ public class ValueSharkController {
         return "systemstatus";
     }
 
-    @GetMapping("/stocks/{id}")
-    public String renderStockPage(Principal p, Model m){
+    @GetMapping("/stocks?symbol={symbol}")
+    public String renderStockPage(@PathVariable String symbol, Principal p, Model m){
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);
+            if(companyRepository.getBySymbol(symbol) != null) {
+                m.addAttribute("company", companyRepository.getBySymbol(symbol));
+            } else {
+                Company company = new Company(symbol);
+                m.addAttribute("company", company);
+            }
         }
-        return "stock";
+        return "companyDetails";
     }
 
 }
