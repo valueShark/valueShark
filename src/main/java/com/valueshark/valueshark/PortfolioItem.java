@@ -9,9 +9,9 @@ public class PortfolioItem {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    public ApplicationUser userId;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    public ApplicationUser userId;
 
 //    @ManyToOne
 //    @JoinColumn(name = "company_id")
