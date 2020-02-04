@@ -117,19 +117,17 @@ public class ValueSharkController {
         return "systemstatus";
     }
 
-    @GetMapping("/stocks?symbol={symbol}")
-    public String renderStockPage(@PathVariable String symbol, Principal p, Model m){
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("user", user);
-            if(companyRepository.getBySymbol(symbol) != null) {
-                m.addAttribute("company", companyRepository.getBySymbol(symbol));
-            } else {
-                Company company = new Company(symbol);
-                m.addAttribute("company", company);
-            }
+    @GetMapping("/stocks")
+    public String renderStockPage(String symbol, Principal p, Model m){
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("user", user);
+        if(companyRepository.getBySymbol(symbol) != null) {
+            m.addAttribute("company", companyRepository.getBySymbol(symbol));
+        } else {
+            Company company = new Company(symbol);
+            m.addAttribute("company", company);
         }
-        return "companyDetails";
+        return "companydetails";
     }
 
 }
