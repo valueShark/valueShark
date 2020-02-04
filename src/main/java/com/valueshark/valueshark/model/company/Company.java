@@ -319,6 +319,10 @@ public class Company {
     return newsSummary;
   }
 
+  public double getPrice() {
+    return price;
+  }
+
   @Override
   public String toString() {
     return "Company:" +

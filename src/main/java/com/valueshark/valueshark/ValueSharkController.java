@@ -6,7 +6,9 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
 import org.checkerframework.checker.units.qual.C;
+import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -122,19 +124,26 @@ public class ValueSharkController {
         return "systemstatus";
     }
 
-    @GetMapping("/stocks?symbol={symbol}")
-    public String renderStockPage(@PathVariable String symbol, Principal p, Model m){
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("user", user);
-            if(companyRepository.getBySymbol(symbol) != null) {
-                m.addAttribute("company", companyRepository.getBySymbol(symbol));
-            } else {
-                Company company = new Company(symbol);
-                m.addAttribute("company", company);
-            }
+    @GetMapping("/stocks")
+    public String renderStockPage(String symbol, Principal p, Model m){
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        m.addAttribute("user", user);
+        if(companyRepository.getBySymbol(symbol) != null) {
+            m.addAttribute("company", companyRepository.getBySymbol(symbol));
+        } else {
+            Company company = new Company(symbol);
+            m.addAttribute("company", company);
         }
-        return "companyDetails";
+        return "companydetails";
+    }
+
+    @PostMapping("/portfolio/add/{companyId}")
+    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, long pricePerShare) {
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        Company company = companyRepository.getOne(companyId);
+        user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
+        applicationUserRepository.save(user);
+        return new RedirectView("/");
     }
 
 }
