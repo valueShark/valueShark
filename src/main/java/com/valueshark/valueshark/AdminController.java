@@ -1,8 +1,13 @@
 package com.valueshark.valueshark;
 
 import com.google.gson.Gson;
+<<<<<<< HEAD
 import com.valueshark.valueshark.model.Symbol;
 import com.valueshark.valueshark.model.company.Company;
+=======
+import com.valueshark.valueshark.model.company.Company;
+import com.valueshark.valueshark.model.Symbol;
+>>>>>>> e18a82e520e26a7229d8d2205eac902de7357da5
 import com.valueshark.valueshark.model.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
