@@ -20,8 +20,8 @@ public class Company {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "companyId")
-  public List<PortfolioItem> portfoliosThisIsIn;
+//  @OneToMany(mappedBy = "companyId")
+//  public List<PortfolioItem> portfoliosThisIsIn;
 
   private String symbol;
   private String companyName;
@@ -305,6 +305,10 @@ public class Company {
 
   public String getNewsSummary() {
     return newsSummary;
+  }
+
+  public double getPrice() {
+    return price;
   }
 
   @Override
