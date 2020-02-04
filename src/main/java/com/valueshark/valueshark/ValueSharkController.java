@@ -41,7 +41,11 @@ public class ValueSharkController {
 //    }
 
     @GetMapping("/signup")
-    public String renderSignUpPage(){
+    public String renderSignUpPage(Principal p, Model m){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
         return "signup";
     }
 
@@ -62,18 +66,56 @@ public class ValueSharkController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model m, Principal p) {
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
         return "login";
     }
 
     @GetMapping("/portfolio")
     public String renderPortfolio(Model m, Principal p){
-        m.addAttribute("principal", p);
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
         return "portfolio";
     }
 
+    @GetMapping("/aboutus")
+    public String getAboutUs(Model m, Principal p){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
+        return "aboutus";
+    }
+
+    @GetMapping("/myprofile")
+    public String getProfile(Model m, Principal p){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
+        return "myprofile";
+    }
+
+    @GetMapping("/systemstatus")
+    public String getSystemStatus(Model m, Principal p){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
+        return "systemstatus";
+    }
+
     @GetMapping("/stocks/{id}")
-    public String renderStockPage(){
+    public String renderStockPage(Principal p, Model m){
+        if (p != null) {
+            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            m.addAttribute("user", user);
+        }
         return "stock";
     }
 }

@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign up</title>
+    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
 </head>
 <body>
-    <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
-    <form action="/signup" method="POST">
-        <label>Username <input name="username"/></label>
-        <label>Password <input type="password" name="password"/></label>
-        <label>First Name <input name="firstName"/></label>
-        <label>Last Name <input name="lastName"/></label>
-        <label>Email <input name="email"/></label>
-        <input type="submit" value="Sign up"/>
-    </form>
+    <header th:replace="/fragments/header.html :: header"></header>
+    <main>
+        <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
+        <form action="/signup" method="POST">
+            <label>Username <input name="username"/></label>
+            <label>Password <input type="password" name="password"/></label>
+            <label>First Name <input name="firstName"/></label>
+            <label>Last Name <input name="lastName"/></label>
+            <label>Email <input name="email"/></label>
+            <input type="submit" value="Sign up"/>
+        </form>
+    </main>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
 </body>
 </html>
