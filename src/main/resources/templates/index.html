@@ -46,6 +46,9 @@
             <th:block th:if="${user}">
                 <div th:replace="/fragments/searchbar.html :: searchbar">Search bar</div>
             </th:block>
+
+            <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>
+
         </main>
         <footer th:replace="/fragments/footer.html :: footer"></footer>
     </body>

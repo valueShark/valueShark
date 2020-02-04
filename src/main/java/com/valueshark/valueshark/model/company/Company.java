@@ -28,6 +28,7 @@ public class Company {
   private String companyName;
   private String exchange;
   private String industry;
+  @Column(columnDefinition="text")
   private String website;
   @Column(columnDefinition="text")
   private String description;
@@ -52,10 +53,12 @@ public class Company {
   private long enterpriseValue;
   private double priceToBook;
   private double pegRatio;
+  @Column(columnDefinition="text")
   private String logoUrl;
   private Date newsDate;
   private String newsHeadline;
   private String newsSource;
+  @Column(columnDefinition="text")
   private String newsUrl;
   @Column(columnDefinition="text")
   private String newsSummary;
@@ -170,6 +173,14 @@ public class Company {
     } catch (MalformedURLException e) {
       e.printStackTrace();
     }
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
   }
 
   public long getId() {

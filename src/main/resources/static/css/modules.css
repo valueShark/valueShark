@@ -4,3 +4,16 @@
     outline: none;
     text-align: center;
 }
+
+/* start of styling for prospects table. from branch lucas-prospects. delete this comment after merges */
+.company {
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+}
+    .company label {
+        display: inline-block;
+    }
+        .company label p {
+            font-weight: bold;
+        }

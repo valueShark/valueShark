@@ -5,6 +5,7 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ValueSharkController {
@@ -36,6 +38,9 @@ public class ValueSharkController {
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);
+
+            List<Company> allCompanies = companyRepository.findAll();
+            m.addAttribute("allCompanies", allCompanies);
         }
         return "index";
     }
