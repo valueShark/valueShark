@@ -18,7 +18,7 @@
     <section id="companyHeader">
       <h2 th:text="${company.companyName}"></h2>
 
-      <img th:src="${company.logoURL}" th:alt = "${company.companyName} + 'logo'">
+      <img th:src="${company.logoUrl}" th:alt = "${company.companyName} + 'logo'">
       <p th:text="'Price: ' + ${company.price}"></p>
 
     <ul id ="companyDetails">
@@ -57,7 +57,7 @@
         <h3 th:text="${company.newsHeadline}"></h3>
         <p th:text="${company.newsDate}"></p>
         <a th:href="${company.newsUrl}"></a>
-        <p th:text="'Source: '${company.newsSource}"></p>
+        <p th:text="'Source: '+ ${company.newsSource}"></p>
         <p th:text= "${company.newsSummary}"></p>
       </article>
 
@@ -66,6 +66,15 @@
         <a th:href="'Website: ' + ${company.website}"></a>
       </article>
 
+      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.id}" method="post">
+        <label>Shares owned:
+        <input name="shares" type="text"/>
+        </label>
+        <label>Price paid:
+        <input name="pricePerShare" type="text"/>
+        </label>
+        <input type="submit" value="addToPortfolio">
+      </form>
     </section>
 
   </main>
