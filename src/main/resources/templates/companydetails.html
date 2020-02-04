@@ -17,8 +17,10 @@
     <h1>Company Details</h1>
     <section id="companyHeader">
       <h2 th:text="${company.companyName}"></h2>
+
       <img th:src="${company.logoURL}" th:alt = "${company.companyName} + 'logo'">
       <p th:text="'Price: ' + ${company.price}"></p>
+
     <ul id ="companyDetails">
       <li th:text="'Exchange: '+ ${company.exchange}"></li>
       <li th:text="'Sector: '+ ${company.sector}"></li>
