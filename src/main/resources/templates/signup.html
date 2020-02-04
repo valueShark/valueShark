@@ -5,7 +5,7 @@
     <title>Sign up</title>
 </head>
 <body>
-    <h3 id="userexists" th:if="${param.taken}">This username is taken.</h3>
+    <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
     <form action="/signup" method="POST">
         <label>Username <input name="username"/></label>
         <label>Password <input type="password" name="password"/></label>

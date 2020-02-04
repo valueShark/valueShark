@@ -39,12 +39,12 @@ public class ValueSharkController {
     }
 
     @PostMapping("/signup")
-    public RedirectView submitSignUp(String username, String password, String firstName, String lastName, Model m){
+    public RedirectView submitSignUp(String username, String password, String firstName, String lastName, String email){
         if (applicationUserRepository.findByUsername(username) != null) {
             return new RedirectView("/signup?taken=true");
         } else {
             // instantiate app user and save to database
-            ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName);
+            ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
             applicationUserRepository.save(applicationUser);
 
             // auto-login
