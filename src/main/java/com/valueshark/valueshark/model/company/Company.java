@@ -20,8 +20,9 @@ public class Company {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "companyId")
-  public List<PortfolioItem> portfoliosThisIsIn;
+  //this isn't necessary but leaving it in case we decide to use this for stats later
+//  @OneToMany(mappedBy = "companyId")
+//  public List<PortfolioItem> portfoliosThisIsIn;
 
   private String symbol;
   private String companyName;
