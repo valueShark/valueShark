@@ -1,4 +1,4 @@
-package com.valueshark.valueshark.model;
+package com.valueshark.valueshark.model.company;
 
 public class CompanyPrice {
 

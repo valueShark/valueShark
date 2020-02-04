@@ -1,4 +1,4 @@
-package com.valueshark.valueshark.model;
+package com.valueshark.valueshark.model.company;
 
 import java.sql.Date;
 
