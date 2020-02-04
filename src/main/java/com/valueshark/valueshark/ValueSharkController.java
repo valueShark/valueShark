@@ -33,6 +33,13 @@ public class ValueSharkController {
         return "index";
     }
 
+    // render specific stocks based on search bar
+//    @GetMapping("/")
+//    public RedirectView getSpecificStock(){
+//        Long id = StocksRepo.findByCompanyName().getId();
+//        return new RedirectView("/stocks/" + id);
+//    }
+
     @GetMapping("/signup")
     public String renderSignUpPage(){
         return "signup";
@@ -47,7 +54,7 @@ public class ValueSharkController {
             ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
             applicationUserRepository.save(applicationUser);
 
-            // auto-login
+           // auto-login
             Authentication authentication = new UsernamePasswordAuthenticationToken(applicationUser, null, new ArrayList<>());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return new RedirectView("/");

@@ -1,6 +1,14 @@
 package com.valueshark.valueshark.model;
 
+import com.google.gson.Gson;
+
 import javax.persistence.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Date;
 
 @Entity
@@ -22,11 +30,12 @@ public class Company {
   private String state;
   private String city;
   private String country;
-  private int marketcap;
+  private double price;
+  private long marketcap;
   private double week52high;
   private double week52low;
   private double week52change;
-  private int sharesOutstanding;
+  private long sharesOutstanding;
   private double day200MovingAvg;
   private double day50MovingAvg;
   private double ttmEPS;
@@ -34,7 +43,7 @@ public class Company {
   private double peRatio;
   private double beta;
   private double profitMargin;
-  private int enterpriseValue;
+  private long enterpriseValue;
   private double priceToBook;
   private double pegRatio;
   private String logoUrl;
@@ -47,40 +56,141 @@ public class Company {
 
   public Company() {}
 
-  public Company(long id, String symbol, String companyName, String exchange, String industry, String website, String description, String CEO, String sector, String state, String city, String country, int marketcap, double week52high, double week52low, double week52change, int sharesOutstanding, double day200MovingAvg, double day50MovingAvg, double ttmEPS, String nextEarningsDate, double peRatio, double beta, double profitMargin, int enterpriseValue, double priceToBook, double pegRatio, String logoUrl, Date newsDate, String newsHeadline, String newsSource, String newsUrl, String newsSummary) {
-    this.id = id;
-    this.symbol = symbol;
-    this.companyName = companyName;
-    this.exchange = exchange;
-    this.industry = industry;
-    this.website = website;
-    this.description = description;
-    this.CEO = CEO;
-    this.sector = sector;
-    this.state = state;
-    this.city = city;
-    this.country = country;
-    this.marketcap = marketcap;
-    this.week52high = week52high;
-    this.week52low = week52low;
-    this.week52change = week52change;
-    this.sharesOutstanding = sharesOutstanding;
-    this.day200MovingAvg = day200MovingAvg;
-    this.day50MovingAvg = day50MovingAvg;
-    this.ttmEPS = ttmEPS;
-    this.nextEarningsDate = nextEarningsDate;
-    this.peRatio = peRatio;
-    this.beta = beta;
-    this.profitMargin = profitMargin;
-    this.enterpriseValue = enterpriseValue;
-    this.priceToBook = priceToBook;
-    this.pegRatio = pegRatio;
-    this.logoUrl = logoUrl;
-    this.newsDate = newsDate;
-    this.newsHeadline = newsHeadline;
-    this.newsSource = newsSource;
-    this.newsUrl = newsUrl;
-    this.newsSummary = newsSummary;
+  public Company(String symbol) {
+
+    CompanyPrice price;
+
+    try {
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      Gson gson = new Gson();
+      HttpURLConnection con;
+      BufferedReader in;
+      try {
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        price = gson.fromJson(in, CompanyPrice.class);
+        this.price = price.getLatestPrice();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+
+    CompanyInfo coInfo;
+
+    try {
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      Gson gson = new Gson();
+      HttpURLConnection con;
+      BufferedReader in;
+      try {
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        coInfo = gson.fromJson(in, CompanyInfo.class);
+        this.symbol = coInfo.getSymbol();
+        this.companyName = coInfo.getCompanyName();
+        this.exchange = coInfo.getExchange();
+        this.industry = coInfo.getIndustry();
+        this.website = coInfo.getWebsite();
+        this.description = coInfo.getDescription();
+        this.CEO = coInfo.getCEO();
+        this.sector = coInfo.getSector();
+        this.state = coInfo.getState();
+        this.city = coInfo.getCity();
+        this.country = coInfo.getCountry();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+
+    CompanyStats coStats;
+
+    try {
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      Gson gson = new Gson();
+      HttpURLConnection con;
+      BufferedReader in;
+      try {
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        coStats = gson.fromJson(in, CompanyStats.class);
+        this.marketcap = coStats.getMarketcap();
+        this.week52high = coStats.getWeek52high();
+        this.week52low = coStats.getWeek52low();
+        this.week52change = coStats.getWeek52change();
+        this.sharesOutstanding = coStats.getSharesOutstanding();
+        this.day200MovingAvg = coStats.getDay200MovingAvg();
+        this.day50MovingAvg = coStats.getDay50MovingAvg();
+        this.ttmEPS = coStats.getTtmEPS();
+        this.nextEarningsDate = coStats.getNextEarningsDate();
+        this.peRatio = coStats.getPeRatio();
+        this.beta = coStats.getBeta();
+        this.profitMargin = coStats.getProfitMargin();
+        this.enterpriseValue = coStats.getEnterpriseValue();
+        this.priceToBook = coStats.getPriceToBook();
+        this.pegRatio = coStats.getPegRatio();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+
+    CompanyLogo coLogo;
+
+    try {
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      Gson gson = new Gson();
+      HttpURLConnection con;
+      BufferedReader in;
+      try {
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        coLogo = gson.fromJson(in, CompanyLogo.class);
+        this.logoUrl = coLogo.getUrl();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+
+    CompanyNews[] coNews;
+
+    try {
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      Gson gson = new Gson();
+      HttpURLConnection con;
+      BufferedReader in;
+      try {
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        coNews = gson.fromJson(in, CompanyNews[].class);
+        this.newsDate = new Date(coNews[0].getDatetime());
+        this.newsHeadline = coNews[0].getHeadline();
+        this.newsSource = coNews[0].getSource();
+        this.newsUrl = coNews[0].getUrl();
+        this.newsSummary = coNews[0].getSummary();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+
   }
 
   public long getId() {
@@ -131,7 +241,7 @@ public class Company {
     return country;
   }
 
-  public int getMarketcap() {
+  public long getMarketcap() {
     return marketcap;
   }
 
@@ -147,7 +257,7 @@ public class Company {
     return week52change;
   }
 
-  public int getSharesOutstanding() {
+  public long getSharesOutstanding() {
     return sharesOutstanding;
   }
 
@@ -179,7 +289,7 @@ public class Company {
     return profitMargin;
   }
 
-  public int getEnterpriseValue() {
+  public long getEnterpriseValue() {
     return enterpriseValue;
   }
 
@@ -215,138 +325,6 @@ public class Company {
     return newsSummary;
   }
 
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
-
-  public void setCompanyName(String companyName) {
-    this.companyName = companyName;
-  }
-
-  public void setExchange(String exchange) {
-    this.exchange = exchange;
-  }
-
-  public void setIndustry(String industry) {
-    this.industry = industry;
-  }
-
-  public void setWebsite(String website) {
-    this.website = website;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public void setCEO(String CEO) {
-    this.CEO = CEO;
-  }
-
-  public void setSector(String sector) {
-    this.sector = sector;
-  }
-
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-
-  public void setMarketcap(int marketcap) {
-    this.marketcap = marketcap;
-  }
-
-  public void setWeek52high(double week52high) {
-    this.week52high = week52high;
-  }
-
-  public void setWeek52low(double week52low) {
-    this.week52low = week52low;
-  }
-
-  public void setWeek52change(double week52change) {
-    this.week52change = week52change;
-  }
-
-  public void setSharesOutstanding(int sharesOutstanding) {
-    this.sharesOutstanding = sharesOutstanding;
-  }
-
-  public void setDay200MovingAvg(double day200MovingAvg) {
-    this.day200MovingAvg = day200MovingAvg;
-  }
-
-  public void setDay50MovingAvg(double day50MovingAvg) {
-    this.day50MovingAvg = day50MovingAvg;
-  }
-
-  public void setTtmEPS(double ttmEPS) {
-    this.ttmEPS = ttmEPS;
-  }
-
-  public void setNextEarningsDate(String nextEarningsDate) {
-    this.nextEarningsDate = nextEarningsDate;
-  }
-
-  public void setPeRatio(double peRatio) {
-    this.peRatio = peRatio;
-  }
-
-  public void setBeta(double beta) {
-    this.beta = beta;
-  }
-
-  public void setProfitMargin(double profitMargin) {
-    this.profitMargin = profitMargin;
-  }
-
-  public void setEnterpriseValue(int enterpriseValue) {
-    this.enterpriseValue = enterpriseValue;
-  }
-
-  public void setPriceToBook(double priceToBook) {
-    this.priceToBook = priceToBook;
-  }
-
-  public void setPegRatio(double pegRatio) {
-    this.pegRatio = pegRatio;
-  }
-
-  public void setLogoUrl(String logoUrl) {
-    this.logoUrl = logoUrl;
-  }
-
-  public void setNewsDate(Date newsDate) {
-    this.newsDate = newsDate;
-  }
-
-  public void setNewsHeadline(String newsHeadline) {
-    this.newsHeadline = newsHeadline;
-  }
-
-  public void setNewsSource(String newsSource) {
-    this.newsSource = newsSource;
-  }
-
-  public void setNewsUrl(String newsUrl) {
-    this.newsUrl = newsUrl;
-  }
-
-  public void setNewsSummary(String newsSummary) {
-    this.newsSummary = newsSummary;
-  }
-
   @Override
   public String toString() {
     return "Company{" +
@@ -362,6 +340,7 @@ public class Company {
         ", state='" + state + '\'' +
         ", city='" + city + '\'' +
         ", country='" + country + '\'' +
+        ", price=" + price +
         ", marketcap=" + marketcap +
         ", week52high=" + week52high +
         ", week52low=" + week52low +
