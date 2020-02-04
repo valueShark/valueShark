@@ -1,4 +1,18 @@
+/* mobile */
 * {
     font-family: 'Sintony', sans-serif;
-    background-color: lightblue;
+    background-color: #234021;
+    color: #8AFF81;
 }
+
+@media (min-width:480px) {
+    html {
+        width: 480px;
+    }
+}
+
+/* tablet */
+
+/* desktop */
+
+/* a possible overlaying color: 8AFF81 */

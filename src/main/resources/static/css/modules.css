@@ -1,0 +1,6 @@
+/* search bar */
+.ui-widget form #tags {
+    border-radius: 50px;
+    outline: none;
+    text-align: center;
+}
