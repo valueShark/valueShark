@@ -1,6 +1,8 @@
 package com.valueshark.valueshark;
 
 
+import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
+import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -118,4 +119,5 @@ public class ValueSharkController {
         }
         return "stock";
     }
+
 }

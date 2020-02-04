@@ -1,4 +1,4 @@
-package com.valueshark.valueshark.model;
+package com.valueshark.valueshark.model.company;
 
 import com.google.gson.Gson;
 
@@ -58,70 +58,20 @@ public class Company {
 
   public Company(String symbol) {
 
-    CompanyPrice price;
-
-    try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=Tpk_6eaa26587325492481257c267b6cc67f");
-      Gson gson = new Gson();
-      HttpURLConnection con;
-      BufferedReader in;
-      try {
-        con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        in = new BufferedReader(
-            new InputStreamReader(con.getInputStream()));
-        price = gson.fromJson(in, CompanyPrice.class);
-        this.price = price.getLatestPrice();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-    }
-
-    CompanyInfo coInfo;
-
-    try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=Tpk_6eaa26587325492481257c267b6cc67f");
-      Gson gson = new Gson();
-      HttpURLConnection con;
-      BufferedReader in;
-      try {
-        con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        in = new BufferedReader(
-            new InputStreamReader(con.getInputStream()));
-        coInfo = gson.fromJson(in, CompanyInfo.class);
-        this.symbol = coInfo.getSymbol();
-        this.companyName = coInfo.getCompanyName();
-        this.exchange = coInfo.getExchange();
-        this.industry = coInfo.getIndustry();
-        this.website = coInfo.getWebsite();
-        this.description = coInfo.getDescription();
-        this.CEO = coInfo.getCEO();
-        this.sector = coInfo.getSector();
-        this.state = coInfo.getState();
-        this.city = coInfo.getCity();
-        this.country = coInfo.getCountry();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-    }
-
-    CompanyStats coStats;
-
     try {
       URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=Tpk_6eaa26587325492481257c267b6cc67f");
       Gson gson = new Gson();
       HttpURLConnection con;
       BufferedReader in;
       try {
+
+        // CompanyStats object used to store data from "advanced-stats' endpoint
+        CompanyStats coStats;
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
             new InputStreamReader(con.getInputStream()));
+        // Send request to "advanced-stats endpoint and store data in coStats
         coStats = gson.fromJson(in, CompanyStats.class);
         this.marketcap = coStats.getMarketcap();
         this.week52high = coStats.getWeek52high();
@@ -135,62 +85,85 @@ public class Company {
         this.peRatio = coStats.getPeRatio();
         this.beta = coStats.getBeta();
         this.profitMargin = coStats.getProfitMargin();
-        this.enterpriseValue = coStats.getEnterpriseValue();
+        this.enterpriseValue = (long) coStats.getEnterpriseValue();
         this.priceToBook = coStats.getPriceToBook();
         this.pegRatio = coStats.getPegRatio();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-    }
+        in.close();
+        con.disconnect();
 
-    CompanyLogo coLogo;
-
-    try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=Tpk_6eaa26587325492481257c267b6cc67f");
-      Gson gson = new Gson();
-      HttpURLConnection con;
-      BufferedReader in;
-      try {
+        // CompanyLogo object used to store data from "logo' endpoint
+        CompanyLogo coLogo;
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=Tpk_6eaa26587325492481257c267b6cc67f");
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
             new InputStreamReader(con.getInputStream()));
+        // Send request to "logo" endpoint and store data in coStats
         coLogo = gson.fromJson(in, CompanyLogo.class);
         this.logoUrl = coLogo.getUrl();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
-    }
+        in.close();
+        con.disconnect();
 
-    CompanyNews[] coNews;
-
-    try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=Tpk_6eaa26587325492481257c267b6cc67f");
-      Gson gson = new Gson();
-      HttpURLConnection con;
-      BufferedReader in;
-      try {
+        // CompanyNews array used to store data from "news' endpoint
+        CompanyNews[] coNews;
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=Tpk_6eaa26587325492481257c267b6cc67f");
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
             new InputStreamReader(con.getInputStream()));
+        // Send request to "news" endpoint and store data in coStats
         coNews = gson.fromJson(in, CompanyNews[].class);
-        this.newsDate = new Date(coNews[0].getDatetime());
-        this.newsHeadline = coNews[0].getHeadline();
-        this.newsSource = coNews[0].getSource();
-        this.newsUrl = coNews[0].getUrl();
-        this.newsSummary = coNews[0].getSummary();
+        if (coNews != null && coNews.length > 0) {
+          this.newsDate = new Date(coNews[0].getDatetime());
+          this.newsHeadline = coNews[0].getHeadline();
+          this.newsSource = coNews[0].getSource();
+          this.newsUrl = coNews[0].getUrl();
+          this.newsSummary = coNews[0].getSummary();
+        }
+        in.close();
+        con.disconnect();
+
+        // CompanyPrice object used to store data from "quote' endpoint
+        CompanyPrice price;
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        // Send request to "quote" endpoint and store data in coStats
+        price = gson.fromJson(in, CompanyPrice.class);
+        this.price = price.getLatestPrice();
+        in.close();
+        con.disconnect();
+
+        // CompanyInfo object used to store data from "company' endpoint
+        CompanyInfo coInfo;
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        // Send request to "company" endpoint and store data in coStats
+        coInfo = gson.fromJson(in, CompanyInfo.class);
+        this.symbol = coInfo.getSymbol();
+        this.companyName = coInfo.getCompanyName();
+        this.exchange = coInfo.getExchange();
+        this.industry = coInfo.getIndustry();
+        this.website = coInfo.getWebsite();
+        this.description = coInfo.getDescription();
+        this.CEO = coInfo.getCEO();
+        this.sector = coInfo.getSector();
+        this.state = coInfo.getState();
+        this.city = coInfo.getCity();
+        this.country = coInfo.getCountry();
+        in.close();
+        con.disconnect();
       } catch (IOException e) {
         e.printStackTrace();
       }
     } catch (MalformedURLException e) {
       e.printStackTrace();
     }
-
   }
 
   public long getId() {
@@ -290,7 +263,11 @@ public class Company {
   }
 
   public long getEnterpriseValue() {
-    return enterpriseValue;
+    return (long) enterpriseValue;
+  }
+
+  public void setEnterpriseValue(long enterpriseValue) {
+    this.enterpriseValue = (long) enterpriseValue;
   }
 
   public double getPriceToBook() {
@@ -327,41 +304,40 @@ public class Company {
 
   @Override
   public String toString() {
-    return "Company{" +
-        "id=" + id +
-        ", symbol='" + symbol + '\'' +
-        ", companyName='" + companyName + '\'' +
-        ", exchange='" + exchange + '\'' +
-        ", industry='" + industry + '\'' +
-        ", website='" + website + '\'' +
-        ", description='" + description + '\'' +
-        ", CEO='" + CEO + '\'' +
-        ", sector='" + sector + '\'' +
-        ", state='" + state + '\'' +
-        ", city='" + city + '\'' +
-        ", country='" + country + '\'' +
-        ", price=" + price +
-        ", marketcap=" + marketcap +
-        ", week52high=" + week52high +
-        ", week52low=" + week52low +
-        ", week52change=" + week52change +
-        ", sharesOutstanding=" + sharesOutstanding +
-        ", day200MovingAvg=" + day200MovingAvg +
-        ", day50MovingAvg=" + day50MovingAvg +
-        ", ttmEPS=" + ttmEPS +
-        ", nextEarningsDate='" + nextEarningsDate + '\'' +
-        ", peRatio=" + peRatio +
-        ", beta=" + beta +
-        ", profitMargin=" + profitMargin +
-        ", enterpriseValue=" + enterpriseValue +
-        ", priceToBook=" + priceToBook +
-        ", pegRatio=" + pegRatio +
-        ", logoUrl='" + logoUrl + '\'' +
-        ", newsDate=" + newsDate +
-        ", newsHeadline='" + newsHeadline + '\'' +
-        ", newsSource='" + newsSource + '\'' +
-        ", newsUrl='" + newsUrl + '\'' +
-        ", newsSummary='" + newsSummary + '\'' +
-        '}';
+    return "Company:" +
+        "\nid=" + id +
+        "\nsymbol='" + symbol +
+        "\ncompanyName='" + companyName +
+        "\nexchange='" + exchange +
+        "\nindustry='" + industry +
+        "\nwebsite='" + website +
+        "\ndescription='" + description +
+        "\nCEO='" + CEO +
+        "\nsector='" + sector +
+        "\nstate='" + state +
+        "\ncity='" + city +
+        "\ncountry='" + country +
+        "\nprice=" + price +
+        "\nmarketcap=" + marketcap +
+        "\nweek52high=" + week52high +
+        "\nweek52low=" + week52low +
+        "\nweek52change=" + week52change +
+        "\nsharesOutstanding=" + sharesOutstanding +
+        "\nday200MovingAvg=" + day200MovingAvg +
+        "\nday50MovingAvg=" + day50MovingAvg +
+        "\nttmEPS=" + ttmEPS +
+        "\nnextEarningsDate='" + nextEarningsDate +
+        "\npeRatio=" + peRatio +
+        "\nbeta=" + beta +
+        "\nprofitMargin=" + profitMargin +
+        "\nenterpriseValue=" + enterpriseValue +
+        "\npriceToBook=" + priceToBook +
+        "\npegRatio=" + pegRatio +
+        "\nlogoUrl='" + logoUrl +
+        "\nnewsDate=" + newsDate +
+        "\nnewsHeadline='" + newsHeadline +
+        "\nnewsSource='" + newsSource +
+        "\nnewsUrl='" + newsUrl +
+        "\nnewsSummary='" + newsSummary;
   }
 }

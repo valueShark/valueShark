@@ -1,10 +1,10 @@
-package com.valueshark.valueshark;
+package com.valueshark.valueshark.model.applicationuser;
 
+import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
