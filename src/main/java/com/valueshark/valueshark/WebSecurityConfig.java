@@ -1,6 +1,6 @@
 package com.valueshark.valueshark;
 
-import com.valueshark.valueshark.UserDetailsServiceImpl;
+import com.valueshark.valueshark.model.applicationuser.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

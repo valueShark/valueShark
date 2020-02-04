@@ -1,8 +1,8 @@
 package com.valueshark.valueshark;
 
 
-import com.google.gson.Gson;
-import com.valueshark.valueshark.model.Symbol;
+import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
+import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,16 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 @Controller
 public class ValueSharkController {
