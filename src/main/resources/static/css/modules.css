@@ -5,6 +5,17 @@
     text-align: center;
 }
 
+/* login submit button */
 #loginform input {
     background-color: #787878;
+}
+
+/* header logo */
+#valuesharklogo {
+    width: 50px;
+}
+
+/* login */
+#loginform fieldset {
+    background-color: #0765BC;
 }
