@@ -1,0 +1,11 @@
+{
+  "portfolio_items": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "company_id": 1,
+      "average_cost": 32.77,
+      "shares": 100
+    }
+  ]
+}

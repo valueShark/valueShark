@@ -1,6 +1,6 @@
 package com.valueshark.valueshark;
 
-import com.valueshark.valueshark.UserDetailsServiceImpl;
+import com.valueshark.valueshark.model.applicationuser.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,13 +35,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/signup").permitAll()
-                .anyRequest().permitAll()
+                .antMatchers("/", "/signup", "/login", "*error*", "/css/*", "/images/*").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/myprofile")
                 .and()
                 .logout();
     }
