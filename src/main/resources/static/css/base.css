@@ -1,18 +1,14 @@
 /* mobile */
 * {
     font-family: 'Sintony', sans-serif;
-    background-color: #234021;
-    color: #8AFF81;
-}
-
-@media (min-width:480px) {
-    html {
-        width: 480px;
-    }
+    background-color: #FFFFFF;
+    color: #787878;
+    border: 1px solid black;
 }
 
 /* tablet */
 
 /* desktop */
 
-/* a possible overlaying color: 8AFF81 */
+/* color scheme: #0765BC #FFFFFF #626262 #787878
+                  blue    white  darkgray  gray */

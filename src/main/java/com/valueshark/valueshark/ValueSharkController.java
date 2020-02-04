@@ -5,6 +5,7 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
+import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -130,6 +131,15 @@ public class ValueSharkController {
             m.addAttribute("company", company);
         }
         return "companydetails";
+    }
+
+    @PostMapping("/portfolio/add/{companyId}")
+    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, long pricePerShare) {
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        Company company = companyRepository.getOne(companyId);
+        user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
+        applicationUserRepository.save(user);
+        return new RedirectView("/");
     }
 
 }
