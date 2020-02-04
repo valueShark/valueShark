@@ -135,7 +135,7 @@ public class Company {
         this.peRatio = coStats.getPeRatio();
         this.beta = coStats.getBeta();
         this.profitMargin = coStats.getProfitMargin();
-        this.enterpriseValue = coStats.getEnterpriseValue();
+        this.enterpriseValue = (long) coStats.getEnterpriseValue();
         this.priceToBook = coStats.getPriceToBook();
         this.pegRatio = coStats.getPegRatio();
       } catch (IOException e) {
@@ -179,11 +179,13 @@ public class Company {
         in = new BufferedReader(
             new InputStreamReader(con.getInputStream()));
         coNews = gson.fromJson(in, CompanyNews[].class);
-        this.newsDate = new Date(coNews[0].getDatetime());
-        this.newsHeadline = coNews[0].getHeadline();
-        this.newsSource = coNews[0].getSource();
-        this.newsUrl = coNews[0].getUrl();
-        this.newsSummary = coNews[0].getSummary();
+        if (coNews != null && coNews.length > 0) {
+          this.newsDate = new Date(coNews[0].getDatetime());
+          this.newsHeadline = coNews[0].getHeadline();
+          this.newsSource = coNews[0].getSource();
+          this.newsUrl = coNews[0].getUrl();
+          this.newsSummary = coNews[0].getSummary();
+        }
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -290,7 +292,11 @@ public class Company {
   }
 
   public long getEnterpriseValue() {
-    return enterpriseValue;
+    return (long) enterpriseValue;
+  }
+
+  public void setEnterpriseValue(long enterpriseValue) {
+    this.enterpriseValue = (long) enterpriseValue;
   }
 
   public double getPriceToBook() {
