@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Valueshark</title>
+    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -39,29 +40,16 @@
   </script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/">Home</a>
-                <th:block th:if="${user}">
-                    <a href="/myprofile">My profile</a>
-                    <a href="/portfolio">My portfolio</a>
-                    <a href="/logout">Log out</a>
-                </th:block>
-                <th:block th:unless="${user}">
-                    <a href="/login">Log in</a>
-                    <a href="/signup">Sign up</a>
-                </th:block>
-        </nav>
-    </header>
+    <header th:replace="/fragments/header.html :: header"></header>
+    <main>
         <div class="ui-widget">
             <form method="GET" action="/stocks">
-            <label for="tags">Find Stocks: </label>
-            <input id="tags" name="companyName"/>
-            <input type="submit" value="Search"/>
+                <label for="tags">Find Stocks: </label>
+                <input id="tags" name="companyName"/>
+                <input type="submit" value="Search"/>
             </form>
         </div>
-    <footer>
-
-    </footer>
+    </main>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
 </body>
 </html>

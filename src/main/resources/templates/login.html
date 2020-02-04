@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Log in</title>
-</head>
-<body>
-<form action="/login" method="POST">
-    <label>Username <input name="username"/></label>
-    <label>Password <input type="password" name="password"/></label>
-    <input type="submit" value="Log in"/>
-</form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Log in</title>
+        <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
+    </head>
+    <body>
+        <header th:replace="/fragments/header.html :: header"></header>
+        <main>
+            <form action="/login" method="POST">
+                <label>Username <input name="username"/></label>
+                <label>Password <input type="password" name="password"/></label>
+                <input type="submit" value="Log in"/>
+            </form>
+        </main>
+        <footer th:replace="/fragments/footer.html :: footer"></footer>
+    </body>
 </html>
