@@ -1,6 +1,8 @@
 package com.valueshark.valueshark;
 
 
+import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
+import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

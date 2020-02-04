@@ -1,4 +1,4 @@
-package com.valueshark.valueshark;
+package com.valueshark.valueshark.model.applicationuser;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
