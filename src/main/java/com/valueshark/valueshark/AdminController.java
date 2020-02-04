@@ -2,7 +2,6 @@ package com.valueshark.valueshark;
 
 import com.google.gson.Gson;
 import com.valueshark.valueshark.model.Company;
-import com.valueshark.valueshark.model.CompanyRepository;
 import com.valueshark.valueshark.model.Symbol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.Principal;
-import java.util.Arrays;
 
 @Controller
 public class AdminController {
