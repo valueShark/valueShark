@@ -17,13 +17,15 @@
     <h1>Company Details</h1>
     <section id="companyHeader">
       <h2 th:text="${company.companyName}"></h2>
-      <img th:src="${company.logoUrl}" th:alt = "${company.companyName} + 'logo'">
-      <p th:text="${company.price}"></p>
+
+      <img th:src="${company.logoURL}" th:alt = "${company.companyName} + 'logo'">
+      <p th:text="'Price: ' + ${company.price}"></p>
+
     <ul id ="companyDetails">
-      <li th:text="${company.exchange}"></li>
-      <li th:text="${company.sector}"></li>
-      <li th:text="${company.industry}"></li>
-      <li th:text="${company.CEO}"></li>
+      <li th:text="'Exchange: '+ ${company.exchange}"></li>
+      <li th:text="'Sector: '+ ${company.sector}"></li>
+      <li th:text="'Industry: '+ ${company.industry}"></li>
+      <li th:text="'CEO: '+ ${company.CEO}"></li>
 
      </ul>
 
@@ -32,21 +34,21 @@
       <div id="companyStats">
         <h2>Stats:</h2>
         <ul>
-          <li th:text="${company.marketcap}"></li>
-          <li th:text="${company.week52high}"></li>
-          <li th:text="${company.week52low}"></li>
-          <li th:text="${company.week52change}"></li>
-          <li th:text="${company.sharesOutstanding}"></li>
-          <li th:text="${company.day200MovingAvg}"></li>
-          <li th:text="${company.day50MovingAvg}"></li>
-          <li th:text="${company.ttmEPS}"></li>
-          <li th:text="${company.nextEarningsDate}"></li>
-          <li th:text="${company.peRatio}"></li>
-          <li th:text="${company.beta}"></li>
-          <li th:text="${company.profitMargin}"></li>
-          <li th:text="${company.enterpriseValue}"></li>
-          <li th:text="${company.priceToBook}"></li>
-          <li th:text="${company.pegRatio}"></li>
+          <li th:text="'Market cap: '+ ${company.marketcap}"></li>
+          <li th:text="'Week 52 high: '+ ${company.week52high}"></li>
+          <li th:text="'Week 52 low: '+ ${company.week52low}"></li>
+          <li th:text="'Week 52 change: '+ ${company.week52change}"></li>
+          <li th:text="'Shares outstanding: '+ ${company.sharesOutstanding}"></li>
+          <li th:text="'Day 200 moving avg: '+ ${company.day200MovingAvg}"></li>
+          <li th:text="'Day 50 moving avg: '+ ${company.day50MovingAvg}"></li>
+          <li th:text="'ttm EPS: '+ ${company.ttmEPS}"></li>
+          <li th:text="'Next earning date: '+ ${company.nextEarningsDate}"></li>
+          <li th:text="'P/E ratio: '+ ${company.peRatio}"></li>
+          <li th:text="'Beta: ' + ${company.beta}"></li>
+          <li th:text="'Profit margin: '+ ${company.profitMargin}"></li>
+          <li th:text="'Enterprise value: '+ ${company.enterpriseValue}"></li>
+          <li th:text="'Price to book: '+ ${company.priceToBook}"></li>
+          <li th:text="'PEG ratio: '+ ${company.pegRatio}"></li>
         </ul>
       </div>
 
@@ -55,16 +57,14 @@
         <h3 th:text="${company.newsHeadline}"></h3>
         <p th:text="${company.newsDate}"></p>
         <a th:href="${company.newsUrl}"></a>
-        <p th:text="${company.newsSource}"></p>
+        <p th:text="'Source: '${company.newsSource}"></p>
         <p th:text= "${company.newsSummary}"></p>
       </article>
-      
-      <ul id="addressInfo">
-        <li th:text="${company.state}"></li>
-        <li th:text="${company.city}"></li>
-        <li th:text="${company.country}"></li>
-        <li th:text="${company.website}"></li>
-      </ul>
+
+      <article id="addressInfo">
+        <p th:text="${company.city} + ${company.state} + ${company.country}"></p>
+        <a th:href="'Website: ' + ${company.website}"></a>
+      </article>
 
     </section>
 
