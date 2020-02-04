@@ -4,40 +4,48 @@ html {
     width: 480px;
 }
 
+/* header and footer */
 header nav {
     display: flex;
     justify-content: space-between;
 }
-
-footer {
+/* footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-}
-
-#loginform fieldset {
-    width: 70%;
-}
-
+} */
 footer nav {
     display: flex;
     justify-content: space-between;
 }
 
+/* login */
+#loginform fieldset {
+    width: 70%;
+    margin: 15px;
+}
 #loginform {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-#loginform input {
-    background
+#loginform fieldset label {
+    padding: 15px;
 }
-
 #loginpage {
     text-align: center;
 }
+.loginfields {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+#loginsubmit {
+    width: 73%;
+    padding: 20px;
+}
+
 
 @media (min-width: 575.98px) {
 
