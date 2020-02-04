@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Valueshark</title>
+    <title>Valueshark&#169</title>
     <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -39,17 +39,14 @@
   } );
   </script>
 </head>
-<body>
-    <header th:replace="/fragments/header.html :: header"></header>
-    <main>
-        <div class="ui-widget">
-            <form method="GET" action="/stocks">
-                <label for="tags">Find Stocks: </label>
-                <input id="tags" name="companyName"/>
-                <input type="submit" value="Search"/>
-            </form>
-        </div>
-    </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
-</body>
+    <body>
+        <header th:replace="/fragments/header.html :: header"></header>
+        <main>
+            <!-- search bar -->
+            <th:block th:if="${user}">
+                <div th:replace="/fragments/searchbar.html :: searchbar">Search bar</div>
+            </th:block>
+        </main>
+        <footer th:replace="/fragments/footer.html :: footer"></footer>
+    </body>
 </html>
