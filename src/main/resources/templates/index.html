@@ -3,51 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Valueshark&#169</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-  $( function() {
-    var availableTags = [
-      "Apple",
-      "Facebook",
-      "Tesla",
-      "Bank Of America",
-      "Teva",
-      "WeWork",
-      "SpaceX",
-      "Blue Origin",
-      "Amazon",
-      "CodeFellows",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  } );
-  </script> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-    <body>
-        <header th:replace="/fragments/header.html :: header"></header>
-        <main>
-            <!-- search bar -->
+<body>
+<header th:replace="/fragments/header.html :: header"></header>
+<main>
             <th:block th:if="${user}">
                 <div th:replace="/fragments/searchbar.html :: searchbar">Search bar</div>
             </th:block>
 
         </main>
         <footer th:replace="/fragments/footer.html :: footer"></footer>
+        <script type="text/javascript" src="/js/app.js"></script>
+
     </body>
 </html>
