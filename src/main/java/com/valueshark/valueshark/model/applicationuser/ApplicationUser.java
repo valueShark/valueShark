@@ -11,7 +11,7 @@ import java.util.*;
 public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    long id;
 
     String username;
     String password;
@@ -19,7 +19,7 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     String email;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     public List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};
@@ -56,10 +56,10 @@ public class ApplicationUser implements UserDetails {
         return null;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
     @Override
