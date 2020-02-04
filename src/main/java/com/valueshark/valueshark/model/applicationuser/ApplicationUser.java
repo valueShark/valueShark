@@ -19,7 +19,7 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     String email;
 
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "userId")
     public List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};

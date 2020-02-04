@@ -20,8 +20,8 @@ public class Company {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "portfolio")
-  public List<PortfolioItem> portfolio;
+  @OneToMany(mappedBy = "companyId")
+  public List<PortfolioItem> portfoliosThisIsIn;
 
   private String symbol;
   private String companyName;
