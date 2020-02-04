@@ -1,5 +1,6 @@
 package com.valueshark.valueshark.model.applicationuser;
 
+import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,7 +10,7 @@ import java.util.*;
 @Entity
 public class ApplicationUser implements UserDetails {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
     String username;
@@ -17,6 +18,9 @@ public class ApplicationUser implements UserDetails {
     String firstName;
     String lastName;
     String email;
+
+    @OneToMany(mappedBy = "portfolio")
+    public List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};
     public ApplicationUser(String username, String password, String firstName, String lastName, String email) {

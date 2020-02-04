@@ -1,6 +1,7 @@
 package com.valueshark.valueshark.model.company;
 
 import com.google.gson.Gson;
+import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 
 import javax.persistence.*;
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Company {
@@ -17,6 +19,9 @@ public class Company {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
+  @OneToMany(mappedBy = "portfolio")
+  public List<PortfolioItem> portfolio;
 
   private String symbol;
   private String companyName;
