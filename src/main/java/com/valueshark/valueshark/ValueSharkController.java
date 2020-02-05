@@ -5,6 +5,8 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
+import com.valueshark.valueshark.model.portfolio.PortfolioCompany;
+import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
 import org.checkerframework.checker.units.qual.C;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,11 +142,13 @@ public class ValueSharkController {
         return "companydetails";
     }
 
-    @PostMapping("/portfolio/add/{companyId}")
-    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, double pricePerShare) {
-        System.out.println("adding " + companyId + " to portfolio.");
+    @PostMapping("/portfolio/add/{symbol}")
+    public RedirectView addToPortfolio(@PathVariable String symbol, Principal p, long shares, double pricePerShare) {
+        // grab the logged in user
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-        Company company = companyRepository.getOne(companyId);
+        // instantiate a new company with the given symbol
+        PortfolioCompany company = new PortfolioCompany(symbol);
+        // add the company to the user's portfolio
         user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
         applicationUserRepository.save(user);
         return new RedirectView("/");

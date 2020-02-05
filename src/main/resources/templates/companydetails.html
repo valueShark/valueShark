@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
 
@@ -61,10 +61,10 @@
 
       <article id="addressInfo">
         <p th:text="${company.city} + ${company.state} + ${company.country}"></p>
-        <a th:href="'Website: ' + ${company.website}"></a>
+        <a th:href="${company.website}" th:text="${company.website}"></a>
       </article>
 
-      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.id}" method="post">
+      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
         <label>Shares owned:
         <input name="shares" type="text"/>
         </label>
@@ -77,5 +77,6 @@
 
   </main>
   <footer th:replace="/fragments/footer.html :: footer"></footer>
+  <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
 </body>
 </html>
