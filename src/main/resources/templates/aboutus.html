@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head.html :: head"></head>
 <body>
-    <header th:replace="fragments/header.html :: header"></header>
-    <main>
+    <header th:replace="/fragments/header.html :: header"></header>
+    <main id="aboutusmain">
         <h1>Meet the developers</h1>
-        <section class="devs container">
+        <section class="devs container order-1 aboutusbio">
             <div class="row align-items-center">
-                <h3 class="col">Chase Tucker</h3>
-                <img class="col" src="/img/Chase.jfif"/>
+                <h2 class="col">Chase Tucker</h2>
+                <img id="chase" class="col" src="/img/Chase.jfif"/>
             </div>
             <p>My name is Chase Tucker and I am a Back-End Developer. I have a passion for turning ideas into delightful solutions.
                 I am a veteran, a former Manufacturing Manager and Analyst. While working in manufacturing, I recognized that
@@ -17,10 +17,10 @@
                 pipelines and serving them up to create beautiful user experiences. I believe my diverse background and skill set
                 give me the tools I need to tackle any challenge.</p>
         </section>
-        <section class="devs container">
-            <div class="row order-1 align-items-center">
-                <h3 class="col order-2">Vik Akam</h3>
-                <img class="col order-1" src="/img/Vik.jfif"/>
+        <section class="devs container order-2 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-2">Vik Akam</h2>
+                <img id="vik" class="col order-1" src="/img/Vik.jfif"/>
             </div>
             <p>I graduated from the University of Washington in 2016 with a BS in Biochemistry. After spending a total of nearly a decade
                 in the health care sector, I'm excited to get my feet wet in software development; learning about how and why computers work
@@ -28,24 +28,24 @@
                 about going into this sector. I look forward to making an impact in the industry by working on both sides of the stack to
                 give an astounding user experience.</p>
         </section>
-        <section class="devs container">
+        <section class="devs container order-3 aboutusbio">
             <div class="row align-items-center">
-                <h3 class="col">Ashlyn Morin</h3>
-                <img class="col" src="/img/Ashlyn.jfif"/>
+                <h2 class="col order-1">Ashlyn Morin</h2>
+                <img id="ashlyn" class="col order-2" src="/img/Ashlyn.jfif"/>
             </div>
             <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
         </section>
-        <section class="devs container">
-            <div class="row order-1 align-items-center">
-                <h3 class="col order-2">Ran Vaknin</h3>
-                <img class="col order-1" src="/img/Ran.jfif"/>
+        <section class="devs container order-4 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-2">Ran Vaknin</h2>
+                <img id="ran" class="col order-1" src="/img/Ran.jfif"/>
             </div>
             <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
         </section>
-        <section class="devs container">
+        <section class="devs container order-5 aboutusbio">
             <div class="row align-items-center">
-                <h3 class="col">Lucas Wilber</h3>
-                <img class="col" src="/img/Lucas.jfif"/>
+                <h2 class="col order-1">Lucas Wilber</h2>
+                <img id="lucas" class="col order-2" src="/img/Lucas.jfif"/>
             </div>
             <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
         </section>
