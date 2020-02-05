@@ -140,11 +140,13 @@ public class ValueSharkController {
         return "companydetails";
     }
 
-    @PostMapping("/portfolio/add/{companyId}")
-    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, double pricePerShare) {
-        System.out.println("adding " + companyId + " to portfolio.");
+    @PostMapping("/portfolio/add/{symbol}")
+    public RedirectView addToPortfolio(@PathVariable String symbol, Principal p, long shares, double pricePerShare) {
+        // grab the logged in user
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-        Company company = companyRepository.getOne(companyId);
+        // instantiate a new company with the given symbol
+        Company company = new Company(symbol);
+        // add the company to the user's portfolio
         user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
         applicationUserRepository.save(user);
         return new RedirectView("/");

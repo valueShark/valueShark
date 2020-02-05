@@ -64,7 +64,7 @@
         <a th:href="${company.website}" th:text="${company.website}"></a>
       </article>
 
-      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.id}" method="post">
+      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
         <label>Shares owned:
         <input name="shares" type="text"/>
         </label>
