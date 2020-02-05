@@ -18,16 +18,16 @@ public class PortfolioItem {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
-    public Company company;
+    public PortfolioCompany portfolioCompany;
 
     long shares;
     double pricePerShare;
 
     PortfolioItem() {};
 
-    public PortfolioItem(ApplicationUser user, Company company, long shares, double pricePerShare) {
+    public PortfolioItem(ApplicationUser user, PortfolioCompany portfolioCompany, long shares, double pricePerShare) {
         this.user = user;
-        this.company = company;
+        this.portfolioCompany = portfolioCompany;
         this.shares = shares;
         this.pricePerShare = pricePerShare;
     }
@@ -40,8 +40,8 @@ public class PortfolioItem {
         return user;
     }
 
-    public Company getCompany() {
-        return company;
+    public PortfolioCompany getCompany() {
+        return portfolioCompany;
     }
 
     public long getShares() {
