@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="/fragments/head.html :: head"></head>
+    <head th:replace="fragments/head.html :: head"></head>
     <body>
-        <header th:replace="/fragments/header.html :: header"></header>
+        <header th:replace="fragments/header.html :: header"></header>
         <main id="loginpage">
             <h1>Log In</h1>
             <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
@@ -19,9 +19,9 @@
                 </fieldset>
                 <input id="loginsubmit" type="submit" value="Log in"/>
             </form>
-            <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
+            <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
         </main>
-        <footer th:replace="/fragments/footer.html :: footer"></footer>
-        <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
+        <footer th:replace="fragments/footer.html :: footer"></footer>
+        <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
     </body>
 </html>
