@@ -9,6 +9,11 @@
 <body>
     <header th:replace="/fragments/header.html :: header"></header>
     <main>
+        <div th:each="item : ${user.portfolio}">
+            <p th:text="${item.pricePerShare}"></p>
+            <p th:text="${item.shares}"></p>
+            <p th:text="${item.portfolioCompany.companyName}"></p>
+        </div>
       
     </main>
     <footer th:replace="/fragments/footer.html :: footer"></footer>
