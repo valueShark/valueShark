@@ -30,7 +30,7 @@ public class AdminController {
             return "index";
         }
 
-        URL url = new URL("https://cloud.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+        URL url = new URL("https://sandbox.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
 
         Gson gson = new Gson();
         HttpURLConnection con;
