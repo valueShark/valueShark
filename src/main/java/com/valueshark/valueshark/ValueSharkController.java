@@ -76,9 +76,13 @@ public class ValueSharkController {
     }
 
     @PostMapping("/signup")
-    public RedirectView submitSignUp(String username, String password, String firstName, String lastName, String email){
+    public RedirectView submitSignUp(String username, String password, String reenter, String firstName, String lastName, String email){
         if (applicationUserRepository.findByUsername(username) != null) {
             return new RedirectView("/signup?taken=true");
+        } if (!reenter.equals(password)) {
+            System.out.println(reenter);
+            System.out.println(password);
+            return new RedirectView("/signup?reenter=true");
         } else {
             // instantiate app user and save to database
             ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
