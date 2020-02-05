@@ -78,6 +78,12 @@ footer {
     .company {
         margin-bottom: .5em;
     }
+    .company label {
+        width: 100%;
+    }
+        .company label p {
+            display: inline;
+        }
 
 
 // Extra small devices (portrait phones, less than 576px)

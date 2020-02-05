@@ -1,12 +1,12 @@
 <div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
     <p id="portfolioHeader">My Portfolio:</p>
     <ul class="portfolioItem" th:each="item : ${user.portfolio}">
-        <li>Symbol [[${item.portfolioCompany.symbol}]]</li>
-        <li>Company Name [[${item.portfolioCompany.companyName}]]</li>
-        <li>Average Cost $[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</li>
-        <li>Shares owned [[${item.shares}]]</li>
+        <li>Symbol: <b>[[${item.portfolioCompany.symbol}]]</b></li>
+        <li>Company Name: <b>[[${item.portfolioCompany.companyName}]]</b></li>
+        <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
+        <li>Shares owned: <b>[[${item.shares}]]</b></li>
         <!--                add a percent change here later, maybe-->
-        <li>Total Value $[[${#numbers.formatDecimal(item.pricePerShare * item.shares, 0, 2, 'POINT')}]]</li>
+        <li>Total Value: <b>$[[${#numbers.formatDecimal(item.pricePerShare * item.shares, 0, 2, 'POINT')}]]</b></li>
         <!--                replace the actions with the correct routes-->
         <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="UPDATE">
             <input type="submit" value="UPDATE" />
