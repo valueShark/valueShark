@@ -1,4 +1,5 @@
-// Extra small devices (portrait phones, less than 576px)
+// ----------------------------- Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
 
 * {
     box-sizing: border-box;
@@ -6,7 +7,7 @@
 }
 
 html {
-    width: 480px;
+    max-width: 480px;
 }
 
 header img {
@@ -43,12 +44,20 @@ footer {
     width: 100%;
 }
 
+/* aboutus pic sizes, p align */
+#ashlyn, #ran, #vik, #chase, #lucas {
+    width: 280px;
+}
+.aboutusbio p {
+    text-align: center;
+}
+
 /* login, signup */
 #loginpage h1, #signuppage h1 {
     text-align: center;
 }
 #valuesharklogo {
-    width: 480px;
+    width: 100%;
 }
 #loginform, #signupform {
     display: flex;
@@ -57,15 +66,13 @@ footer {
 }
 #loginform fieldset, #signupform fieldset {
     border: 2px solid #787878;
+    align-items: stretch;
 }
 #loginform fieldset label, #signupform fieldset label {
     display: flex;
-    justify-content: space-around;
-    align-items: stretch;
 }
-#loginform fieldset input label {
-    height: 100%;
-}
+
+// ------------------------- Small devices (landscape phones, 576px and up)
 
 #portfolioList {
     width: 25%;
@@ -94,11 +101,11 @@ footer {
 
 }
 
-// Medium devices (tablets, 768px and up)
+// ------------------------- Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
 
-// Large devices (desktops, 992px and up)
+// ------------------------- Large devices (desktops, 992px and up)
 @media (min-width: 992px) { ... }
 
-// Extra large devices (large desktops, 1200px and up)
+// ------------------------- Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
