@@ -1,78 +1,85 @@
 // Extra small devices (portrait phones, less than 576px)
 
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
 html {
     width: 480px;
 }
 
-/* header and footer */
-header nav {
+header img {
+    width: 30px;
+}
+
+/* hamburger */
+.topnav {
+    overflow: hidden;
+    position: relative;
+}
+#mylinks {
+    display: none;
+}
+.topnav a.icon {
+    background: #787878;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* header, footer */
+header nav, footer nav {
     display: flex;
     justify-content: space-between;
 }
-/* footer {
+
+/* footer at bottom */
+footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-} */
-footer nav {
-    display: flex;
-    justify-content: space-between;
 }
 
-/* login */
-#loginform fieldset {
-    width: 70%;
-    margin: 15px;
+/* login, signup */
+#loginpage h1, #signuppage h1 {
+    text-align: center;
 }
-#loginform {
+#valuesharklogo {
+    width: 480px;
+}
+#loginform, #signupform {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
-#loginform fieldset label {
-    padding: 15px;
+#loginform fieldset, #signupform fieldset {
+    border: 2px solid #787878;
 }
-#loginpage {
-    text-align: center;
+#loginform fieldset label, #signupform fieldset label {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
 }
-.loginfields {
-    width: 50%;
-    padding: 20px;
-    text-align: center;
-}
-#loginsubmit {
-    width: 73%;
-    padding: 20px;
+#loginform fieldset input label {
+    height: 100%;
 }
 
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
 
-@media (min-width: 575.98px) {
-
-}
-
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-    html {
-        width: 767.98px;
-    }
-}
-
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) {
-    html {
-        width: 991.98px;
-    }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
 
 }
 
-// Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {
-    html {
-        width: 1199.98px;
-    }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
 
-}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
 
-// Extra large devices (large desktops)
-// No media query since the extra-large breakpoint has no upper bound on its width
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
