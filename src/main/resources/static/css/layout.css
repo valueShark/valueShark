@@ -1,3 +1,4 @@
+/*
 // Extra small devices (portrait phones, less than 576px)
 
 * {
@@ -14,6 +15,7 @@ header img {
 }
 
 /* hamburger */
+
 .topnav {
     overflow: hidden;
     position: relative;
@@ -67,6 +69,114 @@ footer {
     height: 100%;
 }
 
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+html {
+    width:100%;
+}
+.mr-auto{
+    margin-right: auto !important;
+}
+.navbar navbar-expand-sm navbar-light bg-light{
+        width:100%;
+
+}
+
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+
+=======
+// ----------------------------- Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+html {
+    max-width: 480px;
+}
+
+header img {
+    width: 30px;
+}
+
+/* hamburger */
+.topnav {
+    overflow: hidden;
+    position: relative;
+}
+#mylinks {
+    display: none;
+}
+.topnav a.icon {
+    background: #787878;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* header, footer */
+header nav, footer nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* footer at bottom */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* aboutus pic sizes, p align */
+#ashlyn, #ran, #vik, #chase, #lucas {
+    width: 280px;
+}
+.aboutusbio p {
+    text-align: center;
+}
+
+/* login, signup */
+#loginpage h1, #signuppage h1 {
+    text-align: center;
+}
+#valuesharklogo {
+    width: 100%;
+}
+#loginform, #signupform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#loginform fieldset, #signupform fieldset {
+    border: 2px solid #787878;
+    align-items: stretch;
+}
+#loginform fieldset label, #signupform fieldset label {
+    display: flex;
+}
+
+// ------------------------- Small devices (landscape phones, 576px and up)
+
 #portfolioList {
     width: 25%;
     float: left;
@@ -94,11 +204,11 @@ footer {
 
 }
 
-// Medium devices (tablets, 768px and up)
+// ------------------------- Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { ... }
 
-// Large devices (desktops, 992px and up)
+// ------------------------- Large devices (desktops, 992px and up)
 @media (min-width: 992px) { ... }
 
-// Extra large devices (large desktops, 1200px and up)
+// ------------------------- Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
