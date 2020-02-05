@@ -319,8 +319,6 @@ public class Company {
     return newsSummary;
   }
 
-
-
   @Override
   public String toString() {
     return "Company:" +
