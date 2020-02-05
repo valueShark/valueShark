@@ -55,7 +55,7 @@ public class AdminController {
                     if (company.getPegRatio() > 0 && company.getPegRatio() < 2 &&
                             company.getProfitMargin() > 0.1 &&
                             company.getPriceToBook() > 0 && company.getPriceToBook() < 2 &&
-                            company.getPeRatio() > 0 &&
+                            company.getPeRatio() > 0 && company.getPeRatio() < 20 &&
                             company.getBeta() < 2) {
 
                         companyRepo.save(company);

@@ -67,6 +67,19 @@ footer {
     height: 100%;
 }
 
+#portfolioList {
+    width: 25%;
+    float: left;
+}
+#prospectsTable {
+    width: 70%;
+    float: right;
+}
+    .company {
+        margin-bottom: .5em;
+    }
+
+
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 
