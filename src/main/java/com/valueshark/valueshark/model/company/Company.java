@@ -319,11 +319,6 @@ public class Company {
     return newsSummary;
   }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d0210de9da34bcd9d6ab5a51938064a6f03206ed
   @Override
   public String toString() {
     return "Company:" +
