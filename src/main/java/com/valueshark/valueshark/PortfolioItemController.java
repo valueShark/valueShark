@@ -40,6 +40,13 @@ public class PortfolioItemController {
         return new RedirectView("/");
     }
 
+    @PostMapping("/porfolioItem/{id}/update")
+    public RedirectView updatePortfolioItem(@PathVariable Long id, Principal p, long shares, double pricePerShare) {
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
+        PortfolioItem itemToDelete = portfolioItemRepository.getOne(id);
+        
+    }
+
     @DeleteMapping("/portfolioItem/{id}/delete")
     public RedirectView deletePortfolioItem(@PathVariable Long id, Principal p){
         //defining which user wants to delete which portfolio item
