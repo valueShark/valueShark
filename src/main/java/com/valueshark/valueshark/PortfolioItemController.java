@@ -40,7 +40,7 @@ public class PortfolioItemController {
         return new RedirectView("/");
     }
 
-    @DeleteMapping("/portfolio/delete/{id}")
+    @DeleteMapping("/portfolioItem/{id}/delete")
     public RedirectView deletePortfolioItem(@PathVariable Long id, Principal p){
         //defining which user wants to delete which portfolio item
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
