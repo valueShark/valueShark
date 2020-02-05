@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="/fragments/head.html :: head"></head>
-    <body>
-        <header th:replace="/fragments/header.html :: header"></header>
-        <main>
-
-        </main>
-        <footer th:replace="/fragments/footer.html :: footer"></footer>
-        <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Portfolio</title>
+    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
+</head>
+<body>
+    <header th:replace="/fragments/header.html :: header"></header>
+    <main>
+        <div th:each="item : ${user.portfolio}">
+            <p th:text="${item.pricePerShare}"></p>
+            <p th:text="${item.shares}"></p>
+            <p th:text="${item.portfolioCompany.companyName}"></p>
+        </div>
+      
+    </main>
+    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
+</body>
 </html>
