@@ -30,3 +30,12 @@ $( function() {
     });
   } );
 
+function hamburger() {
+    let nav = document.getElementById("mylinks");
+    if (nav.style.display === "block") {
+        nav.style.display === "none";
+    } else {
+        nav.style.display === "block";
+    }
+}
+

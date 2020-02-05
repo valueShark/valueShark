@@ -1,23 +1,18 @@
-/* search bar */
-
-#valuesharkfin {
-    width: 50px;
-}
-/* search bar */
-
-/* login submit button */
-#loginform fieldset label {
-
-}
-
 #valuesharkfin {
     width: 50px;
 }
 
-/* login */
-#loginform fieldset, #loginsubmit {
-
+/* header logo */
+#valuesharklogo {
+    width: 480px;
 }
+
+/* header, footer */
+/* header, footer {
+    background-color: #787878;
+} */
+
+/* hamburger menu */
 
 .company {
     width: 50%;
@@ -31,16 +26,4 @@
             font-weight: bold;
         }
 /* login submit button */
-#loginform input {
-    background-color: #787878;
-}
 
-/* header logo */
-#valuesharklogo {
-    width: 50px;
-}
-
-/* login */
-#loginform fieldset {
-    background-color: #0765BC;
-}

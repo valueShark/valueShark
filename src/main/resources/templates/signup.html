@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sign up with Valueshark&#169</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-</head>
-<body>
-    <header th:replace="/fragments/header.html :: header"></header>
-    <main id="signuppage">
-        <h1>Sign up</h1>
-        <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
-        <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
-        <form action="/signup" method="POST" id="signupform">
-            <fieldset>
-                <label>Username <input name="username"/></label>
-            </fieldset>
-            <fieldset>
-                <label>Password <input type="password" name="password"/></label>
-            </fieldset>
-            <fieldset>
-                <label>First Name <input name="firstName"/></label>
-            </fieldset>
-            <fieldset>
-                <label>Last Name <input name="lastName"/></label>
-            </fieldset>
-            <fieldset>
-                <label>Email <input name="email"/></label>
-            </fieldset>
-            <input type="submit" value="Sign up"/>
-        </form>
-    </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
-    <th:block th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></th:block>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Sign up with Valueshark&#169</title>
+        <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
+    </head>
+    <body>
+        <header th:replace="/fragments/header.html :: header"></header>
+        <main id="signuppage">
+            <h1>Sign up</h1>
+            <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
+            <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
+            <form action="/signup" method="POST" id="signupform">
+                <fieldset>
+                    <label>Username <input name="username"/></label>
+                </fieldset>
+                <fieldset>
+                    <label>Password <input type="password" name="password"/></label>
+                </fieldset>
+                <fieldset>
+                    <label>First Name <input name="firstName"/></label>
+                </fieldset>
+                <fieldset>
+                    <label>Last Name <input name="lastName"/></label>
+                </fieldset>
+                <fieldset>
+                    <label>Email <input name="email"/></label>
+                </fieldset>
+                <input type="submit" value="Sign up"/>
+            </form>
+        </main>
+        <footer th:replace="/fragments/footer.html :: footer"></footer>
+        <th:block th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></th:block>
+    </body>
 </html>

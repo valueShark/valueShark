@@ -1,11 +1,12 @@
 <header th:fragment="header">
+    <img class="icon" onclick="hamburger()" src="/img/hamburger.png"/>
     <nav class="container">
-        <div class="row">
+        <div class="row topnav">
             <article id="logoarticle" class="col">
                 <img id="valuesharkfin" src="/img/valuesharkfin.jpg" alt="valueshark logo fin"/>
-                <a href="/">Home</a>
             </article>
-            <article id="signinarticle" class="col">
+            <article id="signinarticle mylinks" class="col">
+                <a href="/">Home</a>
                 <th:block th:if="${user}">
                     <a href="/myprofile">My profile</a>
                     <a href="/portfolio">My portfolio</a>
@@ -16,6 +17,7 @@
                     <a href="/signup">Sign up</a>
                 </th:block>
             </article>
+            <!-- hamburger menu -->
         </div>
     </nav>
 </header>
