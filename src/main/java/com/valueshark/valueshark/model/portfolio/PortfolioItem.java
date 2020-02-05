@@ -22,6 +22,7 @@ public class PortfolioItem {
 
     PortfolioItem() {};
 
+
     public PortfolioItem(ApplicationUser user, PortfolioCompany portfolioCompany, long shares, double pricePerShare) {
         this.user = user;
         this.portfolioCompany = portfolioCompany;
@@ -47,5 +48,13 @@ public class PortfolioItem {
 
     public double getPricePerShare() {
         return pricePerShare;
+    }
+
+    public void setShares(long shares) {
+        this.shares = shares;
+    }
+
+    public void setPricePerShare(double pricePerShare) {
+        this.pricePerShare = pricePerShare;
     }
 }

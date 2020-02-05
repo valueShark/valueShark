@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
@@ -37,6 +38,20 @@ public class PortfolioItemController {
         portfolioItemRepository.save(portfolioItem);
         user.portfolio.add(portfolioItem);
         applicationUserRepository.save(user);
+        return new RedirectView("/");
+    }
+
+    @PutMapping("/porfolioItem/{id}/update")
+    public RedirectView updatePortfolioItem(@PathVariable Long id, Principal p, Long shares, Double pricePerShare) {
+        //get current user and current portfolio item to update
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
+        PortfolioItem itemToUpdate = portfolioItemRepository.getOne(id);
+
+        //if current user has this portfolio item in their portfolio, update it to new amounts
+        if(currentUser.getPortfolio().contains(itemToUpdate)) {
+            itemToUpdate.setShares(shares);
+            itemToUpdate.setPricePerShare(pricePerShare);
+        }
         return new RedirectView("/");
     }
 
