@@ -13,3 +13,29 @@
 #loginform fieldset, #loginsubmit {
 
 }
+
+.company {
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+}
+    .company label {
+        display: inline-block;
+    }
+        .company label p {
+            font-weight: bold;
+        }
+/* login submit button */
+#loginform input {
+    background-color: #787878;
+}
+
+/* header logo */
+#valuesharklogo {
+    width: 50px;
+}
+
+/* login */
+#loginform fieldset {
+    background-color: #0765BC;
+}

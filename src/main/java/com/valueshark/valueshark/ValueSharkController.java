@@ -5,8 +5,10 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
+import org.checkerframework.checker.units.qual.C;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ValueSharkController {
@@ -37,6 +40,9 @@ public class ValueSharkController {
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);
+
+            List<Company> allCompanies = companyRepository.findAll();
+            m.addAttribute("allCompanies", allCompanies);
         }
         return "index";
     }
@@ -126,13 +132,17 @@ public class ValueSharkController {
             m.addAttribute("company", companyRepository.getBySymbol(symbol));
         } else {
             Company company = new Company(symbol);
-            m.addAttribute("company", company);
+            companyRepository.save(company);
+            //the companydetails page needs a database id in order to create portfolio items with
+            // the form, so we need to add new Companies to the database before sending the attribute to the front end.
+            m.addAttribute("company", companyRepository.getBySymbol(company.getSymbol()));
         }
         return "companydetails";
     }
 
     @PostMapping("/portfolio/add/{companyId}")
-    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, long pricePerShare) {
+    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, double pricePerShare) {
+        System.out.println("adding " + companyId + " to portfolio.");
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         Company company = companyRepository.getOne(companyId);
         user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
