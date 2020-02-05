@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head th:replace="/fragments/head.html :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: head"></head>
 <body>
     <header th:replace="/fragments/header.html :: header"></header>
     <main id="aboutusmain">
@@ -50,7 +50,7 @@
             <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
         </section>
     </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
-    <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
 </body>
 </html>

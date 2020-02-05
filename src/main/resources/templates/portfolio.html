@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Portfolio</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
+    <th:block th:replace="fragments/cssfiles.html :: cssfiles"></th:block>
 </head>
 <body>
-    <header th:replace="/fragments/header.html :: header"></header>
+    <header th:replace="fragments/header.html :: header"></header>
     <main>
         <div th:each="item : ${user.portfolio}">
             <p th:text="${item.pricePerShare}"></p>
@@ -16,7 +16,7 @@
         </div>
       
     </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
-    <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
 </body>
 </html>
