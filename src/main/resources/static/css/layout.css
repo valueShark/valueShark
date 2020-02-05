@@ -14,6 +14,16 @@ html {
     width: 480px;
 }
 
+#loginform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginform fieldset {
+    border: 2px solid #EFEFEF;
+}
+
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 
