@@ -6,7 +6,9 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioCompany;
+import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
+import com.valueshark.valueshark.model.portfolio.PortfolioItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,6 +36,12 @@ public class ValueSharkController {
 
     @Autowired
     CompanyRepository companyRepository;
+
+    @Autowired
+    PortfolioItemRepository portfolioItemRepository;
+
+    @Autowired
+    PortfolioCompanyRepository portfolioCompanyRepository;
 
     @GetMapping("/")
     public String renderHomePage(Principal p, Model m){
@@ -134,7 +142,7 @@ public class ValueSharkController {
             Company company = new Company(symbol);
             //the companydetails page needs a database id in order to create portfolio items with
             // the form, so we need to add new Companies to the database before sending the attribute to the front end.
-            m.addAttribute("company", companyRepository.getBySymbol(company.getSymbol()));
+            m.addAttribute("company", company);
         }
         return "companydetails";
     }
@@ -145,8 +153,11 @@ public class ValueSharkController {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         // instantiate a new company with the given symbol
         PortfolioCompany company = new PortfolioCompany(symbol);
+        portfolioCompanyRepository.save(company);
         // add the company to the user's portfolio
-        user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
+        PortfolioItem portfolioItem = new PortfolioItem(user, company, shares, pricePerShare);
+        portfolioItemRepository.save(portfolioItem);
+        user.portfolio.add(portfolioItem);
         applicationUserRepository.save(user);
         return new RedirectView("/");
     }
