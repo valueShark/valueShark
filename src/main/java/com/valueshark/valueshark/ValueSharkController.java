@@ -5,6 +5,8 @@ import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
 import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
+import com.valueshark.valueshark.model.portfolio.PortfolioCompany;
+import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
 import org.checkerframework.checker.units.qual.C;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,7 +147,7 @@ public class ValueSharkController {
         // grab the logged in user
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         // instantiate a new company with the given symbol
-        Company company = new Company(symbol);
+        PortfolioCompany company = new PortfolioCompany(symbol);
         // add the company to the user's portfolio
         user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
         applicationUserRepository.save(user);

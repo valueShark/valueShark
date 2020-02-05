@@ -17,7 +17,7 @@ public class PortfolioItem {
     public ApplicationUser user;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "portfolio_company_id")
     public PortfolioCompany portfolioCompany;
 
     long shares;
@@ -40,7 +40,7 @@ public class PortfolioItem {
         return user;
     }
 
-    public PortfolioCompany getCompany() {
+    public PortfolioCompany getPortfolioCompany() {
         return portfolioCompany;
     }
 
