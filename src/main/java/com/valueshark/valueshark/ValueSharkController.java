@@ -132,13 +132,17 @@ public class ValueSharkController {
             m.addAttribute("company", companyRepository.getBySymbol(symbol));
         } else {
             Company company = new Company(symbol);
-            m.addAttribute("company", company);
+            companyRepository.save(company);
+            //the companydetails page needs a database id in order to create portfolio items with
+            // the form, so we need to add new Companies to the database before sending the attribute to the front end.
+            m.addAttribute("company", companyRepository.getBySymbol(company.getSymbol()));
         }
         return "companydetails";
     }
 
     @PostMapping("/portfolio/add/{companyId}")
-    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, long pricePerShare) {
+    public RedirectView addToPortfolio(@PathVariable long companyId, Principal p, long shares, double pricePerShare) {
+        System.out.println("adding " + companyId + " to portfolio.");
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         Company company = companyRepository.getOne(companyId);
         user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
