@@ -9,9 +9,15 @@
         <!--                replace the actions with the correct routes-->
         <br>
         <div class="row">
-        <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="UPDATE">
+
+
+        <button class="updateButton">Edit</button>
+        <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
+            <input type="number" name="shares" required />
+            <input type="number" name="pricePerShare" required />
             <input type="submit" value="UPDATE" />
         </form>
+
         <form th:action="'/portfolioItem/' + ${item.id} + '/delete'" th:method="DELETE">
             <input type="submit" value="DELETE" />
         </form>
