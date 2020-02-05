@@ -13,13 +13,16 @@
                 <div th:replace="fragments/searchbar.html :: searchbar">Search bar</div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-3" style="background-color:purple;">col-8</div>
-                        <div class="col-sm-9" style="background-color:green;" >col-4</div>
+                        <div class="col-sm-3" style="background-color:purple;">
+                            <div th:replace="/fragments/portfolioTable.html :: portfolioTable"></div></div>
+                        <div class="col-sm-9" style="background-color:green;" >
+                            <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>
+                        </div>
                     </div>
                 </div>
             </th:block>
 
-
+            <div th:replace="/fragments/portfolioTable.html :: portfolioTable"></div>
             <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>
         </th:block>
     </main>
