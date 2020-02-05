@@ -21,11 +21,16 @@
         border-top: 2px solid white;
     }
     .portfolioItem li {
+        font-size: .8em;
         background-color: gray;
         color: white;
         list-style-type: none;
         padding: .5em;
     }
+        .portfolioItem b {
+            color: white;
+            font-size: 1em;
+        }
 #prospectsTable {
 
 }
