@@ -7,21 +7,21 @@
             <h1>Sign up</h1>
             <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
             <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
-            <form action="/signup" method="POST" id="signupform">
+            <form class="container" action="/signup" method="POST" id="signupform">
                 <fieldset>
-                    <label>Username <input name="username"/></label>
+                    <label class="row">Username <input class="col" name="username"/></label>
                 </fieldset>
                 <fieldset>
-                    <label>Password <input type="password" name="password"/></label>
+                    <label class="row">Password <input class="col" type="password" name="password"/></label>
                 </fieldset>
                 <fieldset>
-                    <label>First Name <input name="firstName"/></label>
+                    <label class="row">First Name <input class="col" name="firstName"/></label>
                 </fieldset>
                 <fieldset>
-                    <label>Last Name <input name="lastName"/></label>
+                    <label class="row">Last Name <input class="col" name="lastName"/></label>
                 </fieldset>
                 <fieldset>
-                    <label>Email <input name="email"/></label>
+                    <label class="row">Email <input class="col" name="email"/></label>
                 </fieldset>
                 <input type="submit" value="Sign up"/>
             </form>
