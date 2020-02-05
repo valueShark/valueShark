@@ -1,3 +1,106 @@
+/*
+// Extra small devices (portrait phones, less than 576px)
+
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+html {
+    width: 480px;
+}
+
+header img {
+    width: 30px;
+}
+
+/* hamburger */
+
+.topnav {
+    overflow: hidden;
+    position: relative;
+}
+#mylinks {
+    display: none;
+}
+.topnav a.icon {
+    background: #787878;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* header, footer */
+header nav, footer nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* footer at bottom */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* login, signup */
+#loginpage h1, #signuppage h1 {
+    text-align: center;
+}
+#valuesharklogo {
+    width: 480px;
+}
+#loginform, #signupform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#loginform fieldset, #signupform fieldset {
+    border: 2px solid #787878;
+}
+#loginform fieldset label, #signupform fieldset label {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+}
+#loginform fieldset input label {
+    height: 100%;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+html {
+    width:100%;
+}
+.mr-auto{
+    margin-right: auto !important;
+}
+.navbar navbar-expand-sm navbar-light bg-light{
+        width:100%;
+
+}
+
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+
+=======
 // ----------------------------- Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 

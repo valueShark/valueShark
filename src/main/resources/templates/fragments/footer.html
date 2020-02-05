@@ -1,11 +1,8 @@
-<footer class="container" th:fragment="footer">
-    <nav class="row">
-        <article class="col" id="leftfooter">
-            <a href="/aboutus">About us</a>
-            <a href="/systemstatus">System status</a>
-        </article>
-        <article class="col" id="rightfooter">
-            <p>&#169; 2020</p>
-        </article>
+<footer th:fragment="footer">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="nav-link" href="/aboutus">About Us</a>
+            <a class="nav-link" href="/systemstatus">System Status</a>
+            <a class="nav-link disabled">&#169; 2020</a>
+            <a class="nav-link" href="https://iexcloud.io">Data provided by IEX Cloud</a>
     </nav>
 </footer>
