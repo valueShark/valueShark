@@ -7,10 +7,9 @@ import com.valueshark.valueshark.model.company.Company;
 import com.valueshark.valueshark.model.company.CompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioCompany;
 import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
-import org.checkerframework.checker.units.qual.C;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
+import com.valueshark.valueshark.model.portfolio.PortfolioItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,12 @@ public class ValueSharkController {
 
     @Autowired
     CompanyRepository companyRepository;
+
+    @Autowired
+    PortfolioItemRepository portfolioItemRepository;
+
+    @Autowired
+    PortfolioCompanyRepository portfolioCompanyRepository;
 
     @GetMapping("/")
     public String renderHomePage(Principal p, Model m){
@@ -134,10 +140,9 @@ public class ValueSharkController {
             m.addAttribute("company", companyRepository.getBySymbol(symbol));
         } else {
             Company company = new Company(symbol);
-            companyRepository.save(company);
             //the companydetails page needs a database id in order to create portfolio items with
             // the form, so we need to add new Companies to the database before sending the attribute to the front end.
-            m.addAttribute("company", companyRepository.getBySymbol(company.getSymbol()));
+            m.addAttribute("company", company);
         }
         return "companydetails";
     }
@@ -148,8 +153,11 @@ public class ValueSharkController {
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
         // instantiate a new company with the given symbol
         PortfolioCompany company = new PortfolioCompany(symbol);
+        portfolioCompanyRepository.save(company);
         // add the company to the user's portfolio
-        user.portfolio.add(new PortfolioItem(user, company, shares, pricePerShare));
+        PortfolioItem portfolioItem = new PortfolioItem(user, company, shares, pricePerShare);
+        portfolioItemRepository.save(portfolioItem);
+        user.portfolio.add(portfolioItem);
         applicationUserRepository.save(user);
         return new RedirectView("/");
     }

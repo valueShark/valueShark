@@ -1,7 +1,6 @@
 package com.valueshark.valueshark.model.portfolio;
 
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
-import com.valueshark.valueshark.model.company.Company;
 
 import javax.persistence.*;
 
@@ -10,18 +9,16 @@ public class PortfolioItem {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public long id;
+    private long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    public ApplicationUser user;
+    private ApplicationUser user;
 
     @ManyToOne
-    @JoinColumn(name = "portfolio_company_id")
-    public PortfolioCompany portfolioCompany;
+    private PortfolioCompany portfolioCompany;
 
-    long shares;
-    double pricePerShare;
+    private long shares;
+    private double pricePerShare;
 
     PortfolioItem() {};
 
