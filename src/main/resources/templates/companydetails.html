@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script> -->
+
   <title>Document</title>
 </head>
 <body>
@@ -64,17 +61,17 @@
 
       <article id="addressInfo">
         <p th:text="${company.city} + ${company.state} + ${company.country}"></p>
-        <a th:href="'Website: ' + ${company.website}"></a>
+        <a th:href="${company.website}" th:text="${company.website}"></a>
       </article>
 
-      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.id}" method="post">
+      <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
         <label>Shares owned:
         <input name="shares" type="text"/>
         </label>
         <label>Price paid:
         <input name="pricePerShare" type="text"/>
         </label>
-        <input type="submit" value="addToPortfolio">
+        <input type="submit" value="Add to portfolio">
       </form>
     </section>
 
