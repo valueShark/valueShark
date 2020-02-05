@@ -23,6 +23,7 @@ public class ApplicationUser implements UserDetails {
     public List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};
+
     public ApplicationUser(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
         this.password = password;
