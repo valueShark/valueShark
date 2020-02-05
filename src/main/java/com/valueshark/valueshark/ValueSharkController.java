@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +50,7 @@ public class ValueSharkController {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);
 
+            //all "value stocks"
             List<Company> allCompanies = companyRepository.findAll();
             m.addAttribute("allCompanies", allCompanies);
 
@@ -102,6 +104,7 @@ public class ValueSharkController {
     public String renderPortfolio(Model m, Principal p){
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+            System.out.println(user.portfolio);
             m.addAttribute("user", user);
         }
         return "portfolio";
@@ -148,20 +151,4 @@ public class ValueSharkController {
         }
         return "companydetails";
     }
-
-    @PostMapping("/portfolio/add/{symbol}")
-    public RedirectView addToPortfolio(@PathVariable String symbol, Principal p, long shares, double pricePerShare) {
-        // grab the logged in user
-        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-        // instantiate a new company with the given symbol
-        PortfolioCompany company = new PortfolioCompany(symbol);
-        portfolioCompanyRepository.save(company);
-        // add the company to the user's portfolio
-        PortfolioItem portfolioItem = new PortfolioItem(user, company, shares, pricePerShare);
-        portfolioItemRepository.save(portfolioItem);
-        user.portfolio.add(portfolioItem);
-        applicationUserRepository.save(user);
-        return new RedirectView("/");
-    }
-
 }
