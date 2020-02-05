@@ -1,8 +1,8 @@
 package com.valueshark.valueshark;
 
 import com.google.gson.Gson;
-import com.valueshark.valueshark.model.Symbol;
 import com.valueshark.valueshark.model.company.Company;
+import com.valueshark.valueshark.model.Symbol;
 import com.valueshark.valueshark.model.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,10 +56,10 @@ public class AdminController {
 
 //                    if the company is a "value stock" save it to DB
                     if (company.getPegRatio() > 0 && company.getPegRatio() < 2 &&
-                        company.getProfitMargin() > 0.1 &&
-                        company.getPriceToBook() > 0 && company.getPriceToBook() < 2 &&
-                        company.getPeRatio() > 0 &&
-                        company.getBeta() < 2) {
+                            company.getProfitMargin() > 0.1 &&
+                            company.getPriceToBook() > 0 && company.getPriceToBook() < 2 &&
+                            company.getPeRatio() > 0 && company.getPeRatio() < 20 &&
+                            company.getBeta() < 2) {
 
                         System.out.println(symbol.getSymbol() + " added to Company table.");
                         companyRepo.save(company);

@@ -19,6 +19,7 @@ public class ApplicationUser implements UserDetails {
     String lastName;
     String email;
 
+
     @OneToMany(mappedBy = "user")
     public List<PortfolioItem> portfolio;
 
@@ -55,6 +56,11 @@ public class ApplicationUser implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
+    }
+
+
+    public List<PortfolioItem> getPortfolio() {
+        return portfolio;
     }
 
     public long getId() {
