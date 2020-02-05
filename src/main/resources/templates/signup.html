@@ -6,24 +6,28 @@
         <main id="signuppage">
             <h1>Sign up</h1>
             <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
-            <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
-            <form class="container" action="/signup" method="POST" id="signupform">
-                <fieldset>
-                    <label class="row">Username <input class="col" name="username"/></label>
+            <h3 th:if="${param.taken}">That username is taken.</h3>
+            <h3 th:if="${param.reenter}">The password was re-entered incorrectly.</h3>
+            <form action="/signup" method="POST" id="signupform">
+                <fieldset class="form-group">
+                    <label for="inputusername">Username <input class="form-control" id="inputusername" name="username"/></label>
                 </fieldset>
-                <fieldset>
-                    <label class="row">Password <input class="col" type="password" name="password"/></label>
+                <fieldset class="form-group">
+                    <label for="inputpassword">Password <input class="form-control" id="inputpassword" type="password" name="password"/></label>
                 </fieldset>
-                <fieldset>
-                    <label class="row">First Name <input class="col" name="firstName"/></label>
+                <fieldset class="form-group">
+                    <label for="inputreenter">Re-enter Password <input class="form-control" id="inputreenter" type="password" name="reenter"/></label>
                 </fieldset>
-                <fieldset>
-                    <label class="row">Last Name <input class="col" name="lastName"/></label>
+                <fieldset class="form-group">
+                    <label for="inputfirst">First Name <input class="form-control" id="inputfirst" name="firstName"/></label>
                 </fieldset>
-                <fieldset>
-                    <label class="row">Email <input class="col" name="email"/></label>
+                <fieldset class="form-group">
+                    <label for="inputlast">Last Name <input class="form-control" id="inputlast" name="lastName"/></label>
                 </fieldset>
-                <input type="submit" value="Sign up"/>
+                <fieldset class="form-group">
+                    <label for="inputemail">Email <input class="form-control" type="email" id="inputemail" name="email"/></label>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
         </main>
         <footer th:replace="fragments/footer.html :: footer"></footer>
