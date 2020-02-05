@@ -14,16 +14,33 @@
 
 /* hamburger menu */
 
-.company {
-    width: 50%;
-    margin: auto;
-    margin-top: 1em;
+#portfolioList {
+
 }
-    .company label {
-        display: inline-block;
+    .portfolioItem {
+        border-top: 2px solid white;
     }
-        .company label p {
-            font-weight: bold;
+    .portfolioItem li {
+        background-color: gray;
+        color: white;
+        list-style-type: none;
+        padding: .5em;
+    }
+#prospectsTable {
+
+}
+    .company {
+        width: 50%;
+        margin: auto;
+        margin-top: 1em;
+        background-color: lightgray;
+    }
+        .company label {
+            display: inline-block;
         }
+            .company label p {
+                font-weight: bold;
+            }
+
 /* login submit button */
 

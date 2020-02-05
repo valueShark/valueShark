@@ -1,0 +1,18 @@
+<div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
+    <p id="portfolioHeader">My Portfolio:</p>
+    <ul class="portfolioItem" th:each="item : ${user.portfolio}">
+        <li>Symbol [[${item.portfolioCompany.symbol}]]</li>
+        <li>Company Name [[${item.portfolioCompany.companyName}]]</li>
+        <li>Average Cost $[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</li>
+        <li>Shares owned [[${item.shares}]]</li>
+        <!--                add a percent change here later, maybe-->
+        <li>Total Value $[[${#numbers.formatDecimal(item.pricePerShare * item.shares, 0, 2, 'POINT')}]]</li>
+        <!--                replace the actions with the correct routes-->
+        <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="UPDATE">
+            <input type="submit" value="UPDATE" />
+        </form>
+        <form th:action="'/portfolioItem/' + ${item.id} + '/delete'" th:method="DELETE">
+            <input type="submit" value="DELETE" />
+        </form>
+    </ul>
+</div>

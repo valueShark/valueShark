@@ -1,6 +1,6 @@
 <!--https://stackoverflow.com/questions/51478156/how-to-truncate-decimal-number-digits-in-thymleaf-->
-<div id="prospectsTable" th:fragment="prospectsTable" th:each="company : ${allCompanies}">
-    <div class="company">
+<div id="prospectsTable" th:fragment="prospectsTable">
+    <div class="company" th:each="company : ${allCompanies}">
         <a th:href="${'/stocks?symbol=' + company.symbol}"><p th:text="${company.symbol}">Link to company pageSymbol</p></a>
 
         <img th:src="${company.logoUrl}" alt="Logo" />
@@ -11,11 +11,11 @@
 
         <label>Price to book: <p th:text="${'$' + #numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}"></p></label>
 
-        <label>Peg Ratio: <p th:text="${#numbers.formatDecimal((company.pegRatio * 100), 2, 2, 'POINT') + '%'}"></p></label>
+        <label>Peg Ratio: <p th:text="${#numbers.formatDecimal(company.pegRatio, 2, 2, 'POINT')}"></p></label>
 
         <label>Profit Margin: <p th:text="${#numbers.formatDecimal((company.profitMargin * 100), 2, 2, 'POINT') + '%'}"></p></label>
 
-        <label>PE Ratio: <p th:text="${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT') + '%'}"></p></label>
+        <label>PE Ratio: <p th:text="${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT')}"></p></label>
 
         <label>Market Cap: <p th:text="${'$' + #numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}"></p></label>
 
