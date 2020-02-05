@@ -7,24 +7,20 @@
     <th:block th:replace="fragments/cssfiles.html :: cssfiles"></th:block>
 </head>
 <body>
-    <header th:replace="/fragments/header.html :: header"></header>
+    <header th:replace="fragments/header.html :: header"></header>
     <main>
             <th:block th:if="${user}">
                 <div th:replace="fragments/searchbar.html :: searchbar">Search bar</div>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-3" style="background-color:purple;">
-                            <div th:replace="/fragments/portfolioTable.html :: portfolioTable"></div></div>
+                            <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
                         <div class="col-sm-9" style="background-color:green;" >
-                            <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>
+                            <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
                         </div>
                     </div>
                 </div>
             </th:block>
-
-            <div th:replace="/fragments/portfolioTable.html :: portfolioTable"></div>
-            <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>
-        </th:block>
     </main>
 
     <footer th:replace="fragments/footer.html :: footer"></footer>
