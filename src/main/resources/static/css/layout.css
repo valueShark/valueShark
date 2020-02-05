@@ -1,3 +1,4 @@
+/*
 // Extra small devices (portrait phones, less than 576px)
 
 * {
@@ -14,6 +15,7 @@ header img {
 }
 
 /* hamburger */
+
 .topnav {
     overflow: hidden;
     position: relative;
@@ -79,7 +81,22 @@ footer {
 @media (min-width: 768px) { ... }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) { ... }
+@media (min-width: 992px) {
+html {
+    width:100%;
+}
+.mr-auto{
+    margin-right: auto !important;
+}
+.navbar navbar-expand-sm navbar-light bg-light{
+        width:100%;
+
+}
+
+
+}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
+
+

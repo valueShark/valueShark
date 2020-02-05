@@ -11,6 +11,12 @@
 <main>
             <th:block th:if="${user}">
                 <div th:replace="/fragments/searchbar.html :: searchbar">Search bar</div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3" style="background-color:purple;">col-8</div>
+                        <div class="col-sm-9" style="background-color:green;" >col-4</div>
+                    </div>
+                </div>
             </th:block>
 
             <div th:replace="/fragments/prospectsTable.html :: prospectsTable"></div>

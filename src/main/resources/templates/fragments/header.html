@@ -1,23 +1,14 @@
 <header th:fragment="header">
-    <img class="icon" onclick="hamburger()" src="/img/hamburger.png"/>
-    <nav class="container">
-        <div class="row topnav">
-            <article id="logoarticle" class="col">
-                <img id="valuesharkfin" src="/img/valuesharkfin.jpg" alt="valueshark logo fin"/>
-            </article>
-            <article id="signinarticle mylinks" class="col">
-                <a href="/">Home</a>
-                <th:block th:if="${user}">
-                    <a href="/myprofile">My profile</a>
-                    <a href="/portfolio">My portfolio</a>
-                    <a href="/logout">Log out</a>
-                </th:block>
-                <th:block th:unless="${user}">
-                    <a href="/login">Log in</a>
-                    <a href="/signup">Sign up</a>
-                </th:block>
-            </article>
-            <!-- hamburger menu -->
-        </div>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="/img/valuesharkfin2.png" width="35" class="d-inline-block align-top" alt="">Value Shark</a>
+        <th:block th:if="${user}">
+            <a class="nav-link" href="/myprofile">My Profile</a>
+            <a class="nav-link" href="/logout">Log Out</a>
+        </th:block>
+        <th:block th:unless="${user}">
+            <a class="nav-link" href="/login">Log In</a>
+            <a class="nav-link" href="/signup">Sign Up</a>
+        </th:block>
     </nav>
 </header>
