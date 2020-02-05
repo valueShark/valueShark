@@ -51,7 +51,7 @@ public class ValueSharkController {
             m.addAttribute("user", user);
 
             //all "value stocks"
-            List<Company> allCompanies = companyRepository.findAll();
+            List<Company> allCompanies = companyRepository.findByOrderByPegRatioAsc();
             m.addAttribute("allCompanies", allCompanies);
 
             return "index";
@@ -145,6 +145,11 @@ public class ValueSharkController {
             m.addAttribute("company", companyRepository.getBySymbol(symbol));
         } else {
             Company company = new Company(symbol);
+
+            if (company.getCompanyName() == null) {
+                m.addAttribute("code", (Integer) 404);
+                return "error";
+            }
             //the companydetails page needs a database id in order to create portfolio items with
             // the form, so we need to add new Companies to the database before sending the attribute to the front end.
             m.addAttribute("company", company);
