@@ -1,21 +1,15 @@
 /* search bar */
-.ui-widget form #tags {
-    border-radius: 50px;
-    outline: none;
-    text-align: center;
-}
 
 /* login submit button */
-#loginform input {
-    background-color: #787878;
+#loginform fieldset label {
+
 }
 
-/* header logo */
-#valuesharklogo {
+#valuesharkfin {
     width: 50px;
 }
 
 /* login */
-#loginform fieldset {
-    background-color: #0765BC;
+#loginform fieldset, #loginsubmit {
+
 }

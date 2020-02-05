@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Log in</title>
         <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
     </head>
     <body>
         <header th:replace="/fragments/header.html :: header"></header>
         <main id="loginpage">
-            <img src="/img/valuesharklogo.png" alt="valueshark image"/>
             <h1>Log In</h1>
-            <form action="/login" method="POST" id="loginform">
-                <fieldset>
-                    <label>Username <input class="loginfields" name="username"/></label>
+            <img id="valuesharklogo" src="/img/valuesharklogo.png" alt="valueshark image"/>
+            <form class="container" action="/login" method="POST" id="loginform">
+                <fieldset class="row">
+                    <label class="col">Username
+                        <input class="loginfields" name="username"/>
+                    </label>
                 </fieldset>
-                <fieldset>
-                    <label>Password <input class="loginfields" type="password" name="password"/></label>
+                <fieldset class="row">
+                    <label class="col">Password
+                        <input class="loginfields" type="password" name="password"/>
+                    </label>
                 </fieldset>
                 <input id="loginsubmit" type="submit" value="Log in"/>
             </form>
+            <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
         </main>
         <footer th:replace="/fragments/footer.html :: footer"></footer>
+        <script th:replace="/fragments/bootstrapscripts.html :: bootstrapscripts"></script>
     </body>
 </html>
