@@ -1,19 +1,21 @@
 <header th:fragment="header">
-    <nav>
-        <article id="logoarticle">
-            <img id="valuesharklogo" src="/img/valuesharkfin.jpg" alt="valueshark logo fin"/>
-            <a href="/">Home</a>
-        </article>
-        <article id="signinarticle">
-            <th:block th:if="${user}">
-                <a href="/myprofile">My profile</a>
-                <a href="/portfolio">My portfolio</a>
-                <a href="/logout">Log out</a>
-            </th:block>
-            <th:block th:unless="${user}">
-                <a href="/login">Log in</a>
-                <a href="/signup">Sign up</a>
-            </th:block>
-        </article>
+    <nav class="container">
+        <div class="row">
+            <article id="logoarticle" class="col">
+                <img id="valuesharkfin" src="/img/valuesharkfin.jpg" alt="valueshark logo fin"/>
+                <a href="/">Home</a>
+            </article>
+            <article id="signinarticle" class="col">
+                <th:block th:if="${user}">
+                    <a href="/myprofile">My profile</a>
+                    <a href="/portfolio">My portfolio</a>
+                    <a href="/logout">Log out</a>
+                </th:block>
+                <th:block th:unless="${user}">
+                    <a href="/login">Log in</a>
+                    <a href="/signup">Sign up</a>
+                </th:block>
+            </article>
+        </div>
     </nav>
 </header>
