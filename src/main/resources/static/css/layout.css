@@ -6,10 +6,6 @@
     text-align: center;
 }
 
-html {
-    width: 480px;
-}
-
 header img {
     width: 30px;
 }
@@ -82,9 +78,7 @@ footer {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-html {
-    width:100%;
-}
+
 .mr-auto{
     margin-right: auto !important;
 }
@@ -109,9 +103,6 @@ html {
     text-align: center;
 }
 
-html {
-    max-width: 480px;
-}
 
 header img {
     width: 30px;
