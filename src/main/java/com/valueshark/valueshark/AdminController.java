@@ -20,22 +20,23 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.Principal;
+import java.util.concurrent.Callable;
 
 @Controller
 public class AdminController {
+
     @Autowired
     CompanyRepository companyRepo;
 
     @GetMapping("/updateDatabase")
     public String updateDatabase(Principal p) throws MalformedURLException {
-//        return early if user is not logged in or not an admin
-//        if (p.getName() == null) {
-//            return "index";
-//        }
-        //add check for our usernames here:
-//        if (p.getName() == )
+        //lazy check for admin users
+        if (!p.getName().equals("lwilber")) {
+            return "index";
+        }
 
         URL url = new URL("https://sandbox.iexapis.com/stable/ref-data/symbols?token=Tpk_6eaa26587325492481257c267b6cc67f");
+
         Gson gson = new Gson();
         HttpURLConnection con;
         BufferedReader in;
@@ -48,13 +49,26 @@ public class AdminController {
             Symbol[] allSymbols = gson.fromJson(in, Symbol[].class);
 
             //using the symbol, create a new Company and save it in the repo
-            System.out.println("Adding " + allSymbols.length + " Companies to the Company table.");
+            System.out.println(allSymbols.length + " companies found. Adding the good ones to the Company table.");
             int count = 0;
             for (Symbol symbol : allSymbols) {
                 if (symbol.getType().equals("cs")) {
                     count++;
-                    companyRepo.save(new Company(symbol.getSymbol()));
+                    Company company = new Company(symbol.getSymbol());
+
+//                    if the company is a "value stock" save it to DB
+                    if (company.getPegRatio() > 0 && company.getPegRatio() < 2 &&
+                            company.getProfitMargin() > 0.1 &&
+                            company.getPriceToBook() > 0 && company.getPriceToBook() < 2 &&
+                            company.getPeRatio() > 0 &&
+                            company.getBeta() < 2) {
+
+                        companyRepo.save(company);
+                    }
+
                     System.out.println(symbol.getSymbol() + " added to Company table.");
+
+                    //need to slow down requests to avoid 429 "too many requests" errors
                     Thread.sleep(250);
                 }
             }

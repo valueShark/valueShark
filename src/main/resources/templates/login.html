@@ -8,16 +8,16 @@
     <body>
         <header th:replace="/fragments/header.html :: header"></header>
         <main id="loginpage">
-            <img src="/img/valuesharktitle.jpg" alt="valueshark image"/>
-            <h1>Log in</h1>
+            <img src="/img/valuesharklogo.png" alt="valueshark image"/>
+            <h1>Log In</h1>
             <form action="/login" method="POST" id="loginform">
                 <fieldset>
-                    <label>Username <input name="username"/></label>
+                    <label>Username <input class="loginfields" name="username"/></label>
                 </fieldset>
                 <fieldset>
-                    <label>Password <input type="password" name="password"/></label>
+                    <label>Password <input class="loginfields" type="password" name="password"/></label>
                 </fieldset>
-                <input type="submit" value="Log in"/>
+                <input id="loginsubmit" type="submit" value="Log in"/>
             </form>
         </main>
         <footer th:replace="/fragments/footer.html :: footer"></footer>
