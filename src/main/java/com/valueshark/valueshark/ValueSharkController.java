@@ -52,8 +52,10 @@ public class ValueSharkController {
             //all "value stocks"
             List<Company> allCompanies = companyRepository.findAll();
             m.addAttribute("allCompanies", allCompanies);
+
+            return "index";
         }
-        return "index";
+        return "login";
     }
 
     // render specific stocks based on search bar

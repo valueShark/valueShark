@@ -32,6 +32,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'com.google.guava:guava:28.0-jre'
 	implementation 'com.google.code.gson:gson:2.8.6'
+	testImplementation 'org.awaitility:awaitility:3.1.2'
 }
 
 test {
