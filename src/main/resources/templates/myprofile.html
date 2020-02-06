@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/head.html :: head"></head>
+    <th:block th:replace="fragments/cssfiles.html :: cssfiles"></th:block>
     <body>
 <!--        this extra container is necessary for the footer to stay at the bottom-->
         <div class="body">
             <header th:replace="fragments/header.html :: header"></header>
             <main>
-                <div class="card" style="width:50%; margin:10% auto;">
+                <div class="card" style="width:50%; margin:10% auto; margin-bottom: 5%;">
                     <div class ="card-body">
                         <h1 class="card-title">My profile</h1>
-                        <h3 class="card-text"th:text="'Username: '+${user.username}"></h3>
-                        <h3 class="card-text"th:text="'First name: '+${user.firstName}"></h3>
-                        <h3 class="card-text"th:text="'Last name: '+${user.lastName}"></h3>
-                        <h3 class="card-text"th:text="'Email: '+${user.email}"></h3>
+                        <h3 class="display-8"th:text="'Username: '+${user.username}"></h3>
+                        <h3 class="display-8"th:text="'First name: '+${user.firstName}"></h3>
+                        <h3 class="display-8"th:text="'Last name: '+${user.lastName}"></h3>
+                        <h3 class="display-8"th:text="'Email: '+${user.email}"></h3>
                     </div>
                 </div>
             </main>

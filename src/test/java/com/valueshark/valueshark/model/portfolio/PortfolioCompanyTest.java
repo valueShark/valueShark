@@ -2,9 +2,9 @@ package com.valueshark.valueshark.model.portfolio;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+//these tests require you add a valid api key to the test config env vars
 class PortfolioCompanyTest {
 
   PortfolioCompany validPortfolioCompany;
@@ -15,7 +15,7 @@ class PortfolioCompanyTest {
     validPortfolioCompany = new PortfolioCompany("amzn");
     invalidPortfolioCompany = new PortfolioCompany("asdlfkjalsdjf");
   }
-  
+
   @Test
   public void testValidConstructor() {
     assertNotNull(validPortfolioCompany.getCEO());

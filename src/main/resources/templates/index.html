@@ -9,13 +9,15 @@
 <body>
     <header th:replace="fragments/header.html :: header"></header>
     <main style="min-height:90vh;">
-        <th:block th:if="${user}">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="row"></div>
-                        <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
+            <th:block th:if="${user}">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row"></div>
+                                <h4 class="d-flex justify-content-center" style="color:#444444;">PORTFOLIO</h4>
+                            <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
                         <div class="col-sm-9">
+                            <h4 class="d-flex justify-content-center" style="color:#444444; margin-top:1%;">PROSPECTIVE INVESTMENTS</h4>
                             <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
                         </div>
                     </div>
