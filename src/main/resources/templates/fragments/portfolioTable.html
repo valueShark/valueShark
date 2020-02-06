@@ -14,16 +14,17 @@
             <div class="row">
 
 
-            <button class="updateButton btn btn-primary" role="button">EDIT</button> &nbsp
+            <button class="updateButton btn btn-primary btn-sm" role="button">EDIT</button> &nbsp
             <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
+              
                 <label>Number of Shares<input type="number" name="shares" required /></label>
                 <label>Price per share<input type="number" name="pricePerShare" required /></label>
-                <input type="submit" value="UPDATE" />
+                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />>>>>>>> dev
 
             </form>
 
             <form th:action="'/portfolioItem/' + ${item.id} + '/delete'" th:method="DELETE">
-                <input type="submit" class="btn btn-primary" value="DELETE" />
+                <input type="submit" class="btn btn-primary btn-sm" value="DELETE" />
             </form>
             </div>
         </ul>
