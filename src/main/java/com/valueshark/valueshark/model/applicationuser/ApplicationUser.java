@@ -11,17 +11,17 @@ import java.util.*;
 public class ApplicationUser implements UserDetails {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    long id;
+    private long id;
 
-    String username;
-    String password;
-    String firstName;
-    String lastName;
-    String email;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
 
 
     @OneToMany(mappedBy = "user")
-    public List<PortfolioItem> portfolio;
+    private List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};
 
