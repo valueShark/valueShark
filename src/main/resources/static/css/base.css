@@ -2,6 +2,11 @@
 * {
     color: #787878;
 }
+.body footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
 
 /* tablet */
 
