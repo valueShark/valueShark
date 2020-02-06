@@ -3,20 +3,24 @@ footer {
   width:100%;
 }
 
-.portfolioItem{
+ul {
     list-style-type: none;
+}
+
+.uldiv{
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 0;
-    width: 135%;
-    margin-left: -20%;
-
+    width: 129.5%;
 }
 
-.portfolioItem:nth-child(odd) {
+#portfolioList {
+    margin-left: -2.3vw;
+}
+.uldiv:nth-child(odd) {
     background-color:#e7e7e9;
 }
 
-.portfolioItem:nth-child(even) {
+.uldiv:nth-child(even) {
     background-color:#EFEFEF;
 }
