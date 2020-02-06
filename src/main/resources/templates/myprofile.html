@@ -6,11 +6,15 @@
         <div class="body">
             <header th:replace="fragments/header.html :: header"></header>
             <main>
-                <h1>My profile</h1>
-                <h3 th:text="${user.username}"></h3>
-                <h3 th:text="${user.firstName}"></h3>
-                <h3 th:text="${user.lastName}"></h3>
-                <h3 th:text="${user.email}"></h3>
+                <div class="card" style="width:50%; margin:10% auto;">
+                    <div class ="card-body">
+                        <h1 class="card-title">My profile</h1>
+                        <h3 class="card-text"th:text="'Username: '+${user.username}"></h3>
+                        <h3 class="card-text"th:text="'First name: '+${user.firstName}"></h3>
+                        <h3 class="card-text"th:text="'Last name: '+${user.lastName}"></h3>
+                        <h3 class="card-text"th:text="'Email: '+${user.email}"></h3>
+                    </div>
+                </div>
             </main>
             <footer th:replace="fragments/footer.html :: footer"></footer>
             <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
