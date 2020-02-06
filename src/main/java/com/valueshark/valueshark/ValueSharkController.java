@@ -97,10 +97,6 @@ public class ValueSharkController {
 
     @GetMapping("/login")
     public String login(Model m, Principal p) {
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("user", user);
-        }
         return "login";
     }
 

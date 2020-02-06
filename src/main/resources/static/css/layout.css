@@ -11,3 +11,13 @@ background-color:orange;
 padding-top:15px;
 padding-bottom:15px;
 }
+
+#loginpage div, #signuppage div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#valuesharklogo {
+    width: 575px;
+}

@@ -4,8 +4,12 @@
     <body>
         <header th:replace="fragments/header.html :: header"></header>
         <main id="loginpage">
-            <h1>Log In</h1>
-            <img id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
+            <div>
+                <h1>Log In</h1>
+                <img id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
+                <h5 th:if="${param.error}">That username/password combination does not exist.</h5>
+                <!-- password forgot/reset feature here -->
+            </div>
             <form class="container" action="/login" method="POST">
                 <fieldset class="form-group row justify-content-center">
                     <label class="col" for="inputusername">Username
@@ -17,7 +21,13 @@
                         <input class="form-control" id="inputpassword" type="password" name="password"/>
                     </label>
                 </fieldset>
-                <button type="submit" class="btn btn-primary">Log In</button>
+                <fieldset class="row form-group row form-check text-center">
+                    <input class="form-check-input" type="checkbox" id="checkremember"/>
+                    <label class="form-check-label" for="checkremember">Remember me</label>
+                </fieldset>
+                <div class="text-center">
+                    <button id="signuploginsubmit" type="submit" class="btn btn-primary">Log In</button>
+                </div>
             </form>
         </main>
         <footer th:replace="fragments/footer.html :: footer"></footer>
