@@ -4,10 +4,19 @@ footer {
 }
 
 .portfolioItem{
-margin-left:-35px;
-list-style-type: none;
-margin-bottom:30px;
-background-color:orange;
-padding-top:15px;
-padding-bottom:15px;
+    list-style-type: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    width: 135%;
+    margin-left: -20%;
+
+}
+
+.portfolioItem:nth-child(odd) {
+    background-color:#e7e7e9;
+}
+
+.portfolioItem:nth-child(even) {
+    background-color:#EFEFEF;
 }
