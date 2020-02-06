@@ -1,7 +1,21 @@
-#portfolio_title {
-    background-color:lightblue;
-}
-
 #signuploginsubmit {
     width: 50%;
+}
+
+#portfolio_title{
+    background-color:lightgray;
+    color:black;
+}
+.symbolstyle{
+    font-size:3.5vh;
+}
+.col-sm-3{
+        background-color:lightblue;
+        padding: 0 0;
+}
+.col-sm-9{
+        background-color:blue;
+}
+body > header > nav {
+height:7vh;
 }

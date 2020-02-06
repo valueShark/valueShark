@@ -20,26 +20,26 @@
 
        </ul>
 
-        <p id= "companyDescription" th:text ="${company.description}"></p>
+        <p id= "companyDescription" th:text="${company.description}"></p>
 
         <div id="companyStats">
           <h2>Stats:</h2>
           <ul>
-            <li th:text="'Market cap: '+ ${company.marketcap}"></li>
-            <li th:text="'Week 52 high: '+ ${company.week52high}"></li>
-            <li th:text="'Week 52 low: '+ ${company.week52low}"></li>
-            <li th:text="'Week 52 change: '+ ${company.week52change}"></li>
-            <li th:text="'Shares outstanding: '+ ${company.sharesOutstanding}"></li>
-            <li th:text="'Day 200 moving avg: '+ ${company.day200MovingAvg}"></li>
-            <li th:text="'Day 50 moving avg: '+ ${company.day50MovingAvg}"></li>
-            <li th:text="'ttm EPS: '+ ${company.ttmEPS}"></li>
-            <li th:text="'Next earning date: '+ ${company.nextEarningsDate}"></li>
-            <li th:text="'P/E ratio: '+ ${company.peRatio}"></li>
-            <li th:text="'Beta: ' + ${company.beta}"></li>
-            <li th:text="'Profit margin: '+ ${company.profitMargin}"></li>
-            <li th:text="'Enterprise value: '+ ${company.enterpriseValue}"></li>
-            <li th:text="'Price to book: '+ ${company.priceToBook}"></li>
-            <li th:text="'PEG ratio: '+ ${company.pegRatio}"></li>
+            <li>Market Cap: <b>$[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Week 52 High: <b>$[[${#numbers.formatDecimal(company.week52high, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Week 52 Low: <b>$[[${#numbers.formatDecimal(company.week52low, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Week 52 Change: <b>[[${#numbers.formatDecimal(company.week52change, 0, 'COMMA', 2, 'POINT')}]]%</b></li>
+            <li>Shares Outstanding: <b>[[${#numbers.formatDecimal(company.sharesOutstanding, 0, 'COMMA', 0, 'POINT')}]]</b></li>
+            <li>Day 200 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day200MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Day 50 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>EPS (ttm): <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Next Earning Date: <b>[[${company.nextEarningsDate}]]</b></li>
+            <li>P/E ratio: <b>[[${#numbers.formatDecimal(company.peRatio, 0, 2, 'POINT')}]]</b></li>
+            <li>Beta: <b>[[${#numbers.formatDecimal(company.beta, 0, 2, 'POINT')}]]</b></li>
+            <li>Profit Margin: <b>[[${#numbers.formatDecimal(company.profitMargin, 0, 'COMMA', 2, 'POINT')}]]%</b></li>
+            <li>Enterprise Value: <b>$[[${#numbers.formatDecimal(company.enterpriseValue, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Price-to-Book: <b>[[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</b></li>
+            <li>Peg Ratio: <b>[[${#numbers.formatDecimal(company.pegRatio, 0, 'COMMA', 2, 'POINT')}]]</b></li>
           </ul>
         </div>
 
