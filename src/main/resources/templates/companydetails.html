@@ -5,7 +5,7 @@
     <header th:replace="fragments/header.html :: header"></header>
     <main>
 
-      <h1 class="text-center font-weight-bold border-bottom">Company Details</h1>
+      <h1 class="text-center font-weight-bold border-bottom w-75 mx-auto">Company Details</h1>
       <h2 class="text-center" th:text="${company.companyName}"></h2>
 
       <div class="text-center">
@@ -14,7 +14,7 @@
 
       <div class="text-center m-3 mx-auto border bg-light w-75">
         <div class="m-2 p-2 mx-auto border bg-white w-75">
-          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">General Information</h3>
+          <h3 class="text-center font-weight-bold mx-auto">General Information</h3>
           <p class="m-1">CEO:<b th:text="' '+ ${company.CEO}"></b></p>
           <p class="m-1" th:text="${company.city} + ', ' + ${company.state} + ' ' + ${company.country}"></p>
           <a class="m-1" th:href="${company.website}" th:text="${company.website}"></a>
@@ -24,7 +24,7 @@
       
       <div class="text-center m-3 mx-auto border bg-light w-75">
         <div class="m-2 p-2 mx-auto border bg-white w-75">
-          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">Market Information</h3>
+          <h3 class="text-center font-weight-bold mx-auto">Market Information</h3>
           <p class="m-1">Exchange:<b th:text="' '+ ${company.exchange}"></b></p>
           <p class="m-1">Sector:<b th:text="' '+ ${company.sector}"></b></p>
           <p class="m-1">Industry:<b th:text="' '+ ${company.industry}"></b></p>
@@ -33,7 +33,7 @@
 
       <div class="text-center m-3 mx-auto border bg-light w-75">
         <div class="container m-2 p-2 mx-auto border bg-white w-75">
-          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">Statistics</h3>
+          <h3 class="text-center font-weight-bold mx-auto">Statistics</h3>
           <div class="row">
             <div class="col">
               <p>Price: <b>$[[${#numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}]]</b></p>
@@ -61,38 +61,30 @@
 
       <div class="text-center m-3 mx-auto border bg-light w-75">
         <div class="m-2 p-2 mx-auto border bg-white w-75">
-          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">In The News</h3>
-          <p class="m-1">Exchange:<b th:text="' '+ ${company.exchange}"></b></p>
-          <p class="m-1">Sector:<b th:text="' '+ ${company.sector}"></b></p>
-          <p class="m-1">Industry:<b th:text="' '+ ${company.industry}"></b></p>
+          <h3 class="text-center font-weight-bold mx-auto">In The News</h3>
+          <a th:href="${company.newsUrl}"><h4 th:text="${company.newsHeadline}"></h4></a>
+          <p class="m-1" th:text="${company.newsDate}"></p>
+          <p class="m-1" th:text="${company.newsSummary}"></p>
         </div>
       </div>
 
-        <article id="companynews">
-          <h2>In the News</h2>
-          <a th:href="${company.newsUrl}"><h3 th:text="${company.newsHeadline}"></h3></a>
-          <p th:text="${company.newsDate}"></p>
-          </a>
-          <p th:text="'Source: '+ ${company.newsSource}"></p>
-          <p th:text= "${company.newsSummary}"></p>
-        </article>
-
-        <article id="addressInfo">
-          
-        </article>
-
-        <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
-          <p><b>Add to portfolio</b></p>
-          <label>Shares owned:
-          <input name="shares" type="text"/>
-          </label>
-          <label>Price paid:
-          <input name="pricePerShare" type="text"/>
-          </label>
-          <input type="submit" value="Add to portfolio">
-        </form>
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold mx-auto">Add To Portfolio</h3>
+          <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
+            <div class="form-group">
+              <label for="shares">Shares owned:</label>
+              <input class="form-control w-50 mx-auto" id="shares" name="shares" type="text"/>
+            </div>
+            <div class="form-group">
+              <label for="pricePerShare">Price paid:</label>
+              <input class="form-control w-50 mx-auto" id="pricePerShare" name="pricePerShare" type="text"/> 
+            </div>
+            <button type="submit" class="btn btn-primary">Add To Portfolio</button>
+          </form>
+        </div>
+      </div>      
     </main>
-
     <footer th:replace="fragments/footer.html :: footer"></footer>
     <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
   </body>
