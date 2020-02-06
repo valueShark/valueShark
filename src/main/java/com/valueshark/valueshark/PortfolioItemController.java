@@ -36,7 +36,7 @@ public class PortfolioItemController {
         // add the company to the user's portfolio
         PortfolioItem portfolioItem = new PortfolioItem(user, company, shares, pricePerShare);
         portfolioItemRepository.save(portfolioItem);
-        user.portfolio.add(portfolioItem);
+        user.getPortfolio().add(portfolioItem);
         applicationUserRepository.save(user);
         return new RedirectView("/");
     }

@@ -53,10 +53,8 @@ public class ValueSharkController {
             //all "value stocks"
             List<Company> allCompanies = companyRepository.findTop20ByOrderByPegRatioAsc();
             m.addAttribute("allCompanies", allCompanies);
-
-            return "index";
         }
-        return "login";
+        return "index";
     }
 
     // render specific stocks based on search bar
@@ -79,6 +77,8 @@ public class ValueSharkController {
     public RedirectView submitSignUp(String username, String password, String reenter, String firstName, String lastName, String email){
         if (applicationUserRepository.findByUsername(username) != null) {
             return new RedirectView("/signup?taken=true");
+
+            // password reentry check
         } if (!reenter.equals(password)) {
             System.out.println(reenter);
             System.out.println(password);
@@ -88,7 +88,7 @@ public class ValueSharkController {
             ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
             applicationUserRepository.save(applicationUser);
 
-           // auto-login
+            // stay logged in after sign up
             Authentication authentication = new UsernamePasswordAuthenticationToken(applicationUser, null, new ArrayList<>());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             return new RedirectView("/");
@@ -104,7 +104,7 @@ public class ValueSharkController {
     public String renderPortfolio(Model m, Principal p){
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            System.out.println(user.portfolio);
+            System.out.println(user.getPortfolio());
             m.addAttribute("user", user);
         }
         return "portfolio";

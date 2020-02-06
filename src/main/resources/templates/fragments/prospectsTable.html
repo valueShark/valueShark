@@ -1,22 +1,15 @@
 <!--https://stackoverflow.com/questions/51478156/how-to-truncate-decimal-number-digits-in-thymleaf-->
-<div class="card" th:fragment="prospectsTable">
-    <div class="card-body mb-4" th:each="company : ${allCompanies}">
-        <a class="card-title" th:href="${'/stocks?symbol=' + company.symbol}"><h4 th:text="${company.symbol}">Link to company pageSymbol</h4></a>
 
-        <p class="card-text" th:text="${company.companyName}"></p>
-
-        <p class="card-text" th:text="'Price: '+${'$' + #numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}"></p>
-
-        <p class="card-text" th:text="'Price to book: '+ ${'$' + #numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}"></p>
-
-        <p class="card-text" th:text="'Peg Ratio: '+ ${#numbers.formatDecimal(company.pegRatio, 2, 2, 'POINT')}"></p>
-
-        <p class="card-text" th:text="'Profit Margin: '+ ${#numbers.formatDecimal((company.profitMargin * 100), 2, 2, 'POINT') + '%'}"></p>
-
-        <p class="card-text" th:text="'PE Ratio: '+ ${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT')}"></p>
-
-        <p class="card-text" th:text="'Market Cap: '+ ${'$' + #numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}"></p>
-
-        <p class="card-text"th:text="'Beta: '+ ${#numbers.formatDecimal(company.beta, 2, 2, 'POINT') + '%'}"></p>
+<div class="card" style="width:100%; margin-top:7%;" th:fragment="prospectsTable">
+    <div class="card-body" th:each="company : ${allCompanies}">
+        <a th:href="${'/stocks?symbol=' + company.symbol}"><h4 th:text="${company.symbol}">Link to company pageSymbol</h4></a>
+        <p class="card-title">[[${company.companyName}]]</p>
+        <p class="card-text">Price: <b>$[[${#numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+        <p class="card-text">Price to Book: <b>$[[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+        <p class="card-text">Peg Ratio: <b>$[[${#numbers.formatDecimal(company.pegRatio, 2, 2, 'POINT')}]]</b></p>
+        <p class="card-text">Profit Margin: <b>$[[${#numbers.formatDecimal((company.profitMargin * 100), 2, 2, 'POINT')}]]%</b></p>
+        <p class="card-text">PE Ratio: <b>$[[${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT')}]]</b></p>
+        <p class="card-text">Market Cap: <b>$[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+        <p class="card-text">Beta: <b>$[[${#numbers.formatDecimal(company.beta, 2, 2, 'POINT')}]]%</b></p>
     </div>
 </div>

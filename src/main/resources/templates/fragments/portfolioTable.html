@@ -1,7 +1,9 @@
 <div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
-    <div th:each="item : ${user.portfolio}" class="container-fluid" id="uldiv">
-        <ul class="portfolioItem">
-            <li class="symbolstyle"><b>[[${item.portfolioCompany.symbol}]]</b></li>
+    <div th:each="item : ${user.portfolio}" class="container-fluid" style="margin-top:15%;" id="uldiv">
+        <ul class="portfolioItem" style="margin-left: 2%; margin-top:7%;">
+            <li class="symbolstyle">
+                <a th:href="${'/stocks?symbol=' + item.portfolioCompany.symbol}">
+                    <b>[[${item.portfolioCompany.symbol}]]</b></li></a>
             <li><b>[[${item.portfolioCompany.companyName}]]</b></li>
             <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
             <li>Shares owned: <b>[[${item.shares}]]</b></li>
@@ -14,9 +16,10 @@
 
             <button class="updateButton btn btn-primary btn-sm" role="button">EDIT</button> &nbsp
             <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
-                <input type="number" name="shares" required />
-                <input type="number" name="pricePerShare" required />
-                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />
+              
+                <label>Number of Shares<input type="number" name="shares" required /></label>
+                <label>Price per share<input type="number" name="pricePerShare" required /></label>
+                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />>>>>>>> dev
 
             </form>
 
