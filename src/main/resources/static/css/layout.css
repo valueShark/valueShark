@@ -7,20 +7,18 @@ ul {
     list-style-type: none;
 }
 
-.uldiv{
+#uldiv{
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 0;
-    width: 129.5%;
 }
 
 #portfolioList {
-    margin-left: -2.3vw;
 }
-.uldiv:nth-child(odd) {
+#uldiv:nth-child(odd) {
     background-color:#e7e7e9;
 }
 
-.uldiv:nth-child(even) {
-    background-color:#EFEFEF;
+#uldiv:nth-child(even) {
+    background-color:#e0e0e0;
 }

@@ -1,5 +1,6 @@
-<div th:fragment="portfolioTable" th:if="${user}" id="portfolioList" class="container-fluid uldiv">
-        <ul class="portfolioItem" th:each="item : ${user.portfolio}">
+<div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
+    <div th:each="item : ${user.portfolio}" class="container-fluid" id="uldiv">
+        <ul class="portfolioItem">
             <li class="symbolstyle"><b>[[${item.portfolioCompany.symbol}]]</b></li>
             <li><b>[[${item.portfolioCompany.companyName}]]</b></li>
             <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
@@ -24,4 +25,5 @@
             </form>
             </div>
         </ul>
+    </div>
 </div>
