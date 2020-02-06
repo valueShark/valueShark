@@ -1,6 +1,7 @@
 package com.valueshark.valueshark;
 
 import org.assertj.core.api.Assertions;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,12 +24,11 @@ class ValuesharkApplicationTests {
 
 	@Autowired
 	ValueSharkController controller;
-
-
+	
 	//checking controller
 	@Test
 	void contextLoads() {
-		Assertions.assertThat(controller).isNotNull();
+		assertNotNull(controller);
 	}
 
 	@Test
