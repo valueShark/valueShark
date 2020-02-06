@@ -55,18 +55,20 @@ min-height:8vh;
         font-size:2.5vh;
 }
 
-@media (min-width: 576px) {
 
-#collapsingNavbar{
-    background-color:#b8b8b8eb;
+@media (max-width: 576px) {
+
+    #collapsingNavbar{
+        background-color:#b8b8b8eb;
+    }
+
+    body > header > nav{
+        padding: 0 !important;
+    }
+
+    #collapsingNavbar{
+        text-align:center;
+    }
+
 }
 
-body > header > nav{
-    padding: 0 0 ;
-}
-
-#collapsingNavbar{
-    text-align:center;
-}
-
- }
