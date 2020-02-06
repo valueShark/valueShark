@@ -18,7 +18,11 @@ footer {
 }
 
 #valuesharklogo {
-    width: 30%;
+    width: 15%;
+}
+
+#valuesharklogosplash {
+    width: 40%;
 }
 
 .card-body {
@@ -32,6 +36,15 @@ footer {
     .card-body p:nth-child(even) {
         background-color: rgb(242, 242, 242);
     }
+
+#jumbotron {
+    width: 90%;
+}
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 ul {
     list-style-type: none;
@@ -60,3 +73,4 @@ ul {
 #addToPortfolio {
     margin-bottom: 5%;
 }
+
