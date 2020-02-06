@@ -1,9 +1,13 @@
 <div th:fragment="searchbar" class="ui-widget">
     <form method="GET" class="form-inline" action="/stocks/">
-        <div class="form-group">
-        <input id="symbol" class="form-control" placeholder="Stock Search" name="symbol" required/>
+        <div class="input-group">
+            <input id="symbol" class="form-control" placeholder="Search Ticker" name="symbol" required/>
+            <div class="input-group-append">
+                <button class="btn btn-primary " type="button">
+                    <i style="color:white;" class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Search"/>
     </form>
 
 </div>
