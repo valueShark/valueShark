@@ -1,3 +1,5 @@
+
+
 #signuploginsubmit {
     width: 50%;
 }
@@ -6,6 +8,7 @@
     background-color:lightgray;
     color:black;
 }
+
 .symbolstyle{
     font-size:3.5vh;
 }
@@ -19,3 +22,55 @@
 body > header > nav {
 height:7vh;
 }
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+#collapsingNavbar > ul.navbar-nav.ml-auto > li{
+margin-right: 2.5vw;
+}
+
+body > header > nav{
+min-height:8vh;
+}
+
+
+#uldiv > ul > li{
+    font-size:1.5vh;
+}
+
+#uldiv > ul > li.symbolstyle > b{
+        font-size:2.5vh;
+}
+
+
+@media (max-width: 576px) {
+
+    #collapsingNavbar{
+        background-color:#b8b8b8eb;
+    }
+
+    body > header > nav{
+        padding: 0 !important;
+    }
+
+    #collapsingNavbar{
+        text-align:center;
+    }
+
+}
+
+
