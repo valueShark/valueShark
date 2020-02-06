@@ -21,3 +21,26 @@ padding-bottom:15px;
 #valuesharklogo {
     width: 575px;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.uldiv{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 0;
+    width: 129.5%;
+}
+
+#portfolioList {
+    margin-left: -2.3vw;
+}
+.uldiv:nth-child(odd) {
+    background-color:#e7e7e9;
+}
+
+.uldiv:nth-child(even) {
+    background-color:#EFEFEF;
+}
+

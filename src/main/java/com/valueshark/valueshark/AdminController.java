@@ -26,11 +26,11 @@ public class AdminController {
     @GetMapping("/updateDatabase")
     public String updateDatabase(Principal p) throws MalformedURLException {
         //lazy check for admin users
-        if (!p.getName().equals("lwilber") && !p.getName().equals("tuckerc")) {
-            return "index";
-        }
+//        if (!p.getName().equals("lwilber") && !p.getName().equals("tuckerc") && !p.getName().equals("ran")) {
+//            return "index";
+//        }
 
-        URL url = new URL("https://cloud.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+        URL url = new URL("https://sandbox.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
 
         Gson gson = new Gson();
         HttpURLConnection con;

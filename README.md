@@ -20,12 +20,18 @@ On the home page, users will see a Prospects table which lists detailed informat
 OUT - This app will not allow for stock purchasing and it will not do analysis of other types of investments. 
 
 ## Technologies Used:
-* Amazon AWS
-* Spring MVC
-* IntelliJ
-* BCrypt
-* Postgresql
+* API: iexcloud.io
 * Bootstrap
+* Spring MVC
+* Postman
+* IntelliJ
+* bCrypt
+* PostgreSQL
+* Amazon AWS
+* Thymeleaf
+* Gradle
+* JQuery
+
 
 ## How to Use:
 
