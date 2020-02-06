@@ -51,7 +51,7 @@ public class ValueSharkController {
             m.addAttribute("user", user);
 
             //all "value stocks"
-            List<Company> allCompanies = companyRepository.findAll();
+            List<Company> allCompanies = companyRepository.findTop20ByOrderByPegRatioAsc();
             m.addAttribute("allCompanies", allCompanies);
 
             return "index";
@@ -76,9 +76,13 @@ public class ValueSharkController {
     }
 
     @PostMapping("/signup")
-    public RedirectView submitSignUp(String username, String password, String firstName, String lastName, String email){
+    public RedirectView submitSignUp(String username, String password, String reenter, String firstName, String lastName, String email){
         if (applicationUserRepository.findByUsername(username) != null) {
             return new RedirectView("/signup?taken=true");
+        } if (!reenter.equals(password)) {
+            System.out.println(reenter);
+            System.out.println(password);
+            return new RedirectView("/signup?reenter=true");
         } else {
             // instantiate app user and save to database
             ApplicationUser applicationUser = new ApplicationUser(username, encoder.encode(password), firstName, lastName, email);
@@ -93,10 +97,6 @@ public class ValueSharkController {
 
     @GetMapping("/login")
     public String login(Model m, Principal p) {
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("user", user);
-        }
         return "login";
     }
 
@@ -145,6 +145,10 @@ public class ValueSharkController {
             m.addAttribute("company", companyRepository.getBySymbol(symbol));
         } else {
             Company company = new Company(symbol);
+
+            if (company.getCompanyName() == null) {
+                return "symbolnotfound";
+            }
             //the companydetails page needs a database id in order to create portfolio items with
             // the form, so we need to add new Companies to the database before sending the attribute to the front end.
             m.addAttribute("company", company);

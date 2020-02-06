@@ -8,14 +8,14 @@
 </head>
 <body>
     <header th:replace="fragments/header.html :: header"></header>
-    <main>
+    <main style="min-height:90vh;">
             <th:block th:if="${user}">
-                <div th:replace="fragments/searchbar.html :: searchbar">Search bar</div>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-3" style="background-color:purple;">
+                        <div class="col-sm-3">
+                            <div class="row"></div>
                             <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
-                        <div class="col-sm-9" style="background-color:green;" >
+                        <div class="col-sm-9">
                             <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
                         </div>
                     </div>
@@ -24,6 +24,7 @@
     </main>
 
     <footer th:replace="fragments/footer.html :: footer"></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
 </body>
 <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>

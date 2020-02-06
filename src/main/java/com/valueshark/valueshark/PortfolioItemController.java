@@ -41,7 +41,7 @@ public class PortfolioItemController {
         return new RedirectView("/");
     }
 
-    @PutMapping("/porfolioItem/{id}/update")
+    @PutMapping("/portfolioItem/{id}/update")
     public RedirectView updatePortfolioItem(@PathVariable Long id, Principal p, Long shares, Double pricePerShare) {
         //get current user and current portfolio item to update
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
@@ -52,6 +52,9 @@ public class PortfolioItemController {
             itemToUpdate.setShares(shares);
             itemToUpdate.setPricePerShare(pricePerShare);
         }
+        //save updated portfolio item in repo
+        portfolioItemRepository.save(itemToUpdate);
+
         return new RedirectView("/");
     }
 
