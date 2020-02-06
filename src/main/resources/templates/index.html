@@ -9,60 +9,68 @@
 <body>
     <header th:replace="fragments/header.html :: header"></header>
     <main style="min-height:90vh;">
-            <th:block th:if="${user}">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="row"></div>
-                            <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
+        <th:block th:if="${user}">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row"></div>
+                        <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
                         <div class="col-sm-9">
                             <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
                         </div>
                     </div>
                 </div>
             </th:block>
-            <th:block th:unless="${user}">
-                <div class="vertical-center">
-                    <img id="valuesharklogosplash" src="/img/valueshark3.png" alt="valueshark image"/>
-                    <section id="jumbotron" class="jumbotron">
-                        <h1 class="display-4 text-center">Don't spend time - just make money.</h1>
-                        <h4 class="lead text-center">ValueShark&#169; is value investment for 2020 and beyond - see all the results you need, all on one page.</h4>
-                        <hr class="my-4">
-                        <article class="text-center">
-                            <p>Sign up for an account here - it's free!</p>
-                            <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="/signup" role="button">Get started</a>
+        <th:block th:unless="${user}">
+            <section id="jumbotron1" class="jumbotron jumbotron-fluid">
+                <div>
+                    <div class="row no-gutters text-center align-items-center">
+                        <article id="splashslogan" class="col">
+                            <h1 class="display-3">Don't spend time - just make money.</h1>
+                            <h4 class="lead">ValueShark&#169; is value investment for 2020 and beyond -
+                                see all the results you need, all on one page.</h4>
                         </article>
-                    </section>
-                    <section id="carouselcontrols" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <article class="carousel-item active">
-                                <h1 class="display-4 d-block w-100">ValueShark&#169; is proud to use IEX Cloud.</h1>
-                                <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="https://iexcloud.io/" target="_blank" role="button">Check it out</a>
-                            </article>
-                            <article class="carousel-item">
-                                <p class="d-block w-100">Text 2</p>
-                            </article>
-                            <article class="carousel-item">
-                                <p class="d-block w-100">Text 3</p>
-                            </article>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselcontrols" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselcontrols" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </section>
-                    <!-- carousel -->
-                    <!-- carousel: IEX -->
-                    <!-- carousel: value investing features -->
-                    <!-- carousel: CRUD features -->
+                        <article class="col">
+                            <img id="markusunsplash" src="/img/markus-spiske-unsplash.jpg"/>
+                        </article>
+                    </div>
                 </div>
-            </th:block>
+            </section>
+            <section id="jumbotronsignup" class="jumbotron">
+                <hr class="my-4">
+                <article class="text-center">
+                    <p>Sign up for an account here - it's free!</p>
+                    <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="/signup" role="button">Get started</a>
+                </article>
+            </section>
+            <section id="carouselcontrols" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <article class="carousel-item active">
+                        <h1 class="display-4 d-block w-100">ValueShark&#169; is proud to use IEX Cloud.</h1>
+                        <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="https://iexcloud.io/" target="_blank" role="button">Check it out</a>
+                    </article>
+                    <article class="carousel-item">
+                        <p class="d-block w-100">Text 2</p>
+                    </article>
+                    <article class="carousel-item">
+                        <p class="d-block w-100">Text 3</p>
+                    </article>
+                </div>
+                <a class="carousel-control-prev" href="#carouselcontrols" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselcontrols" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </section>
+            <!-- carousel -->
+            <!-- carousel: IEX -->
+            <!-- carousel: value investing features -->
+            <!-- carousel: CRUD features -->
+        </th:block>
     </main>
-
     <footer th:replace="fragments/footer.html :: footer"></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>

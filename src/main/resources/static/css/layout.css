@@ -21,10 +21,6 @@ footer {
     width: 15%;
 }
 
-#valuesharklogosplash {
-    width: 40%;
-}
-
 .card-body {
     text-align: center;
     border-bottom: 1px solid black;
@@ -37,9 +33,6 @@ footer {
         background-color: rgb(242, 242, 242);
     }
 
-#jumbotron {
-    width: 90%;
-}
 .vertical-center {
     display: flex;
     flex-direction: column;
@@ -74,3 +67,13 @@ ul {
     margin-bottom: 5%;
 }
 
+/* splash unlogged */
+#markusunsplash {
+    width: 1000px;
+}
+#jumbotron1 {
+    width: 100%;
+}
+#splashslogan {
+    padding: 4%;
+}
