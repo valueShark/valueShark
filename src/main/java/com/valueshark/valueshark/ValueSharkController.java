@@ -104,7 +104,7 @@ public class ValueSharkController {
     public String renderPortfolio(Model m, Principal p){
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            System.out.println(user.portfolio);
+            System.out.println(user.getPortfolio());
             m.addAttribute("user", user);
         }
         return "portfolio";

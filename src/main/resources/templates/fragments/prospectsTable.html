@@ -1,10 +1,10 @@
 <!--https://stackoverflow.com/questions/51478156/how-to-truncate-decimal-number-digits-in-thymleaf-->
-<div th:fragment="prospectsTable">
-    <div class="card" style="width:20rem;">
-        <div class="card-body mb-4" th:each="company : ${allCompanies}">
-            <a class="card-title" th:href="${'/stocks?symbol=' + company.symbol}"><p th:text="${company.symbol}">Link to company pageSymbol</p></a>
 
-            <h3 class="card-text" th:text="${company.companyName}"></h3>
+<div class="card" style="width:100%;" th:fragment="prospectsTable">
+    <div class="card-body" th:each="company : ${allCompanies}">
+            <a th:href="${'/stocks?symbol=' + company.symbol}"><h4 th:text="${company.symbol}">Link to company pageSymbol</h4></a>
+
+            <p class="card-title" th:text="${company.companyName}"></p>
 
             <p class="card-text" th:text="'Price: '+${'$' + #numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}"></p>
 

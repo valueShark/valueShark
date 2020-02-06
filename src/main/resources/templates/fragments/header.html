@@ -1,10 +1,11 @@
 <header th:fragment="header">
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="/img/valuesharkfin2.png" width="35" class="d-inline-block align-top" alt="">Value Shark</a>
+    <nav class="shadow-sm navbar navbar-expand-sm navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="/" style="color:#0765bc">
+            <img src="/img/valuesharkfin2.png" width="35" class="d-inline-block align-top" alt="" >Value Shark</a>
         <th:block th:if="${user}">
             <a class="nav-link" href="/myprofile">My Profile</a>
             <a class="nav-link" href="/logout">Log Out</a>
+            <div th:replace="fragments/searchbar.html :: searchbar">Search bar</div>
         </th:block>
         <th:block th:unless="${user}">
             <a class="nav-link" href="/login">Log In</a>
