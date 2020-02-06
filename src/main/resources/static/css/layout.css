@@ -14,6 +14,10 @@ ul {
     width: 129.5%;
 }
 
+.card {
+    width: 15rem;
+}
+
 #portfolioList {
     margin-left: -2.3vw;
 }
