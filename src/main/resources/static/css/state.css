@@ -1,6 +1,5 @@
 /* aboutus tiles */
 .aboutusbio {
-    border: 2px solid #626262;
     animation-name: aboutustiles;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
