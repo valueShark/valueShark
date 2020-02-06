@@ -5,9 +5,12 @@
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
 }
-@keyframes aboutustiles {
-    from {opacity: 0; padding: 0px; margin-top: 0px; margin-left:0px; margin-right:0px;}
-    to {opacity: 1; padding: 5px; margin-top: 5px; margin-left:5px; margin-right:5px;}
+
+/* splash unlogged */
+#jumbotron1 div div article, #jumbotron2 div div {
+    animation-name: aboutustiles;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
 }
 
 /* login, signup */
@@ -15,6 +18,12 @@
     animation-name: fadein;
     animation-duration: 0.9s;
 }
+
+@keyframes aboutustiles {
+    from {opacity: 0; padding: 0px; margin-top: 0px; margin-left:0px; margin-right:0px;}
+    to {opacity: 1; padding: 5px; margin-top: 5px; margin-left:5px; margin-right:5px;}
+}
+
 @keyframes fadein {
     from {opacity: 0; margin-bottom: 100px;}
     to {opacity: 1; margin: 0px;}
