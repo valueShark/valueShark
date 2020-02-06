@@ -1,6 +1,6 @@
 <!--https://stackoverflow.com/questions/51478156/how-to-truncate-decimal-number-digits-in-thymleaf-->
 
-<div class="card" style="width:100%;" th:fragment="prospectsTable">
+<div class="card" style="width:100%; margin-top:7%;" th:fragment="prospectsTable">
     <div class="card-body" th:each="company : ${allCompanies}">
             <a th:href="${'/stocks?symbol=' + company.symbol}"><h4 th:text="${company.symbol}">Link to company pageSymbol</h4></a>
 
