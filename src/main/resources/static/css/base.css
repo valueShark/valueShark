@@ -7,6 +7,13 @@
     left: 0;
     bottom: 0;
 }
+#lowerFooter footer {
+    position: absolute;
+    bottom: 0;
+}
+.footerNav {
+    justify-content: space-around;
+}
 
 /* tablet */
 
