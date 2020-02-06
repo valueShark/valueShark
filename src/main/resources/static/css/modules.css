@@ -1,4 +1,13 @@
 #portfolio_title{
-    background-color:lightblue;
-
+    background-color:lightgray;
+    color:black;
+}
+.symbolstyle{
+    font-size:3.5vh;
+}
+.col-sm-3{
+        background-color:lightblue;
+}
+.col-sm-9{
+        background-color:blue;
 }
