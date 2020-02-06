@@ -1,3 +1,7 @@
 #loginpage div h5, #signuppage div h5 {
     color: red;
 }
+
+.carousel-inner article {
+    background-color: #EFEFEF;
+}
