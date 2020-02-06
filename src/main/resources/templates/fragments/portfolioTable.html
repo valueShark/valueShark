@@ -1,7 +1,9 @@
 <div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
     <div th:each="item : ${user.portfolio}" class="container-fluid" style="margin-top:15%;" id="uldiv">
         <ul class="portfolioItem" style="margin-left: 2%; margin-top:7%;">
-            <li class="symbolstyle"><b>[[${item.portfolioCompany.symbol}]]</b></li>
+            <li class="symbolstyle">
+                <a th:href="${'/stocks?symbol=' + item.portfolioCompany.symbol}">
+                    <b>[[${item.portfolioCompany.symbol}]]</b></li></a>
             <li><b>[[${item.portfolioCompany.companyName}]]</b></li>
             <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
             <li>Shares owned: <b>[[${item.shares}]]</b></li>
