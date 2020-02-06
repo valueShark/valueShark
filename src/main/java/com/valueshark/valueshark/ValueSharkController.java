@@ -38,12 +38,6 @@ public class ValueSharkController {
     @Autowired
     CompanyRepository companyRepository;
 
-    @Autowired
-    PortfolioItemRepository portfolioItemRepository;
-
-    @Autowired
-    PortfolioCompanyRepository portfolioCompanyRepository;
-
     @GetMapping("/")
     public String renderHomePage(Principal p, Model m){
         if (p != null) {
@@ -56,13 +50,6 @@ public class ValueSharkController {
         }
         return "index";
     }
-
-    // render specific stocks based on search bar
-//    @GetMapping("/")
-//    public RedirectView getSpecificStock(){
-//        Long id = StocksRepo.findByCompanyName().getId();
-//        return new RedirectView("/stocks/" + id);
-//    }
 
     @GetMapping("/signup")
     public String renderSignUpPage(Principal p, Model m){
@@ -128,15 +115,6 @@ public class ValueSharkController {
         return "myprofile";
     }
 
-    @GetMapping("/systemstatus")
-    public String getSystemStatus(Model m, Principal p){
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            m.addAttribute("user", user);
-        }
-        return "systemstatus";
-    }
-
     @GetMapping("/stocks")
     public String renderStockPage(String symbol, Principal p, Model m){
         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
@@ -149,8 +127,6 @@ public class ValueSharkController {
             if (company.getCompanyName() == null) {
                 return "symbolnotfound";
             }
-            //the companydetails page needs a database id in order to create portfolio items with
-            // the form, so we need to add new Companies to the database before sending the attribute to the front end.
             m.addAttribute("company", company);
         }
         return "companydetails";

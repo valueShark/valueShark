@@ -38,6 +38,14 @@ public class PortfolioItem {
         return user;
     }
 
+    public void setUser(ApplicationUser user) {
+        this.user = user;
+    }
+
+    public void setPortfolioCompany(PortfolioCompany portfolioCompany) {
+        this.portfolioCompany = portfolioCompany;
+    }
+
     public PortfolioCompany getPortfolioCompany() {
         return portfolioCompany;
     }
