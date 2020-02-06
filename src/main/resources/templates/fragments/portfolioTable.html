@@ -14,8 +14,8 @@
 
             <button class="updateButton btn btn-primary" role="button">EDIT</button> &nbsp
             <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
-                <input type="number" name="shares" required />
-                <input type="number" name="pricePerShare" required />
+                <label>Number of Shares<input type="number" name="shares" required /></label>
+                <label>Price per share<input type="number" name="pricePerShare" required /></label>
                 <input type="submit" value="UPDATE" />
 
             </form>
