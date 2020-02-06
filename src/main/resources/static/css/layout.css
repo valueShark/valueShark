@@ -77,3 +77,7 @@ ul {
 #uldiv > ul > div{
     margin-left:-0.1vw;
 }
+
+#stockNotFound {
+    margin-top: 20%;
+}
