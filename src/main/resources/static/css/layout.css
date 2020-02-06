@@ -22,6 +22,18 @@ padding-bottom:15px;
     width: 575px;
 }
 
+.card-body {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+    .card-body p {
+        padding: 4px 0 !important;
+        margin: 0 !important;
+    }
+    .card-body p:nth-child(odd) {
+        background-color: rgb(242, 242, 242);
+    }
+
 ul {
     list-style-type: none;
 }
