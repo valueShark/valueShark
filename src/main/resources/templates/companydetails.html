@@ -25,21 +25,21 @@
         <div id="companyStats">
           <h2>Stats:</h2>
           <ul>
-            <li th:text="'Market cap: '+ ${company.marketcap}"></li>
-            <li th:text="'Week 52 high: '+ ${company.week52high}"></li>
-            <li th:text="'Week 52 low: '+ ${company.week52low}"></li>
-            <li th:text="'Week 52 change: '+ ${company.week52change}"></li>
+            <li>Market Cap: $[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Week 52 High: $[[${#numbers.formatDecimal(company.week52high, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Week 52 Low: $[[${#numbers.formatDecimal(company.week52low, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Week 52 Change: [[${#numbers.formatDecimal(company.week52change, 0, 'COMMA', 2, 'POINT')}]]%</li>
             <li th:text="'Shares outstanding: '+ ${company.sharesOutstanding}"></li>
-            <li th:text="'Day 200 moving avg: '+ ${company.day200MovingAvg}"></li>
-            <li th:text="'Day 50 moving avg: '+ ${company.day50MovingAvg}"></li>
-            <li th:text="'ttm EPS: '+ ${company.ttmEPS}"></li>
-            <li th:text="'Next earning date: '+ ${company.nextEarningsDate}"></li>
-            <li th:text="'P/E ratio: '+ ${company.peRatio}"></li>
-            <li th:text="'Beta: ' + ${company.beta}"></li>
-            <li th:text="'Profit margin: '+ ${company.profitMargin}"></li>
-            <li th:text="'Enterprise value: '+ ${company.enterpriseValue}"></li>
-            <li th:text="'Price to book: '+ ${company.priceToBook}"></li>
-            <li th:text="'PEG ratio: '+ ${company.pegRatio}"></li>
+            <li>Day 200 Moving Avg: $[[${#numbers.formatDecimal(company.day200MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Day 50 Moving Avg: $[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>EPS (ttm): $[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Next Earning Date: [[${company.nextEarningsDate}]]</li>
+            <li>P/E ratio: [[${#numbers.formatDecimal(company.peRatio, 0, 2, 'POINT')}]]</li>
+            <li>Beta: [[${#numbers.formatDecimal(company.beta, 0, 2, 'POINT')}]]</li>
+            <li>Profit Margin: [[${#numbers.formatDecimal(company.profitMargin, 0, 'COMMA', 2, 'POINT')}]]%</li>
+            <li>Enterprise Value: $[[${#numbers.formatDecimal(company.enterpriseValue, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Price-to-Book: [[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</li>
+            <li>Peg Ratio: [[${#numbers.formatDecimal(company.pegRatio, 0, 'COMMA', 2, 'POINT')}]]</li>
           </ul>
         </div>
 
