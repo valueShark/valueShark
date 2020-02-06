@@ -66,3 +66,7 @@ ul {
 #uldiv:nth-child(even) {
     background-color:#e0e0e0;
 }
+
+#stockNotFound {
+    margin-top: 20%;
+}
