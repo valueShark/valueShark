@@ -59,11 +59,20 @@
         </div>
       </div>
 
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">In The News</h3>
+          <p class="m-1">Exchange:<b th:text="' '+ ${company.exchange}"></b></p>
+          <p class="m-1">Sector:<b th:text="' '+ ${company.sector}"></b></p>
+          <p class="m-1">Industry:<b th:text="' '+ ${company.industry}"></b></p>
+        </div>
+      </div>
+
         <article id="companynews">
           <h2>In the News</h2>
-          <h3 th:text="${company.newsHeadline}"></h3>
+          <a th:href="${company.newsUrl}"><h3 th:text="${company.newsHeadline}"></h3></a>
           <p th:text="${company.newsDate}"></p>
-          <a th:href="${company.newsUrl}"></a>
+          </a>
           <p th:text="'Source: '+ ${company.newsSource}"></p>
           <p th:text= "${company.newsSummary}"></p>
         </article>
