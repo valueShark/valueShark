@@ -3,12 +3,12 @@ footer {
 }
 
 .portfolioItem{
-margin-left:-35px;
-list-style-type: none;
-margin-bottom:30px;
-background-color:orange;
-padding-top:15px;
-padding-bottom:15px;
+    margin-left:-35px;
+    list-style-type: none;
+    margin-bottom:30px;
+    background-color:orange;
+    padding-top:15px;
+    padding-bottom:15px;
 }
 
 #loginpage div, #signuppage div {
@@ -18,8 +18,20 @@ padding-bottom:15px;
 }
 
 #valuesharklogo {
-    width: 575px;
+    width: 15%;
 }
+
+.card-body {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+    .card-body p {
+        padding: 4px 0 !important;
+        margin: 0 !important;
+    }
+    .card-body p:nth-child(even) {
+        background-color: rgb(242, 242, 242);
+    }
 
 #jumbotron {
     width: 90%;
@@ -53,3 +65,8 @@ ul {
 #uldiv:nth-child(even) {
     background-color:#e0e0e0;
 }
+
+#addToPortfolio {
+    margin-bottom: 5%;
+}
+

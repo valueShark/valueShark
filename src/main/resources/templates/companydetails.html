@@ -3,61 +3,86 @@
   <head th:replace="fragments/head.html :: head"></head>
   <body>
     <header th:replace="fragments/header.html :: header"></header>
-    <main style="min-height:95vh;">
+    <main>
 
-      <h1>Company Details</h1>
-      <section id="companyHeader">
-        <h2 th:text="${company.companyName}"></h2>
+      <h1 class="text-center font-weight-bold border-bottom">Company Details</h1>
+      <h2 class="text-center" th:text="${company.companyName}"></h2>
 
-        <img th:src="${company.logoUrl}" th:alt = "${company.companyName} + 'logo'">
-        <p th:text="'Price: ' + ${company.price}"></p>
+      <div class="text-center">
+        <img class="rounded border" th:src="${company.logoUrl}" th:alt = "${company.companyName} + ' logo'">
+      </div>
 
-      <ul id ="companyDetails">
-        <li th:text="'Exchange: '+ ${company.exchange}"></li>
-        <li th:text="'Sector: '+ ${company.sector}"></li>
-        <li th:text="'Industry: '+ ${company.industry}"></li>
-        <li th:text="'CEO: '+ ${company.CEO}"></li>
-
-       </ul>
-
-        <p id= "companyDescription" th:text="${company.description}"></p>
-
-        <div id="companyStats">
-          <h2>Stats:</h2>
-          <ul>
-            <li>Market Cap: <b>$[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Week 52 High: <b>$[[${#numbers.formatDecimal(company.week52high, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Week 52 Low: <b>$[[${#numbers.formatDecimal(company.week52low, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Week 52 Change: <b>[[${#numbers.formatDecimal(company.week52change, 0, 'COMMA', 2, 'POINT')}]]%</b></li>
-            <li>Shares Outstanding: <b>[[${#numbers.formatDecimal(company.sharesOutstanding, 0, 'COMMA', 0, 'POINT')}]]</b></li>
-            <li>Day 200 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day200MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Day 50 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>EPS (ttm): <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Next Earning Date: <b>[[${company.nextEarningsDate}]]</b></li>
-            <li>P/E ratio: <b>[[${#numbers.formatDecimal(company.peRatio, 0, 2, 'POINT')}]]</b></li>
-            <li>Beta: <b>[[${#numbers.formatDecimal(company.beta, 0, 2, 'POINT')}]]</b></li>
-            <li>Profit Margin: <b>[[${#numbers.formatDecimal(company.profitMargin, 0, 'COMMA', 2, 'POINT')}]]%</b></li>
-            <li>Enterprise Value: <b>$[[${#numbers.formatDecimal(company.enterpriseValue, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Price-to-Book: <b>[[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-            <li>Peg Ratio: <b>[[${#numbers.formatDecimal(company.pegRatio, 0, 'COMMA', 2, 'POINT')}]]</b></li>
-          </ul>
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">General Information</h3>
+          <p class="m-1">CEO:<b th:text="' '+ ${company.CEO}"></b></p>
+          <p class="m-1" th:text="${company.city} + ', ' + ${company.state} + ' ' + ${company.country}"></p>
+          <a class="m-1" th:href="${company.website}" th:text="${company.website}"></a>
+          <p th:text="${company.description}"></p>
         </div>
+      </div>
+      
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">Market Information</h3>
+          <p class="m-1">Exchange:<b th:text="' '+ ${company.exchange}"></b></p>
+          <p class="m-1">Sector:<b th:text="' '+ ${company.sector}"></b></p>
+          <p class="m-1">Industry:<b th:text="' '+ ${company.industry}"></b></p>
+        </div>
+      </div>
+
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="container m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">Statistics</h3>
+          <div class="row">
+            <div class="col">
+              <p>Price: <b>$[[${#numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Market Cap: <b>$[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Week 52 High: <b>$[[${#numbers.formatDecimal(company.week52high, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Week 52 Low: <b>$[[${#numbers.formatDecimal(company.week52low, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Week 52 Change: <b>[[${#numbers.formatDecimal(company.week52change, 0, 'COMMA', 2, 'POINT')}]]%</b></p>
+              <p>Shares Outstanding: <b>[[${#numbers.formatDecimal(company.sharesOutstanding, 0, 'COMMA', 0, 'POINT')}]]</b></p>
+              <p>Day 200 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day200MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Day 50 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+            </div>
+            <div class="col">
+              <p>EPS (ttm): <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Next Earning Date: <b>[[${company.nextEarningsDate}]]</b></p>
+              <p>P/E ratio: <b>[[${#numbers.formatDecimal(company.peRatio, 0, 2, 'POINT')}]]</b></p>
+              <p>Beta: <b>[[${#numbers.formatDecimal(company.beta, 0, 2, 'POINT')}]]</b></p>
+              <p>Profit Margin: <b>[[${#numbers.formatDecimal(company.profitMargin, 0, 'COMMA', 2, 'POINT')}]]%</b></p>
+              <p>Enterprise Value: <b>$[[${#numbers.formatDecimal(company.enterpriseValue, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Price-to-Book: <b>[[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>Peg Ratio: <b>[[${#numbers.formatDecimal(company.pegRatio, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center m-3 mx-auto border bg-light w-75">
+        <div class="m-2 p-2 mx-auto border bg-white w-75">
+          <h3 class="text-center font-weight-bold w-50 border-bottom mx-auto">In The News</h3>
+          <p class="m-1">Exchange:<b th:text="' '+ ${company.exchange}"></b></p>
+          <p class="m-1">Sector:<b th:text="' '+ ${company.sector}"></b></p>
+          <p class="m-1">Industry:<b th:text="' '+ ${company.industry}"></b></p>
+        </div>
+      </div>
 
         <article id="companynews">
           <h2>In the News</h2>
-          <h3 th:text="${company.newsHeadline}"></h3>
+          <a th:href="${company.newsUrl}"><h3 th:text="${company.newsHeadline}"></h3></a>
           <p th:text="${company.newsDate}"></p>
-          <a th:href="${company.newsUrl}"></a>
+          </a>
           <p th:text="'Source: '+ ${company.newsSource}"></p>
           <p th:text= "${company.newsSummary}"></p>
         </article>
 
         <article id="addressInfo">
-          <p th:text="${company.city} + ${company.state} + ${company.country}"></p>
-          <a th:href="${company.website}" th:text="${company.website}"></a>
+          
         </article>
 
         <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
+          <p><b>Add to portfolio</b></p>
           <label>Shares owned:
           <input name="shares" type="text"/>
           </label>
@@ -66,7 +91,6 @@
           </label>
           <input type="submit" value="Add to portfolio">
         </form>
-      </section>
     </main>
 
     <footer th:replace="fragments/footer.html :: footer"></footer>

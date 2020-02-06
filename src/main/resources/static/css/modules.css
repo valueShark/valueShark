@@ -6,6 +6,7 @@
     background-color:lightgray;
     color:black;
 }
+
 .symbolstyle{
     font-size:3.5vh;
 }
@@ -15,7 +16,4 @@
 }
 .col-sm-9{
         background-color:blue;
-}
-body > header > nav {
-height:7vh;
 }
