@@ -7,21 +7,20 @@
 
         <p th:text="${company.companyName}">Company Name</p>
 
-        <label>Price: <p th:text="${'$' + #numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}"></p></label>
+        <p>Price: $[[${#numbers.formatDecimal(company.price, 0, 'COMMA', 2, 'POINT')}]]</p>
 
-        <label>Price to book: <p th:text="${'$' + #numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}"></p></label>
+<!--        <p>Price to Book: <p th:text="{'$' + #numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}"></p></p>-->
+        <p>Price to Book: $[[${#numbers.formatDecimal(company.priceToBook, 0, 'COMMA', 2, 'POINT')}]]</p>
 
-        <label>Peg Ratio: <p th:text="${#numbers.formatDecimal(company.pegRatio, 2, 2, 'POINT')}"></p></label>
+        <p>Peg Ratio: $[[${#numbers.formatDecimal(company.pegRatio, 2, 2, 'POINT')}]]</p>
 
-        <label>Profit Margin: <p th:text="${#numbers.formatDecimal((company.profitMargin * 100), 2, 2, 'POINT') + '%'}"></p></label>
+        <p>Profit Margin: [[${#numbers.formatDecimal((company.profitMargin * 100), 2, 2, 'POINT')}]]%</p>
 
-        <label>PE Ratio: <p th:text="${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT')}"></p></label>
+        <p>PE Ratio: [[${#numbers.formatDecimal(company.peRatio, 2, 2, 'POINT')}]]</p>
 
-        <label>Market Cap: <p th:text="${'$' + #numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}"></p></label>
+        <p>Market Cap: $[[${#numbers.formatDecimal(company.marketcap, 0, 'COMMA', 2, 'POINT')}]]</p>
 
-        <label>Beta: <p th:text="${#numbers.formatDecimal(company.beta, 2, 2, 'POINT') + '%'}"></p></label>
-
-
+        <p>Beta: [[${#numbers.formatDecimal(company.beta, 2, 2, 'POINT')}]]%</p>
 
     </div>
 </div>
