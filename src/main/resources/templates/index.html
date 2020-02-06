@@ -1,52 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Valueshark&#169</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-  $( function() {
-    var availableTags = [
-      "Apple",
-      "Facebook",
-      "Tesla",
-      "Bank Of America",
-      "Teva",
-      "WeWork",
-      "SpaceX",
-      "Blue Origin",
-      "Amazon",
-      "CodeFellows",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-  } );
-  </script>
+    <th:block th:replace="fragments/cssfiles.html :: cssfiles"></th:block>
 </head>
-    <body>
-        <header th:replace="/fragments/header.html :: header"></header>
-        <main>
-            <!-- search bar -->
+<body>
+    <header th:replace="fragments/header.html :: header"></header>
+    <main style="min-height:90vh;">
             <th:block th:if="${user}">
-                <div th:replace="/fragments/searchbar.html :: searchbar">Search bar</div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="row"></div>
+                            <div th:replace="fragments/portfolioTable.html :: portfolioTable"></div></div>
+                        <div class="col-sm-9">
+                            <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
+                        </div>
+                    </div>
+                </div>
             </th:block>
-        </main>
-        <footer th:replace="/fragments/footer.html :: footer"></footer>
-    </body>
+            <th:block th:unless="${user}">
+                <div class="vertical-center">
+                    <img id="valuesharklogosplash" src="/img/valueshark3.png" alt="valueshark image"/>
+                    <section id="jumbotron" class="jumbotron">
+                        <h1 class="display-4 text-center">Don't spend time - just make money.</h1>
+                        <h4 class="lead text-center">ValueShark&#169; is value investment for 2020 and beyond - see all the results you need, all on one page.</h4>
+                        <hr class="my-4">
+                        <article class="text-center">
+                            <p>Sign up for an account here - it's free!</p>
+                            <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="/signup" role="button">Get started</a>
+                        </article>
+                    </section>
+                    <section id="carouselcontrols" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <article class="carousel-item active">
+                                <h1 class="display-4 d-block w-100">ValueShark&#169; is proud to use IEX Cloud.</h1>
+                                <a id="signuploginsubmit" class="btn btn-primary btn-lg" href="https://iexcloud.io/" target="_blank" role="button">Check it out</a>
+                            </article>
+                            <article class="carousel-item">
+                                <p class="d-block w-100">Text 2</p>
+                            </article>
+                            <article class="carousel-item">
+                                <p class="d-block w-100">Text 3</p>
+                            </article>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselcontrols" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselcontrols" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </section>
+                    <!-- carousel -->
+                    <!-- carousel: IEX -->
+                    <!-- carousel: value investing features -->
+                    <!-- carousel: CRUD features -->
+                </div>
+            </th:block>
+    </main>
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+</body>
+<script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
 </html>

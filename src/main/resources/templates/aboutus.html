@@ -1,20 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About us</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: head"></head>
 <body>
-    <header th:replace="/fragments/header.html :: header"></header>
-    <main>
+    <header th:replace="fragments/header.html :: header"></header>
+    <main id="aboutusmain">
         <h1>Meet the developers</h1>
-        <h3>Chase Tucker</h3>
-        <h3>Vik Akam</h3>
-        <h3>Ashlyn Morin</h3>
-        <h3>Ran Vaknin</h3>
-        <h3>Lucas Wilber</h3>
+        <section class="devs container order-1 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col">Chase Tucker</h2>
+                <img id="chase" class="col" src="/img/Chase.jfif"/>
+            </div>
+            <p>My name is Chase Tucker and I am a Back-End Developer. I have a passion for turning ideas into delightful solutions.
+                I am a veteran, a former Manufacturing Manager and Analyst. While working in manufacturing, I recognized that
+                software had the greatest potential to overcome our greatest challenges. Pursued C.S. degree part-time while working,
+                but realized the fastest path to my passion was through attending a code school. I excel at building powerful data
+                pipelines and serving them up to create beautiful user experiences. I believe my diverse background and skill set
+                give me the tools I need to tackle any challenge.</p>
+        </section>
+        <section class="devs container order-2 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-2">Vik Akam</h2>
+                <img id="vik" class="col order-1" src="/img/Vik.jfif"/>
+            </div>
+            <p>I graduated from the University of Washington in 2016 with a BS in Biochemistry. After spending a total of nearly a decade
+                in the health care sector, I'm excited to get my feet wet in software development; learning about how and why computers work
+                the way they do is profoundly similar to learning a biochemical pathway, and that's what gets me excited every single day
+                about going into this sector. I look forward to making an impact in the industry by working on both sides of the stack to
+                give an astounding user experience.</p>
+        </section>
+        <section class="devs container order-3 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-1">Ashlyn Morin</h2>
+                <img id="ashlyn" class="col order-2" src="/img/Ashlyn.jfif"/>
+            </div>
+            <p>Hi, my name is Ashlyn and I am passionate about creating software that helps ease the burden of business and life in general.
+                I believe that technology is something that can enhance anyone’s life and business, and have seen that in my own life.
+                I formerly worked as an Accounts Executive for a coffee company and utilized different tech applications to streamline operations
+                at the company, making it more efficient and increasing profits. I decided that I wanted to be the one to create those technologies
+                that I was using, so I began my journey into the tech industry. I really value helping others, organization, efficiency and
+                creativity and the fact that I can combine all of that into a career that helps other people is really exciting to me.</p>
+        </section>
+        <section class="devs container order-4 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-2">Ran Vaknin</h2>
+                <img id="ran" class="col order-1" src="/img/Ran.jfif"/>
+            </div>
+            <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
+        </section>
+        <section class="devs container order-5 aboutusbio">
+            <div class="row align-items-center">
+                <h2 class="col order-1">Lucas Wilber</h2>
+                <img id="lucas" class="col order-2" src="/img/Lucas.jfif"/>
+            </div>
+            <p>Lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum ipsum blah blah hello world omg lorum</p>
+        </section>
     </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
 </body>
 </html>

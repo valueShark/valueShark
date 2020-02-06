@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign up with Valueshark&#169</title>
-    <th:block th:replace="/fragments/cssfiles.html :: cssfiles"></th:block>
-</head>
-<body>
-    <header th:replace="/fragments/header.html :: header"></header>
-    <main>
-        <h3 id="userexists" th:if="${param.taken}">That username is taken.</h3>
-        <form action="/signup" method="POST">
-            <label>Username <input name="username"/></label>
-            <label>Password <input type="password" name="password"/></label>
-            <label>First Name <input name="firstName"/></label>
-            <label>Last Name <input name="lastName"/></label>
-            <label>Email <input name="email"/></label>
-            <input type="submit" value="Sign up"/>
-        </form>
-    </main>
-    <footer th:replace="/fragments/footer.html :: footer"></footer>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/head.html :: head"></head>
+    <body>
+        <header th:replace="fragments/header.html :: header"></header>
+        <main id="signuppage">
+            <div>
+                <h1>Sign up</h1>
+                <img id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
+                <h5 th:if="${param.taken}">That username is taken.</h5>
+                <h5 th:if="${param.reenter}">The password was re-entered incorrectly.</h5>
+            </div>
+            <form class="container" action="/signup" method="POST">
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputusername">Username <input class="form-control" id="inputusername" name="username"/></label>
+                </fieldset>
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputpassword">Password <input class="form-control" id="inputpassword" type="password" name="password"/></label>
+                </fieldset>
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputreenter">Re-enter Password <input class="form-control" id="inputreenter" type="password" name="reenter"/></label>
+                </fieldset>
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputfirst">First Name <input class="form-control" id="inputfirst" name="firstName"/></label>
+                </fieldset>
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputlast">Last Name <input class="form-control" id="inputlast" name="lastName"/></label>
+                </fieldset>
+                <fieldset class="form-group row justify-content-center">
+                    <label class="col" for="inputemail">Email <input class="form-control" type="email" id="inputemail" name="email"/></label>
+                </fieldset>
+                <div class="text-center">
+                    <button id="signuploginsubmit" type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+        </main>
+        <footer th:replace="fragments/footer.html :: footer"></footer>
+        <th:block th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></th:block>
+    </body>
 </html>

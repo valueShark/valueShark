@@ -1,0 +1,32 @@
+<div th:fragment="portfolioTable" th:if="${user}" id="portfolioList">
+    <div th:each="item : ${user.portfolio}" class="container-fluid" style="margin-top:15%;" id="uldiv">
+        <ul class="portfolioItem" style="margin-left: 2%; margin-top:7%;">
+            <li class="symbolstyle">
+                <a th:href="${'/stocks?symbol=' + item.portfolioCompany.symbol}">
+                    <b>[[${item.portfolioCompany.symbol}]]</b></li></a>
+            <li><b>[[${item.portfolioCompany.companyName}]]</b></li>
+            <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
+            <li>Shares owned: <b>[[${item.shares}]]</b></li>
+            <!--                add a percent change here later, maybe-->
+            <li>Total Value: <b>$[[${#numbers.formatDecimal(item.pricePerShare * item.shares, 0, 2, 'POINT')}]]</b></li>
+            <!--                replace the actions with the correct routes-->
+            <br>
+            <div class="row">
+
+
+            <button class="updateButton btn btn-primary btn-sm" role="button">EDIT</button> &nbsp
+            <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
+              
+                <label>Number of Shares<input type="number" name="shares" required /></label>
+                <label>Price per share<input type="number" name="pricePerShare" required /></label>
+                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />>>>>>>> dev
+
+            </form>
+
+            <form th:action="'/portfolioItem/' + ${item.id} + '/delete'" th:method="DELETE">
+                <input type="submit" class="btn btn-primary btn-sm" value="DELETE" />
+            </form>
+            </div>
+        </ul>
+    </div>
+</div>

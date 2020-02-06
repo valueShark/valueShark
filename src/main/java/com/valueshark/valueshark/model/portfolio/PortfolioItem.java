@@ -1,7 +1,6 @@
 package com.valueshark.valueshark.model.portfolio;
 
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
-import com.valueshark.valueshark.model.company.Company;
 
 import javax.persistence.*;
 
@@ -10,24 +9,23 @@ public class PortfolioItem {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public long id;
+    private long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    public ApplicationUser userId;
+    private ApplicationUser user;
 
     @ManyToOne
-    @JoinColumn(name = "company_id")
-    public Company companyId;
+    private PortfolioCompany portfolioCompany;
 
-    int shares;
-    double pricePerShare;
+    private long shares;
+    private double pricePerShare;
 
     PortfolioItem() {};
 
-    public PortfolioItem(ApplicationUser userId, Company companyId, int shares, double pricePerShare) {
-        this.userId = userId;
-        this.companyId = companyId;
+
+    public PortfolioItem(ApplicationUser user, PortfolioCompany portfolioCompany, long shares, double pricePerShare) {
+        this.user = user;
+        this.portfolioCompany = portfolioCompany;
         this.shares = shares;
         this.pricePerShare = pricePerShare;
     }
@@ -36,19 +34,27 @@ public class PortfolioItem {
         return id;
     }
 
-    public ApplicationUser getUserId() {
-        return userId;
+    public ApplicationUser getUser() {
+        return user;
     }
 
-    public Company getCompanyId() {
-        return companyId;
+    public PortfolioCompany getPortfolioCompany() {
+        return portfolioCompany;
     }
 
-    public int getShares() {
+    public long getShares() {
         return shares;
     }
 
     public double getPricePerShare() {
         return pricePerShare;
+    }
+
+    public void setShares(long shares) {
+        this.shares = shares;
+    }
+
+    public void setPricePerShare(double pricePerShare) {
+        this.pricePerShare = pricePerShare;
     }
 }

@@ -1,6 +1,7 @@
 package com.valueshark.valueshark.model.company;
 
 import com.google.gson.Gson;
+import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 
 import javax.persistence.*;
 import java.io.BufferedReader;
@@ -10,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Company {
@@ -18,10 +20,15 @@ public class Company {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
+  //this isn't necessary but leaving it in case we decide to use this for stats later
+//  @OneToMany(mappedBy = "companyId")
+//  public List<PortfolioItem> portfoliosThisIsIn;
+
   private String symbol;
   private String companyName;
   private String exchange;
   private String industry;
+  @Column(columnDefinition="text")
   private String website;
   @Column(columnDefinition="text")
   private String description;
@@ -46,10 +53,12 @@ public class Company {
   private long enterpriseValue;
   private double priceToBook;
   private double pegRatio;
+  @Column(columnDefinition="text")
   private String logoUrl;
   private Date newsDate;
   private String newsHeadline;
   private String newsSource;
+  @Column(columnDefinition="text")
   private String newsUrl;
   @Column(columnDefinition="text")
   private String newsSummary;
@@ -59,7 +68,7 @@ public class Company {
   public Company(String symbol) {
 
     try {
-      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=Tpk_6eaa26587325492481257c267b6cc67f");
+      URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
       Gson gson = new Gson();
       HttpURLConnection con;
       BufferedReader in;
@@ -93,7 +102,7 @@ public class Company {
 
         // CompanyLogo object used to store data from "logo' endpoint
         CompanyLogo coLogo;
-        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
@@ -106,7 +115,7 @@ public class Company {
 
         // CompanyNews array used to store data from "news' endpoint
         CompanyNews[] coNews;
-        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
@@ -125,7 +134,7 @@ public class Company {
 
         // CompanyPrice object used to store data from "quote' endpoint
         CompanyPrice price;
-        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
@@ -138,7 +147,7 @@ public class Company {
 
         // CompanyInfo object used to store data from "company' endpoint
         CompanyInfo coInfo;
-        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=Tpk_6eaa26587325492481257c267b6cc67f");
+        url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         in = new BufferedReader(
@@ -164,6 +173,14 @@ public class Company {
     } catch (MalformedURLException e) {
       e.printStackTrace();
     }
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
   }
 
   public long getId() {
