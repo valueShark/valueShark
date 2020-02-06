@@ -28,7 +28,6 @@ class ValuesharkApplicationTests {
 	@Autowired
 	ValueSharkController controller;
 
-	//checking controller
 	@Test
 	void contextLoads() {
 		assertNotNull(controller);

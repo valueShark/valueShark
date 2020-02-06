@@ -7,14 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CompanyTest {
 
-  Company apple;
-  Company sdfsdf;
-
   @Test
-  public void validCompanyConstructorTest() {
+  public void companyConstructorWorks() {
+    Company company = new Company();
+    assertNotNull(company);
+  }
+
+  //this test requires you add the api key to the test config env vars
+  @Test
+  public void companyGettersTest() {
     // test to ensure all instance variables not null
-    apple = new Company("aapl");
-    System.out.println(apple);
+    Company apple = new Company("aapl");
     assertNotNull(apple.getCEO());
     assertNotNull(apple.getCity());
     assertNotNull(apple.getCompanyName());
@@ -35,11 +38,11 @@ class CompanyTest {
     assertNotNull(apple.getWebsite());
   }
 
+  //this test requires you add the api key to the test config env vars
   @Test
   public void invalidCompanyConstructorTest() {
     // test to ensure all instance variables not null
-    sdfsdf = new Company("sdfsdf");
-    System.out.println(sdfsdf);
+    Company sdfsdf = new Company("sdfsdf");
     assertNull(sdfsdf.getCEO());
     assertNull(sdfsdf.getCity());
     assertNull(sdfsdf.getCompanyName());
