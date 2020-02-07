@@ -20,10 +20,10 @@ main{
 
 #valuesharklogo {
     width: 15%;
-}
 
-#valuesharklogosplash {
-    width: 40%;
+
+#valuesharklogo {
+    width: 15%;
 }
 
 .card-body {
@@ -38,9 +38,6 @@ main{
         background-color: rgb(242, 242, 242);
     }
 
-#jumbotron {
-    width: 90%;
-}
 .vertical-center {
     display: flex;
     flex-direction: column;
@@ -56,6 +53,7 @@ ul {
     padding-bottom: 15px;
     margin: 0 0 !important;
     padding-top:1vh;
+    margin-bottom: 2px !important;
 
 }
 
@@ -76,6 +74,29 @@ ul {
 
 #uldiv > ul > div{
     margin-left:-0.1vw;
+}
+
+
+/* splash unlogged */
+#markusunsplash, #ibrahimunsplash {
+    width: 1000px;
+}
+.jumbotron {
+    margin-bottom: 0;
+}
+#jumbotron1, #jumbotron2 {
+    width: 100%;
+}
+#jumbotron1 {
+    background-color: #0765BC;
+}
+#splashslogan * {
+    padding: 4%;
+    color: #EFEFEF !important;
+}
+.blurbs {
+    width: 100%;
+    height: 700px;
 }
 
 #stockNotFound {
