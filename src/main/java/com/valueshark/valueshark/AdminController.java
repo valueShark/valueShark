@@ -27,13 +27,13 @@ public class AdminController {
     @Autowired
     CompanyRepository companyRepo;
 
-    @Scheduled(cron= "0 0 0 * * *")
+    @Scheduled(cron= "0 44 * * * *")
     public void updateDatabase() {
 
         URL url = null;
 
         try {
-            url = new URL("https://sandbox.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+            url = new URL("https://cloud.iexapis.com/stable/ref-data/symbols?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
 
             Gson gson = new Gson();
             HttpURLConnection con;

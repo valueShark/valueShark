@@ -69,7 +69,7 @@ public class PortfolioCompany {
   public PortfolioCompany(String symbol) {
 
       try {
-          URL url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+          URL url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
           Gson gson = new Gson();
           HttpURLConnection con;
           BufferedReader in;
@@ -103,7 +103,7 @@ public class PortfolioCompany {
 
               // CompanyLogo object used to store data from "logo' endpoint
               CompanyLogo coLogo;
-              url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/logo?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+              url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/logo?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
               con = (HttpURLConnection) url.openConnection();
               con.setRequestMethod("GET");
               in = new BufferedReader(
@@ -116,7 +116,7 @@ public class PortfolioCompany {
 
               // CompanyNews array used to store data from "news' endpoint
               CompanyNews[] coNews;
-              url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+              url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/news/last/1?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
               con = (HttpURLConnection) url.openConnection();
               con.setRequestMethod("GET");
               in = new BufferedReader(
@@ -135,7 +135,7 @@ public class PortfolioCompany {
 
               // CompanyPrice object used to store data from "quote' endpoint
               CompanyPrice price;
-              url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+              url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
               con = (HttpURLConnection) url.openConnection();
               con.setRequestMethod("GET");
               in = new BufferedReader(
@@ -148,7 +148,7 @@ public class PortfolioCompany {
 
               // CompanyInfo object used to store data from "company' endpoint
               CompanyInfo coInfo;
-              url = new URL("https://sandbox.iexapis.com/v1/stock/" + symbol + "/company?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+              url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/company?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
               con = (HttpURLConnection) url.openConnection();
               con.setRequestMethod("GET");
               in = new BufferedReader(
