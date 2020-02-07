@@ -37,12 +37,6 @@ companies that the IEX Cloud API sorts based on the company stats.
 
 OUT - This app will not allow for stock purchasing nor analysis of other types of investments. 
 
-## valueshark.io:
-![Login](/Assets/valueshark.io3.png)
-![StockDetails](/Assets/ValueShark2.png)
-![Splash](/Assets/valueshark.io4.png)
-![Portfolio](/Assets/valueshark.io.png)
-
 ## Technologies Used:
 * API: iexcloud.io
 * Bootstrap
