@@ -1,5 +1,6 @@
 package com.valueshark.valueshark.model.applicationuser;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ApplicationUserTest {
 
-  @Autowired
-  PasswordEncoder encoder;
-
-  @BeforeEach
-  void setUp() {
-
+  @Test
+  public void testConstructor() {
+    ApplicationUser user = new ApplicationUser();
+    assertNotNull(user);
   }
 
   @Test
-  public void testConstructor() {
-    ApplicationUser user = new ApplicationUser("testUser", encoder.encode("testUserPassword"), "Jane", "Doe", "testUser@gmail.com");
+  public void testGetters() {
+    ApplicationUser user = new ApplicationUser("testUser","testUserPassword", "Jane", "Doe", "testUser@gmail.com");
     assertNotNull(user.getUsername());
     assertNotNull(user.getPassword());
     assertNotNull(user.getFirstName());

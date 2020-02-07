@@ -18,8 +18,8 @@
             <form th:action="'/portfolioItem/' + ${item.id} + '/update'" th:method="PUT" style="display: none;">
               
                 <label>Number of Shares<input type="number" name="shares" required /></label>
-                <label>Price per share<input type="number" name="pricePerShare" required /></label>
-                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />>>>>>>> dev
+                <label>Price per share<input type="number" step=".01" name="pricePerShare" required /></label>
+                <input type="submit" class="btn btn-primary btn-sm" value="UPDATE" />
 
             </form>
 

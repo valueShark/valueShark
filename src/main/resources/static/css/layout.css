@@ -4,15 +4,18 @@ footer {
 }
 
 .portfolioItem{
-margin-left:-35px;
 list-style-type: none;
-
-}
+margin: 0 0 !important;
+margin-left: -2rem !important;}
 
 #loginpage div, #signuppage div {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+main{
+    margin-top:8vh;
 }
 
 #valuesharklogo {
@@ -21,6 +24,7 @@ list-style-type: none;
 
 #valuesharklogosplash {
     width: 40%;
+
 }
 
 .card-body {
@@ -48,10 +52,13 @@ ul {
     list-style-type: none;
 }
 
+
 #uldiv{
     padding-bottom: 15px;
-    margin-bottom: 0;
+    margin: 0 0 !important;
+    padding-top:1vh;
 }
+
 
 .card {
     width: 15rem;
@@ -65,4 +72,29 @@ ul {
 
 #uldiv:nth-child(even) {
     background-color:#e0e0e0;
+}
+
+#uldiv > ul > div{
+    margin-left:-0.1vw;
+}
+
+/* splash unlogged */
+#markusunsplash, #ibrahimunsplash {
+    width: 100%;
+    opacity: 0.7;
+}
+.jumbotron {
+    margin-bottom: 0;
+}
+#jumbotron1, #jumbotron2 {
+    width: 100%;
+}
+.blurbs {
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+#stockNotFound {
+    margin-top: 20%;
 }
