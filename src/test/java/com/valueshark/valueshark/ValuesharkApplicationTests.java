@@ -46,6 +46,7 @@ class ValuesharkApplicationTests {
 	public void testSignUpPage() throws Exception {
 		this.mockMvc.perform(get("/signup"))
 				.andDo(print())
+
 				.andExpect(status().isOk())
 				.andExpect(content().string(containsString("Sign up")));
 	}

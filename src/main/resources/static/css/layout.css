@@ -20,6 +20,10 @@ main{
 
 #valuesharklogo {
     width: 15%;
+
+
+#valuesharklogo {
+    width: 15%;
 }
 
 .card-body {
@@ -49,6 +53,7 @@ ul {
     padding-bottom: 15px;
     margin: 0 0 !important;
     padding-top:1vh;
+    margin-bottom: 2px !important;
 
 }
 
@@ -70,6 +75,7 @@ ul {
 #uldiv > ul > div{
     margin-left:-0.1vw;
 }
+
 
 /* splash unlogged */
 #markusunsplash, #ibrahimunsplash {
@@ -96,4 +102,3 @@ ul {
 #stockNotFound {
     margin-top: 20%;
 }
-
