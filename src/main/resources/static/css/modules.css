@@ -28,10 +28,8 @@
 
 .col-sm-3{
         background-color:#cecece;
+
         padding: 0 0;
-}
-.col-sm-9{
-        background-color:blue;
 }
 body > header > nav {
 height:7vh;
@@ -75,6 +73,7 @@ body > main > div > div > div.col-sm-3 > h4{
     color: #3e3e3e !important;
     font-weight:bold;
     font-size:2.8vh;
+
 }
 
 @media (max-width: 576px) {
