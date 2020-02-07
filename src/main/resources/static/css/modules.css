@@ -76,6 +76,24 @@ body > main > div > div > div.col-sm-3 > h4{
 
 }
 
+#splashslogan > h1{
+    color: #e0ffcf !important;
+    font-size:9vh;
+}
+#splashslogan > h1:nth-child(1){
+    margin-bottom:-3vh;
+    margin-top:1vh;
+
+}
+
+signUpNow{
+    width:auto !important;
+    height:auto !important;
+    color:blue;
+}
+
+
+
 @media (max-width: 576px) {
 
     #collapsingNavbar{
@@ -93,6 +111,7 @@ body > main > div > div > div.col-sm-3 > h4{
     #collapsingNavbar{
         text-align:center;
     }
+
 
 }
 

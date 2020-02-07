@@ -7,9 +7,7 @@
 
 /* splash unlogged */
 #jumbotron1 div div article, #jumbotron2 div div {
-    animation-name: aboutustiles;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
+
 }
 
 /* login, signup */

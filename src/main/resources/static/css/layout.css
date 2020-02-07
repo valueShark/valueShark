@@ -98,3 +98,43 @@ ul {
 #stockNotFound {
     margin-top: 20%;
 }
+
+#jumbotron1{
+    height: 80vh;
+    margin: 0 0 !important;
+    padding: 0 0 !important;
+    background-color: #071d37 !important;
+}
+
+#jumbotron1 > div > div{
+    margin: 0 0 !important;
+    padding: 0 0 !important;
+}
+
+#splashslogan{
+    animation-name: none !important;
+    padding: 0 0 !important;
+    margin: 0 0 !important;
+}
+
+#markusunsplash{
+    height: 80vh;
+    width: 100%;
+}
+#signuploginsubmit{
+    padding; 0 0 !important;
+}
+
+
+@media (max-width: 575.98px) {
+
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { ... }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { ... }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { ... }

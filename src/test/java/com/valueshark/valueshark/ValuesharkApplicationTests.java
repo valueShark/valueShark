@@ -78,7 +78,7 @@ class ValuesharkApplicationTests {
 	//checking /myprofile route as a user signed in @with user details
 	//these tests require your local db to have the specified user already created
 	@Test
-	@WithUserDetails("lwilber")
+	@WithUserDetails("ran")
 	public void testMyProfilePage() throws Exception {
 		this.mockMvc.perform(get("/myprofile"))
 				.andDo(print())
@@ -87,7 +87,7 @@ class ValuesharkApplicationTests {
 
 
 	@Test
-	@WithUserDetails("lwilber")
+	@WithUserDetails("ran")
 	public void testMyStocksPage() throws Exception {
 		this.mockMvc.perform(get("/stocks"))
 				.andDo(print())
