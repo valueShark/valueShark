@@ -19,7 +19,7 @@ investments all in one, convenient and free app.
 2. Create a PostgreSQL database dedicated for this application. 
 3. Obtain an API key from [iexcloud.io](iexcloud.io)
 4. Create environment variables for DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, and IEXCLOUD_PUSHABLETOKEN (which uses your IEX Cloud API key). 
-Ensure your DATABASE_URL follows this format (replacing the carats with the appropriate config): postgresql://\<host>:\<port>/\<database url>
+Ensure your DATABASE_URL follows this format (replacing the carats with the appropriate config): postgresql://\<host>:\<port>/\<database_name>
 
    - Example: postgresql://localhost:5432/valueshark_db
 5. Run the application using the ./gradlew bootRun command in your terminal.
