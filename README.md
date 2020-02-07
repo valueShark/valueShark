@@ -34,7 +34,11 @@ OUT - This app will not allow for stock purchasing and it will not do analysis o
 
 
 ## How to Use:
-
+1. Clone the repository on your local environment.
+2. Ensure you have a PostgreSQL database deticated for this application.
+3. Obtain an API key from [iexcloud.io](iexcloud.io)
+3. Create environment variables for DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, and an IEXCLOUD_PUSHABLETOKEN which uses your iexcloud API key.
+4. Run the application using the ./gradlew bootRun command in your terminal.
 
 
 ## ValueShark app:
