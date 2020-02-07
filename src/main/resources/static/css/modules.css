@@ -80,8 +80,12 @@ body > main > div > div > div.col-sm-3 > h4{
         background-color:#b8b8b8eb;
     }
 
+    .p-3 {
+        padding: 0 0 !important;
+    }
+
     body > header > nav{
-        padding: 0 !important;
+        padding: 0 0 !important;
     }
 
     #collapsingNavbar{

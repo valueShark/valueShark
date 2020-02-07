@@ -97,3 +97,7 @@ ul {
     margin-top: 20%;
 }
 
+#collapsingNavbar > ul:nth-child(1) > li:nth-child(1) > a{
+    margin-right:2.5vw;
+}
+
