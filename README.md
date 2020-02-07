@@ -8,7 +8,6 @@ A web application for value investors to quickly identify potential opportunitie
 * Vik Akam
 * Ran Vaknin
 
-
 ## What is Value Shark?
 Value Shark is a tool that decreases the time spent on searching for an investment and helps to organize and track investments all in one, convenient and free app.
 
@@ -32,16 +31,15 @@ OUT - This app will not allow for stock purchasing and it will not do analysis o
 * Gradle
 * JQuery
 
-
 ## How to Use:
 1. Clone the repository on your local environment.
-2. Ensure you have a PostgreSQL database deticated for this application.
+2. Ensure you have a PostgreSQL database dedicated for this application.
 3. Obtain an API key from [iexcloud.io](iexcloud.io)
-3. Create environment variables for DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, and an IEXCLOUD_PUSHABLETOKEN which uses your iexcloud API key.
-4. Run the application using the ./gradlew bootRun command in your terminal.
-
+4. Create environment variables for DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, and an IEXCLOUD_PUSHABLETOKEN which uses your iexcloud API key.
+5. Run the application using the ./gradlew bootRun command in your terminal.
 
 ## ValueShark app:
-
+### Visit [valueshark.io](valueshark.io).
+![Splash Page](src/main/resources/static/img/readmemainpage.jpg)
 
 
