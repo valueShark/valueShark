@@ -27,7 +27,7 @@
 
 
 .col-sm-3{
-        background-color:#444444;
+        background-color:#cecece;
         padding: 0 0;
 }
 .col-sm-9{
@@ -72,7 +72,9 @@ min-height:8vh;
 
 body > main > div > div > div.col-sm-3 > h4{
     margin-top:1vh;
-    color: #cfcfcf !important;
+    color: #3e3e3e !important;
+    font-weight:bold;
+    font-size:2.8vh;
 }
 
 @media (max-width: 576px) {
