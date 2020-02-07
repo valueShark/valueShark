@@ -77,3 +77,24 @@ ul {
 #uldiv > ul > div{
     margin-left:-0.1vw;
 }
+
+/* splash unlogged */
+#markusunsplash, #ibrahimunsplash {
+    width: 100%;
+    opacity: 0.7;
+}
+.jumbotron {
+    margin-bottom: 0;
+}
+#jumbotron1, #jumbotron2 {
+    width: 100%;
+}
+.blurbs {
+    width: 100%;
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+#stockNotFound {
+    margin-top: 20%;
+}
