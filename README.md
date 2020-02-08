@@ -1,6 +1,12 @@
 # Value Shark
 A web application for value investors to quickly identify potential opportunities and track their portfolio.
 
+![Splash Page](/assets/vs-splash.PNG)
+![Login Page](/assets/vs-login.PNG)
+![Index Page](/assets/vs-index.PNG)
+![Company Details Page](/assets/vs-companydetails.PNG)
+![Add to Portfolio](/assets/vs-addtoportfolio.PNG)
+
 ## Team members:
 * Chase Tucker
 * Ashlyn Morin
