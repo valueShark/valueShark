@@ -3,6 +3,12 @@ A web application for value investors to quickly identify potential opportunitie
 
 Deployed on AWS: [valueshark.io](valueshark.io).
 
+![Splash Page](/assets/vs-splash.PNG)
+![Login Page](/assets/vs-login.PNG)
+![Index Page](/assets/vs-index.PNG)
+![Company Details Page](/assets/vs-companydetails.PNG)
+![Add to Portfolio](/assets/vs-addtoportfolio.PNG)
+
 ## Team members:
 * Chase Tucker
 * Ashlyn Morin
