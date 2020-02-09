@@ -46,7 +46,7 @@
               <p>Day 50 Moving Avg: <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></p>
             </div>
             <div class="col">
-              <p>EPS (ttm): <b>$[[${#numbers.formatDecimal(company.day50MovingAvg, 0, 'COMMA', 2, 'POINT')}]]</b></p>
+              <p>EPS (ttm): <b>$[[${#numbers.formatDecimal(company.ttmEPS, 0, 'COMMA', 2, 'POINT')}]]</b></p>
               <p>Next Earning Date: <b>[[${company.nextEarningsDate}]]</b></p>
               <p>P/E ratio: <b>[[${#numbers.formatDecimal(company.peRatio, 0, 2, 'POINT')}]]</b></p>
               <p>Beta: <b>[[${#numbers.formatDecimal(company.beta, 0, 2, 'POINT')}]]</b></p>
