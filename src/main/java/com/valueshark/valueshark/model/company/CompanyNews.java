@@ -10,6 +10,9 @@ public class CompanyNews {
   private String url;
   private String summary;
 
+  //added default constructor
+  public CompanyNews(){}
+
   public CompanyNews(long datetime, String headline, String source, String url, String summary) {
     this.datetime = datetime;
     this.headline = headline;

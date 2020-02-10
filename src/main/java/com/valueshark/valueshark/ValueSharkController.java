@@ -44,7 +44,7 @@ public class ValueSharkController {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
             m.addAttribute("user", user);
 
-            //all "value stocks"
+            //all "value stocks" print the first 20
             List<Company> allCompanies = companyRepository.findTop20ByOrderByPegRatioAsc();
             m.addAttribute("allCompanies", allCompanies);
         }

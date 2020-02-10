@@ -26,7 +26,7 @@ public class AdminController {
 
     @Autowired
     CompanyRepository companyRepo;
-
+//add notes about how cron jobs work
     @Scheduled(cron= "0 0 0 * * 2-6")
     public void updateDatabase() {
 

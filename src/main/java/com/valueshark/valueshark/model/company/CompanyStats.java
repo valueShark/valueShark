@@ -18,6 +18,9 @@ public class CompanyStats {
   private double priceToBook;
   private double pegRatio;
 
+  //added default constructor.  Someone made a second constructor that was a duplicate of the first but not a default.
+  public CompanyStats(){}
+
   public CompanyStats(long marketcap, double week52high, double week52low, double week52change, int sharesOutstanding, double day200MovingAvg, double day50MovingAvg, double ttmEPS, String nextEarningsDate, double peRatio, double beta, double profitMargin, double enterpriseValue, double priceToBook, double pegRatio) {
     this.marketcap = marketcap;
     this.week52high = week52high;
@@ -35,23 +38,7 @@ public class CompanyStats {
     this.priceToBook = priceToBook;
     this.pegRatio = pegRatio;
   }
-  public CompanyStats(long marketcap, double week52high, double week52low, double week52change, int sharesOutstanding, double day200MovingAvg, double day50MovingAvg, double ttmEPS, String nextEarningsDate, double peRatio, double beta, double profitMargin, long enterpriseValue, double priceToBook, double pegRatio) {
-    this.marketcap = marketcap;
-    this.week52high = week52high;
-    this.week52low = week52low;
-    this.week52change = week52change;
-    this.sharesOutstanding = sharesOutstanding;
-    this.day200MovingAvg = day200MovingAvg;
-    this.day50MovingAvg = day50MovingAvg;
-    this.ttmEPS = ttmEPS;
-    this.nextEarningsDate = nextEarningsDate;
-    this.peRatio = peRatio;
-    this.beta = beta;
-    this.profitMargin = profitMargin;
-    this.enterpriseValue = (double) enterpriseValue;
-    this.priceToBook = priceToBook;
-    this.pegRatio = pegRatio;
-  }
+//deleted one duplicate constructor - Reviewing with Rachael Rice
 
   public long getMarketcap() {
     return marketcap;

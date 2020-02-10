@@ -15,7 +15,7 @@ class ApplicationUserTest {
     ApplicationUser user = new ApplicationUser();
     assertNotNull(user);
   }
-
+//Added actual test to see if expected value is returned -With Rachael Rice in review
   @Test
   public void testGetters() {
     ApplicationUser user = new ApplicationUser("testUser","testUserPassword", "Jane", "Doe", "testUser@gmail.com");
@@ -24,5 +24,6 @@ class ApplicationUserTest {
     assertNotNull(user.getFirstName());
     assertNotNull(user.getLastName());
     assertNotNull(user.getEmail());
+    assertEquals("testUser", user.getUsername());
   }
 }

@@ -14,6 +14,11 @@ public class CompanyInfo {
   private String city;
   private String country;
 
+
+  //added default constructor with Rachael Rice in review
+
+  public CompanyInfo(){}
+
   public CompanyInfo(String symbol, String companyName, String exchange, String industry, String website, String description, String CEO, String sector, String state, String city, String country) {
     this.symbol = symbol;
     this.companyName = companyName;

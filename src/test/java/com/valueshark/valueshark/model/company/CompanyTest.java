@@ -14,6 +14,7 @@ class CompanyTest {
   }
 
   //this test requires you add the api key to the test config env vars
+  //What should the env vars be named?
   @Test
   public void companyGettersTest() {
     // test to ensure all instance variables not null

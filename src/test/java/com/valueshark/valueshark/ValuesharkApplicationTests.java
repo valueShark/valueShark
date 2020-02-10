@@ -25,6 +25,7 @@ class ValuesharkApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+	//why is the controller autowired?
 	@Autowired
 	ValueSharkController controller;
 
@@ -39,7 +40,7 @@ class ValuesharkApplicationTests {
 		this.mockMvc.perform(get("/"))
 				.andDo(print())
 				.andExpect(status().isOk());
-//				.andExpect(content().string(containsString("<script type=\"text/javascript\" src=\"/js/app.js\"></script>")));
+
 	}
 
 	@Test
