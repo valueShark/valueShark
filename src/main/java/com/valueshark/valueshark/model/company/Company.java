@@ -1,6 +1,7 @@
 package com.valueshark.valueshark.model.company;
 
 import com.google.gson.Gson;
+import com.valueshark.valueshark.model.PriceTarget;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 
 import javax.persistence.*;
@@ -62,6 +63,11 @@ public class Company {
   private String newsUrl;
   @Column(columnDefinition="text")
   private String newsSummary;
+  private String PTupdatedDate;
+  private double PTpriceTargetAverage;
+  private double PTpriceTargetHigh;
+  private double PTpriceTargetLow;
+  private long PTnumberOfAnalysts;
 
   public Company() {}
 
@@ -110,6 +116,23 @@ public class Company {
         // Send request to "logo" endpoint and store data in coStats
         coLogo = gson.fromJson(in, CompanyLogo.class);
         this.logoUrl = coLogo.getUrl();
+        in.close();
+        con.disconnect();
+
+        // PriceTarget object used to store data from "price-target' endpoint
+        PriceTarget priceTarget;
+        url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/price-target?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        in = new BufferedReader(
+            new InputStreamReader(con.getInputStream()));
+        // Send request to "price-target" endpoint and store data in priceTarget
+        priceTarget = gson.fromJson(in, PriceTarget.class);
+        this.PTupdatedDate = priceTarget.getUpdatedDate();
+        this.PTpriceTargetAverage = priceTarget.getPriceTargetAverage();
+        this.PTpriceTargetHigh = priceTarget.getPriceTargetHigh();
+        this.PTpriceTargetLow = priceTarget.getPriceTargetLow();
+        this.PTnumberOfAnalysts = priceTarget.getNumberOfAnalysts();
         in.close();
         con.disconnect();
 
@@ -317,6 +340,26 @@ public class Company {
 
   public String getNewsSummary() {
     return newsSummary;
+  }
+
+  public String getPTupdatedDate() {
+    return PTupdatedDate;
+  }
+
+  public double getPTpriceTargetAverage() {
+    return PTpriceTargetAverage;
+  }
+
+  public double getPTpriceTargetHigh() {
+    return PTpriceTargetHigh;
+  }
+
+  public double getPTpriceTargetLow() {
+    return PTpriceTargetLow;
+  }
+
+  public long getPTnumberOfAnalysts() {
+    return PTnumberOfAnalysts;
   }
 
   @Override

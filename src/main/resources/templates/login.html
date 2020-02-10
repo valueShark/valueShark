@@ -3,36 +3,30 @@
     <head th:replace="fragments/head.html :: head"></head>
     <body>
         <header th:replace="fragments/header.html :: header"></header>
-        <main id="loginpage">
-            <div class="container">
-                <h1>Log In</h1>
-                <img id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
-                <h5 th:if="${param.error}">That username/password combination does not exist.</h5>
+        <main style="min-height:80vh;">
+            <div class="text-center mx-autow-75">
+                <h1 class="font-weight-bold py-2">Log In</h1>
+                <img class="d-block mx-auto" id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
+                <h5 class="text-center" th:if="${param.error}">That username/password combination does not exist.</h5>
                 <!-- password forgot/reset feature here -->
-            </div>
-            <form class="container" style="margin-bottom:5%;" action="/login" method="POST">
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputusername">Username
-                        <input class="form-control" id="inputusername" name="username"/>
-                    </label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputpassword">Password
-                        <input class="form-control" id="inputpassword" type="password" name="password"/>
-                    </label>
-                </fieldset>
-                <fieldset class="row form-group row form-check text-center">
-                    <input class="form-check-input" type="checkbox" id="checkremember"/>
-                    <label class="form-check-label" for="checkremember">Remember me</label>
-                </fieldset>
-                <div class="text-center">
-                    <button id="signuploginsubmit" type="submit" class="btn btn-primary">Log In</button>
-                </div>
-            </form>
+                <form class="mb-2" action="/login" method="POST">
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputusername">Username
+                        <input class="form-control w-50 mx-auto" id="inputusername" name="username"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputpassword">Password
+                        <input class="form-control w-50 mx-auto" id="inputpassword" type="password" name="password"/></label>
+                    </div>
+                    <!-- <div class="row form-group row form-check text-center">
+                        <input class="form-check-input" type="checkbox" id="checkremember"/>
+                        <label class="form-check-label" for="checkremember">Remember me</label>
+                    </div> -->
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </form>
+              </div>
         </main>
-        <div id="lowerFooter">
-            <footer th:replace="fragments/footer.html :: footer"></footer>
-        </div>
+        <footer th:replace="fragments/footer.html :: footer"></footer>
         <script th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></script>
     </body>
 </html>
