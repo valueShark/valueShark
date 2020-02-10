@@ -1,6 +1,7 @@
 package com.valueshark.valueshark.model.portfolio;
 
 import com.google.gson.Gson;
+import com.valueshark.valueshark.model.PriceTarget;
 import com.valueshark.valueshark.model.company.*;
 
 import javax.persistence.*;
@@ -22,7 +23,9 @@ public class PortfolioCompany {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @OneToMany(mappedBy = "portfolioCompany")
+  @OneToMany(cascade = CascadeType.ALL,
+      mappedBy = "portfolioCompany",
+      orphanRemoval = true)
   public List<PortfolioItem> portfoliosThisIsIn;
 
   private String symbol;
@@ -63,12 +66,18 @@ public class PortfolioCompany {
   private String newsUrl;
   @Column(columnDefinition="text")
   private String newsSummary;
+  private String PTupdatedDate;
+  private double PTpriceTargetAverage;
+  private double PTpriceTargetHigh;
+  private double PTpriceTargetLow;
+  private long PTnumberOfAnalysts;
 
   public PortfolioCompany() {}
 
   public PortfolioCompany(String symbol) {
 
       try {
+          // I'm not sure why you make a new request here, instead of using the Company already saved in your DB. This also means the stats won't automatically update daily, so all of the price data will stay at the value it was at when the user added it to their portfolio... that seems surprising to me.
           URL url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/advanced-stats?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
           Gson gson = new Gson();
           HttpURLConnection con;
@@ -113,6 +122,23 @@ public class PortfolioCompany {
               this.logoUrl = coLogo.getUrl();
               in.close();
               con.disconnect();
+
+            // PriceTarget object used to store data from "price-target' endpoint
+            PriceTarget priceTarget;
+            url = new URL("https://cloud.iexapis.com/v1/stock/" + symbol + "/price-target?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+            con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+            // Send request to "price-target" endpoint and store data in priceTarget
+            priceTarget = gson.fromJson(in, PriceTarget.class);
+            this.PTupdatedDate = priceTarget.getUpdatedDate();
+            this.PTpriceTargetAverage = priceTarget.getPriceTargetAverage();
+            this.PTpriceTargetHigh = priceTarget.getPriceTargetHigh();
+            this.PTpriceTargetLow = priceTarget.getPriceTargetLow();
+            this.PTnumberOfAnalysts = priceTarget.getNumberOfAnalysts();
+            in.close();
+            con.disconnect();
 
               // CompanyNews array used to store data from "news' endpoint
               CompanyNews[] coNews;
@@ -318,6 +344,26 @@ public class PortfolioCompany {
 
   public String getNewsSummary() {
       return newsSummary;
+  }
+
+  public String getPTupdatedDate() {
+    return PTupdatedDate;
+  }
+
+  public double getPTpriceTargetAverage() {
+    return PTpriceTargetAverage;
+  }
+
+  public double getPTpriceTargetHigh() {
+    return PTpriceTargetHigh;
+  }
+
+  public double getPTpriceTargetLow() {
+    return PTpriceTargetLow;
+  }
+
+  public long getPTnumberOfAnalysts() {
+    return PTnumberOfAnalysts;
   }
 
   public List<PortfolioItem> getPortfoliosThisIsIn() {

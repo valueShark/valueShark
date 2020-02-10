@@ -19,6 +19,7 @@ class ApplicationUserTest {
   @Test
   public void testGetters() {
     ApplicationUser user = new ApplicationUser("testUser","testUserPassword", "Jane", "Doe", "testUser@gmail.com");
+    // These should be asserting actual values for these... that the username is testUser, the firstName is Jane, etc.
     assertNotNull(user.getUsername());
     assertNotNull(user.getPassword());
     assertNotNull(user.getFirstName());

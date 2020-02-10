@@ -20,7 +20,9 @@ public class ApplicationUser implements UserDetails {
     private String email;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL,
+        mappedBy = "user",
+        orphanRemoval = true)
     private List<PortfolioItem> portfolio;
 
     public ApplicationUser() {};

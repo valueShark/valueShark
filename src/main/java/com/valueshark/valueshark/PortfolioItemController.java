@@ -51,9 +51,9 @@ public class PortfolioItemController {
         if(currentUser.getPortfolio().contains(itemToUpdate)) {
             itemToUpdate.setShares(shares);
             itemToUpdate.setPricePerShare(pricePerShare);
+            //save updated portfolio item in repo
+            portfolioItemRepository.save(itemToUpdate);
         }
-        //save updated portfolio item in repo
-        portfolioItemRepository.save(itemToUpdate);
 
         return new RedirectView("/");
     }
@@ -61,6 +61,7 @@ public class PortfolioItemController {
     @DeleteMapping("/portfolioItem/{id}/delete")
     public RedirectView deletePortfolioItem(@PathVariable Long id, Principal p){
         //defining which user wants to delete which portfolio item
+        // hooray! actual security!
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
         PortfolioItem itemToDelete = portfolioItemRepository.getOne(id);
 

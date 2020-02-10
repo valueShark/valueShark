@@ -3,36 +3,34 @@
     <head th:replace="fragments/head.html :: head"></head>
     <body>
         <header th:replace="fragments/header.html :: header"></header>
-        <main id="signuppage">
-            <div>
-                <h1>Sign up</h1>
+        <main style="min-height:80vh;">
+            <div class="text-center mx-autow-75">
+                <h1 class="font-weight-bold py-2">Sign up</h1>
                 <img id="valuesharklogo" src="/img/valueshark3.png" alt="valueshark image"/>
                 <h5 th:if="${param.taken}">That username is taken.</h5>
                 <h5 th:if="${param.reenter}">The password was re-entered incorrectly.</h5>
-            </div>
-            <form class="container" action="/signup" method="POST">
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputusername">Username <input class="form-control" id="inputusername" name="username"/></label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputpassword">Password <input class="form-control" id="inputpassword" type="password" name="password"/></label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputreenter">Re-enter Password <input class="form-control" id="inputreenter" type="password" name="reenter"/></label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputfirst">First Name <input class="form-control" id="inputfirst" name="firstName"/></label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputlast">Last Name <input class="form-control" id="inputlast" name="lastName"/></label>
-                </fieldset>
-                <fieldset class="form-group row justify-content-center">
-                    <label class="col" for="inputemail">Email <input class="form-control" type="email" id="inputemail" name="email"/></label>
-                </fieldset>
-                <div class="text-center">
+                <form action="/signup" method="POST">
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputusername">Username <input class="form-control w-50 mx-auto" id="inputusername" name="username"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputpassword">Password <input class="form-control w-50 mx-auto" id="inputpassword" type="password" name="password"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputreenter">Re-enter Password <input class="form-control w-50 mx-auto" id="inputreenter" type="password" name="reenter"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputfirst">First Name <input class="form-control w-50 mx-auto" id="inputfirst" name="firstName"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputlast">Last Name <input class="form-control w-50 mx-auto" id="inputlast" name="lastName"/></label>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label class="col" for="inputemail">Email <input class="form-control w-50 mx-auto" type="email" id="inputemail" name="email"/></label>
+                    </div>
                     <button id="signuploginsubmit" type="submit" class="btn btn-primary">Sign Up</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </main>
         <footer th:replace="fragments/footer.html :: footer"></footer>
         <th:block th:replace="fragments/bootstrapscripts.html :: bootstrapscripts"></th:block>

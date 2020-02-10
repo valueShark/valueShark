@@ -1,7 +1,7 @@
 # Value Shark
 A web application for value investors to quickly identify potential opportunities and track their portfolio. 
 
-Deployed on AWS: [valueshark.io](valueshark.io).
+Deployed on AWS: [valueshark.io](http://valueshark.io).
 
 ![Splash Page](/assets/vs-splash.PNG)
 ![Login Page](/assets/vs-login.PNG)
@@ -23,7 +23,8 @@ investments all in one, convenient and free app.
 ## Getting Started
 1. Clone the repository on your local environment.
 2. Create a PostgreSQL database dedicated for this application. 
-3. Obtain an API key from [iexcloud.io](iexcloud.io)
+<!-- also a broken link -->
+3. Obtain an API key from [iexcloud.io](http://iexcloud.io)
 4. Create environment variables for DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD, and IEXCLOUD_PUSHABLETOKEN (which uses your IEX Cloud API key). 
 Ensure your DATABASE_URL follows this format (replacing the carats with the appropriate config): postgresql://\<host>:\<port>/\<database_name>
 

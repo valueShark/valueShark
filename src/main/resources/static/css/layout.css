@@ -3,21 +3,6 @@ footer {
   width:100%;
 }
 
-.portfolioItem{
-list-style-type: none;
-margin: 0 0 !important;
-margin-left: -2rem !important;}
-
-#loginpage div, #signuppage div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-main{
-    margin-top:8vh;
-}
-
 #valuesharklogo {
     width: 15%;
 }
@@ -29,7 +14,6 @@ main{
 
 .card-body {
     text-align: center;
-    border-bottom: 1px solid black;
 }
     .card-body p {
         padding: 4px 0 !important;
@@ -53,13 +37,6 @@ ul {
 }
 
 
-#uldiv{
-    padding-bottom: 15px;
-    margin: 0 0 !important;
-    padding-top:1vh;
-}
-
-
 .card {
     width: 15rem;
 }
@@ -72,10 +49,6 @@ ul {
 
 #uldiv:nth-child(even) {
     background-color:#e0e0e0;
-}
-
-#uldiv > ul > div{
-    margin-left:-0.1vw;
 }
 
 /* splash unlogged */

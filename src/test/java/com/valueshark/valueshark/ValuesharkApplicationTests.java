@@ -77,6 +77,7 @@ class ValuesharkApplicationTests {
 	//https://stackoverflow.com/questions/15203485/spring-test-security-how-to-mock-authentication
 	//checking /myprofile route as a user signed in @with user details
 	//these tests require your local db to have the specified user already created
+	// hooray! this comment helped me!
 	@Test
 	@WithUserDetails("lwilber")
 	public void testMyProfilePage() throws Exception {
