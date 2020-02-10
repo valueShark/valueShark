@@ -5,11 +5,11 @@
     <header th:replace="fragments/header.html :: header"></header>
     <main>
 
-      <h1 class="text-center font-weight-bold border-bottom w-75 mx-auto">Company Details</h1>
+      <h1 class="text-center font-weight-bold border-bottom w-75 mx-auto pb-2">Company Details</h1>
       <h2 class="text-center" th:text="${company.companyName}"></h2>
 
       <div class="text-center">
-        <img class="rounded border" th:src="${company.logoUrl}" th:alt = "${company.companyName} + ' logo'">
+        <img th:src="${company.logoUrl}" th:alt = "${company.companyName} + ' logo'">
       </div>
 
       <div class="text-center m-3 mx-auto border bg-light w-75">
@@ -71,7 +71,7 @@
       <div class="text-center m-3 mx-auto border bg-light w-75">
         <div class="m-2 p-2 mx-auto border bg-white w-75">
           <h3 class="text-center font-weight-bold mx-auto">Add To Portfolio</h3>
-          <form id="addToPortfolio" th:action="'/portfolio/add/'+${company.symbol}" method="post">
+          <form th:action="'/portfolio/add/'+${company.symbol}" method="post">
             <div class="form-group">
               <label for="shares">Shares owned:</label>
               <input class="form-control w-50 mx-auto" id="shares" name="shares" type="number" required/>

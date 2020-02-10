@@ -12,12 +12,6 @@
     animation-fill-mode: forwards;
 }
 
-/* login, signup */
-#valuesharklogo, #valuesharklogosplash {
-    animation-name: fadein;
-    animation-duration: 0.9s;
-}
-
 @keyframes aboutustiles {
     from {opacity: 0; padding: 0px; margin-top: 0px; margin-left:0px; margin-right:0px;}
     to {opacity: 1; padding: 5px; margin-top: 5px; margin-left:5px; margin-right:5px;}
