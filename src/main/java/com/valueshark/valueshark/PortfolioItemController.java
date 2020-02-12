@@ -70,12 +70,13 @@ public class PortfolioItemController {
         //defining which user wants to delete which portfolio item
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
         PortfolioItem itemToDelete = portfolioItemRepository.getOne(id);
-
-        System.out.println(id);
-
-        if(currentUser.getPortfolio().contains(itemToDelete)){
-            portfolioItemRepository.deleteById(id);
+        PortfolioCompany company =  portfolioCompanyRepository.getOne(itemToDelete.getPortfolioCompany().getId());
+        company.portfoliosThisIsIn.remove(itemToDelete);
+        if(company.portfoliosThisIsIn.isEmpty()) {
+            portfolioCompanyRepository.delete(company);
         }
+        currentUser.getPortfolio().remove(itemToDelete);
+        applicationUserRepository.save(currentUser);
 
         return new RedirectView("/");
 
