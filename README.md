@@ -1,7 +1,7 @@
 # Value Shark
 A web application for value investors to quickly identify potential opportunities and track their portfolio. 
 
-Deployed on AWS: [www.valueshark.io](valueshark.io).
+Deployed on AWS: www.valueshark.io
 
 ![Splash Page](/assets/vs-splash.PNG)
 ![Login Page](/assets/vs-login.PNG)
