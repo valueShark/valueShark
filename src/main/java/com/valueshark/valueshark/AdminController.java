@@ -27,7 +27,7 @@ public class AdminController {
     @Autowired
     CompanyRepository companyRepo;
 
-    @Scheduled(cron= "0 0 0 * * 2-6")
+    @Scheduled(cron= "0 0 0 * * 6")
     public void updateDatabase() {
 
         URL url = null;
