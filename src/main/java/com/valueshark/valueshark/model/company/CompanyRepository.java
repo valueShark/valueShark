@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
   Company getBySymbol(String symbol);
-  List<Company> findTop20ByOrderByPegRatioAsc();
+  List<Company> findAllByOrderByPegRatioAsc();
 }

@@ -1,14 +1,13 @@
 package com.valueshark.valueshark;
 
 
+import com.google.gson.Gson;
+import com.valueshark.valueshark.model.PriceTarget;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
-import com.valueshark.valueshark.model.company.Company;
-import com.valueshark.valueshark.model.company.CompanyRepository;
-import com.valueshark.valueshark.model.portfolio.PortfolioCompany;
+import com.valueshark.valueshark.model.company.*;
 import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
-import com.valueshark.valueshark.model.portfolio.PortfolioItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,13 +15,18 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.Principal;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +42,77 @@ public class ValueSharkController {
     @Autowired
     CompanyRepository companyRepository;
 
+    @Autowired
+    PortfolioCompanyRepository portfolioCompanyRepository;
+
     @GetMapping("/")
     public String renderHomePage(Principal p, Model m){
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+
+            // update each portfolio stock price
+            for(PortfolioItem co : user.getPortfolio()) {
+                try {
+                    URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getPortfolioCompany().getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+                    Gson gson = new Gson();
+                    HttpURLConnection con;
+                    BufferedReader in;
+                    try {
+
+                        // CompanyPrice object used to store data from "quote' endpoint
+                        CompanyPrice price;
+                        con = (HttpURLConnection) url.openConnection();
+                        con.setRequestMethod("GET");
+                        in = new BufferedReader(
+                            new InputStreamReader(con.getInputStream()));
+                        // Send request to "quote" endpoint and store data in coStats
+                        price = gson.fromJson(in, CompanyPrice.class);
+                        co.getPortfolioCompany().setPrice(price.getLatestPrice());
+                        portfolioCompanyRepository.save(co.getPortfolioCompany());
+                        in.close();
+                        con.disconnect();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+
             m.addAttribute("user", user);
 
             //all "value stocks"
-            List<Company> allCompanies = companyRepository.findTop20ByOrderByPegRatioAsc();
+            List<Company> allCompanies = companyRepository.findAllByOrderByPegRatioAsc();
+
+            // update each prospective investment price
+            for(Company co : allCompanies) {
+                try {
+                    URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+                    Gson gson = new Gson();
+                    HttpURLConnection con;
+                    BufferedReader in;
+                    try {
+
+                        // CompanyPrice object used to store data from "quote' endpoint
+                        CompanyPrice price;
+                        con = (HttpURLConnection) url.openConnection();
+                        con.setRequestMethod("GET");
+                        in = new BufferedReader(
+                            new InputStreamReader(con.getInputStream()));
+                        // Send request to "quote" endpoint and store data in coStats
+                        price = gson.fromJson(in, CompanyPrice.class);
+                        co.setPrice(price.getLatestPrice());
+                        companyRepository.save(co);
+                        in.close();
+                        con.disconnect();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+
             m.addAttribute("allCompanies", allCompanies);
         }
         return "index";

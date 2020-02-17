@@ -362,6 +362,8 @@ public class Company {
     return PTnumberOfAnalysts;
   }
 
+
+
   @Override
   public String toString() {
     return "Company:" +
