@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Valueshark&#169</title>
-    <th:block th:replace="fragments/cssfiles.html :: cssfiles"></th:block>
-</head>
+<head th:replace="fragments/head.html :: head"></head>
 <body>
     <header th:replace="fragments/header.html :: header"></header>
     <main style="min-height:90vh;">
@@ -18,6 +13,7 @@
                         </div>
                         <div class="col-sm-9 pt-3">
                             <h4 class="text-center font-weight-bold" style="color:#444444;">PROSPECTIVE INVESTMENTS</h4>
+                            <p class="text-center w-75 mx-auto">The following list of stocks is updated weekly and has been filtered using the these criteria: Price < 80% of analysts' average target price, 0 < PEG Ratio < 2, 0 < PE Ratio < 20, Profit Margin > 10%, 0 < PB Ratio < 2 & Beta < 2</p>
                             <div th:replace="fragments/prospectsTable.html :: prospectsTable"></div>
                         </div>
                     </div>

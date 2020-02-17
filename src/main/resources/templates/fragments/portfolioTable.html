@@ -3,12 +3,14 @@
         <ul class="portfolioItem p-2">
             <li class="symbolstyle">
                 <a th:href="${'/stocks?symbol=' + item.portfolioCompany.symbol}">
-                    <b>[[${item.portfolioCompany.symbol}]]</b></li></a>
+                    <b>[[${item.portfolioCompany.symbol}]]</b></a></li>
             <li><b>[[${item.portfolioCompany.companyName}]]</b></li>
+            <li>Price: <b>$[[${#numbers.formatDecimal(item.portfolioCompany.price, 0, 2, 'POINT')}]]</b></li>
             <li>Average Cost: <b>$[[${#numbers.formatDecimal(item.pricePerShare, 0, 2, 'POINT')}]]</b></li>
             <li>Shares owned: <b>[[${item.shares}]]</b></li>
+            <li>Market Value: <b>$[[${#numbers.formatDecimal(item.portfolioCompany.price * item.shares, 0, 2, 'POINT')}]] </b></li>
             <!--                add a percent change here later, maybe-->
-            <li>Total Value: <b>$[[${#numbers.formatDecimal(item.pricePerShare * item.shares, 0, 2, 'POINT')}]]</b></li>
+            <li>Unrealized Gain/Loss: <b>$[[${#numbers.formatDecimal((item.portfolioCompany.price * item.shares) - (item.pricePerShare * item.shares), 0, 2, 'POINT')}]] (%[[${#numbers.formatDecimal((((item.portfolioCompany.price * item.shares) - (item.pricePerShare * item.shares)) / (item.pricePerShare * item.shares)) * 100, 0, 2, 'POINT')}]])</b></li>
             <!--                replace the actions with the correct routes-->
             <br>
             <div class="row pl-3">
