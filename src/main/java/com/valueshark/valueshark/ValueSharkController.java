@@ -54,7 +54,7 @@ public class ValueSharkController {
             // update each portfolio stock price
             for(PortfolioItem co : user.getPortfolio()) {
                 // only update if last price update more than a day old
-                if(co.getPortfolioCompany().getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
+                if(co.getPortfolioCompany().getLastPriceUpdate() != null || co.getPortfolioCompany().getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
                     try {
                         URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getPortfolioCompany().getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
                         Gson gson = new Gson();
@@ -91,7 +91,7 @@ public class ValueSharkController {
 
             // update each prospective investment price
             for(Company co : allCompanies) {
-                if(co.getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
+                if(co.getLastPriceUpdate() != null || co.getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
                     try {
                         URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
                         Gson gson = new Gson();
