@@ -12,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 //these classes are stored in a table that represents companies people have saved to their portfolio which may not
@@ -71,6 +72,7 @@ public class PortfolioCompany {
   private double PTpriceTargetHigh;
   private double PTpriceTargetLow;
   private long PTnumberOfAnalysts;
+  private Date lastPriceUpdate;
 
   public PortfolioCompany() {}
 
@@ -193,6 +195,8 @@ public class PortfolioCompany {
               this.country = coInfo.getCountry();
               in.close();
               con.disconnect();
+
+              this.lastPriceUpdate = new Date(Calendar.getInstance().getTime().getTime());
           } catch (IOException e) {
               e.printStackTrace();
           }
@@ -367,6 +371,14 @@ public class PortfolioCompany {
 
   public List<PortfolioItem> getPortfoliosThisIsIn() {
     return portfoliosThisIsIn;
+  }
+
+  public Date getLastPriceUpdate() {
+    return lastPriceUpdate;
+  }
+
+  public void setLastPriceUpdate(Date lastPriceUpdate) {
+    this.lastPriceUpdate = lastPriceUpdate;
   }
 
   @Override
