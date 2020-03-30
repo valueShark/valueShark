@@ -28,6 +28,7 @@ import java.net.URL;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller
@@ -52,30 +53,33 @@ public class ValueSharkController {
 
             // update each portfolio stock price
             for(PortfolioItem co : user.getPortfolio()) {
-                try {
-                    URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getPortfolioCompany().getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
-                    Gson gson = new Gson();
-                    HttpURLConnection con;
-                    BufferedReader in;
+                // only update if last price update more than a day old
+                if(co.getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
                     try {
+                        URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getPortfolioCompany().getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+                        Gson gson = new Gson();
+                        HttpURLConnection con;
+                        BufferedReader in;
+                        try {
 
-                        // CompanyPrice object used to store data from "quote' endpoint
-                        CompanyPrice price;
-                        con = (HttpURLConnection) url.openConnection();
-                        con.setRequestMethod("GET");
-                        in = new BufferedReader(
-                            new InputStreamReader(con.getInputStream()));
-                        // Send request to "quote" endpoint and store data in coStats
-                        price = gson.fromJson(in, CompanyPrice.class);
-                        co.getPortfolioCompany().setPrice(price.getLatestPrice());
-                        portfolioCompanyRepository.save(co.getPortfolioCompany());
-                        in.close();
-                        con.disconnect();
-                    } catch (IOException e) {
+                            // CompanyPrice object used to store data from "quote' endpoint
+                            CompanyPrice price;
+                            con = (HttpURLConnection) url.openConnection();
+                            con.setRequestMethod("GET");
+                            in = new BufferedReader(
+                                new InputStreamReader(con.getInputStream()));
+                            // Send request to "quote" endpoint and store data in coStats
+                            price = gson.fromJson(in, CompanyPrice.class);
+                            co.getPortfolioCompany().setPrice(price.getLatestPrice());
+                            portfolioCompanyRepository.save(co.getPortfolioCompany());
+                            in.close();
+                            con.disconnect();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
                 }
             }
 
@@ -86,30 +90,32 @@ public class ValueSharkController {
 
             // update each prospective investment price
             for(Company co : allCompanies) {
-                try {
-                    URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
-                    Gson gson = new Gson();
-                    HttpURLConnection con;
-                    BufferedReader in;
+                if(co.getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
                     try {
+                        URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
+                        Gson gson = new Gson();
+                        HttpURLConnection con;
+                        BufferedReader in;
+                        try {
 
-                        // CompanyPrice object used to store data from "quote' endpoint
-                        CompanyPrice price;
-                        con = (HttpURLConnection) url.openConnection();
-                        con.setRequestMethod("GET");
-                        in = new BufferedReader(
-                            new InputStreamReader(con.getInputStream()));
-                        // Send request to "quote" endpoint and store data in coStats
-                        price = gson.fromJson(in, CompanyPrice.class);
-                        co.setPrice(price.getLatestPrice());
-                        companyRepository.save(co);
-                        in.close();
-                        con.disconnect();
-                    } catch (IOException e) {
+                            // CompanyPrice object used to store data from "quote' endpoint
+                            CompanyPrice price;
+                            con = (HttpURLConnection) url.openConnection();
+                            con.setRequestMethod("GET");
+                            in = new BufferedReader(
+                                new InputStreamReader(con.getInputStream()));
+                            // Send request to "quote" endpoint and store data in coStats
+                            price = gson.fromJson(in, CompanyPrice.class);
+                            co.setPrice(price.getLatestPrice());
+                            companyRepository.save(co);
+                            in.close();
+                            con.disconnect();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
                 }
             }
 
@@ -152,16 +158,6 @@ public class ValueSharkController {
     @GetMapping("/login")
     public String login(Model m, Principal p) {
         return "login";
-    }
-
-    @GetMapping("/portfolio")
-    public String renderPortfolio(Model m, Principal p){
-        if (p != null) {
-            ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
-            System.out.println(user.getPortfolio());
-            m.addAttribute("user", user);
-        }
-        return "portfolio";
     }
 
     @GetMapping("/aboutus")

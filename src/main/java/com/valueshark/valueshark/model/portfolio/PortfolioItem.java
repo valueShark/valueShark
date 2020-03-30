@@ -3,6 +3,8 @@ package com.valueshark.valueshark.model.portfolio;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.util.Calendar;
 
 @Entity
 public class PortfolioItem {
@@ -19,6 +21,7 @@ public class PortfolioItem {
 
     private long shares;
     private double pricePerShare;
+    private Date lastPriceUpdate;
 
     PortfolioItem() {};
 
@@ -28,6 +31,7 @@ public class PortfolioItem {
         this.portfolioCompany = portfolioCompany;
         this.shares = shares;
         this.pricePerShare = pricePerShare;
+        this.lastPriceUpdate = new Date(Calendar.getInstance().getTime().getTime());
     }
 
     public long getId() {
@@ -36,6 +40,10 @@ public class PortfolioItem {
 
     public ApplicationUser getUser() {
         return user;
+    }
+
+    public Date getLastPriceUpdate() {
+        return lastPriceUpdate;
     }
 
     public void setUser(ApplicationUser user) {
@@ -64,5 +72,9 @@ public class PortfolioItem {
 
     public void setPricePerShare(double pricePerShare) {
         this.pricePerShare = pricePerShare;
+    }
+
+    public void setLastPriceUpdate(Date lastPriceUpdate) {
+        this.lastPriceUpdate = lastPriceUpdate;
     }
 }

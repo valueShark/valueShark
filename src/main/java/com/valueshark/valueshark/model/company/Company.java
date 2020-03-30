@@ -2,7 +2,6 @@ package com.valueshark.valueshark.model.company;
 
 import com.google.gson.Gson;
 import com.valueshark.valueshark.model.PriceTarget;
-import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 
 import javax.persistence.*;
 import java.io.BufferedReader;
@@ -12,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
-import java.util.List;
+import java.util.Calendar;
 
 @Entity
 public class Company {
@@ -20,10 +19,6 @@ public class Company {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-
-  //this isn't necessary but leaving it in case we decide to use this for stats later
-//  @OneToMany(mappedBy = "companyId")
-//  public List<PortfolioItem> portfoliosThisIsIn;
 
   private String symbol;
   private String companyName;
@@ -68,6 +63,7 @@ public class Company {
   private double PTpriceTargetHigh;
   private double PTpriceTargetLow;
   private long PTnumberOfAnalysts;
+  private Date lastPriceUpdate;
 
   public Company() {}
 
@@ -190,6 +186,8 @@ public class Company {
         this.country = coInfo.getCountry();
         in.close();
         con.disconnect();
+
+        this.lastPriceUpdate = new Date(Calendar.getInstance().getTime().getTime());
       } catch (IOException e) {
         e.printStackTrace();
       }
@@ -362,7 +360,13 @@ public class Company {
     return PTnumberOfAnalysts;
   }
 
+  public Date getLastPriceUpdate() {
+    return lastPriceUpdate;
+  }
 
+  public void setLastPriceUpdate(Date lastPriceUpdate) {
+    this.lastPriceUpdate = lastPriceUpdate;
+  }
 
   @Override
   public String toString() {
