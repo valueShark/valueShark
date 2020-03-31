@@ -2,10 +2,11 @@ package com.valueshark.valueshark;
 
 
 import com.google.gson.Gson;
-import com.valueshark.valueshark.model.PriceTarget;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUser;
 import com.valueshark.valueshark.model.applicationuser.ApplicationUserRepository;
-import com.valueshark.valueshark.model.company.*;
+import com.valueshark.valueshark.model.company.Company;
+import com.valueshark.valueshark.model.company.CompanyPrice;
+import com.valueshark.valueshark.model.company.CompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioCompanyRepository;
 import com.valueshark.valueshark.model.portfolio.PortfolioItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,10 +52,20 @@ public class ValueSharkController {
         if (p != null) {
             ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
 
+            System.out.println("rendering portfolio companies");
+
+            Date today = new Date(Calendar.getInstance().getTime().getTime());
+
             // update each portfolio stock price
             for(PortfolioItem co : user.getPortfolio()) {
+                System.out.println(co.getPortfolioCompany().getSymbol() + ": " +
+                    co.getPortfolioCompany().getLastPriceUpdate() +
+                    " ( " +
+                    (today.getTime() - co.getPortfolioCompany().getLastPriceUpdate().getTime()) +
+                    " )");
+
                 // only update if last price update more than a day old
-                if(co.getPortfolioCompany().getLastPriceUpdate() == null || co.getPortfolioCompany().getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
+                if(co.getPortfolioCompany().getLastPriceUpdate() == null || (today.getTime() - co.getPortfolioCompany().getLastPriceUpdate().getTime()) > 0) {
                     try {
                         URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getPortfolioCompany().getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
                         Gson gson = new Gson();
@@ -89,9 +100,17 @@ public class ValueSharkController {
             //all "value stocks"
             List<Company> allCompanies = companyRepository.findAllByOrderByPegRatioAsc();
 
+            System.out.println("rendering prospects");
+
             // update each prospective investment price
             for(Company co : allCompanies) {
-                if(co.getLastPriceUpdate() == null || co.getLastPriceUpdate().before(new Date(Calendar.getInstance().getTime().getTime()))) {
+                System.out.println(co.getSymbol() + ": " +
+                    co.getLastPriceUpdate() +
+                    " ( " +
+                    (today.getTime() - co.getLastPriceUpdate().getTime()) +
+                    " )");
+
+                if(co.getLastPriceUpdate() == null || (today.getTime() - co.getLastPriceUpdate().getTime()) > 0) {
                     try {
                         URL url = new URL("https://cloud.iexapis.com/v1/stock/" + co.getSymbol() + "/quote?token=" + System.getenv("IEXCLOUD_PUSHABLETOKEN"));
                         Gson gson = new Gson();
